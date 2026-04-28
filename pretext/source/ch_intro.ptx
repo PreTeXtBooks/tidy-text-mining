@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xml:id="ch-intro" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Introduction</title>
+
+  <p>
+    This book describes text analysis within the tidy data framework.
+    It uses the <em>tidytext</em> package and other tidy tools in R.
+  </p>
+
+  <p>
+    Visit the <url href="https://www.tidytextmining.com/" visual="tidytextmining.com">companion website</url>
+    or the <url href="https://github.com/juliasilge/tidy-text-mining" visual="github.com/juliasilge/tidy-text-mining">GitHub repository</url>
+    for more details.
+  </p>
+</chapter>
