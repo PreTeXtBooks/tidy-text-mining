@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-tidytext" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>The tidy text format</title>
+<introduction>
 
   <p>
     Using tidy data principles is a powerful way to make handling data easier and more effective,
@@ -42,6 +43,7 @@
     matrix for machine learning applications. The models can then be re-converted into a tidy form
     for interpretation and visualization with ggplot2.
   </p>
+</introduction>
 
   <section xml:id="sec-contrasting-tidy-text">
     <title>Contrasting tidy text with other data structures</title>
