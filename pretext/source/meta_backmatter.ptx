@@ -1,7 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <backmatter xmlns:xi="http://www.w3.org/2001/XInclude" xml:id="meta-back">
+
+  <references xml:id="references">
+    <title>References</title>
+
+    <biblio type="raw" xml:id="tidytext-archive">
+      Julia Silge, David Robinson, and Jim Hester,
+      <em>tidytext: Text mining using dplyr, ggplot2, and other tidy tools</em>,
+      June 2016.
+      DOI: <url href="https://doi.org/10.5281/zenodo.56714"
+                 visual="doi.org/10.5281/zenodo.56714">10.5281/zenodo.56714</url>.
+    </biblio>
+
+    <biblio type="raw" xml:id="tm">
+      Ingo Feinerer, Kurt Hornik, and David Meyer,
+      <q>Text Mining Infrastructure in R,</q>
+      <em>Journal of Statistical Software</em>, vol. 25, no. 5, pp. 1–54, 2008.
+      <url href="http://www.jstatsoft.org/v25/i05/" visual="jstatsoft.org/v25/i05"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="tidydata">
+      Hadley Wickham,
+      <q>Tidy Data,</q>
+      <em>Journal of Statistical Software</em>, vol. 59, no. 1, pp. 1–23, 2014.
+      DOI: <url href="https://doi.org/10.18637/jss.v059.i10"
+                 visual="doi.org/10.18637/jss.v059.i10">10.18637/jss.v059.i10</url>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-tidytext">
+      Julia Silge and David Robinson,
+      <q>tidytext: Text Mining and Analysis Using Tidy Data Principles in R,</q>
+      <em>Journal of Open Source Software</em>, vol. 1, no. 3, 2016.
+      DOI: <url href="https://doi.org/10.21105/joss.00037"
+                 visual="doi.org/10.21105/joss.00037">10.21105/joss.00037</url>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-broom">
+      David Robinson,
+      <em>broom: Convert Statistical Analysis Objects into Tidy Data Frames</em>,
+      R package version 0.4.2, 2017.
+      <url href="https://CRAN.R-project.org/package=broom"
+           visual="CRAN.R-project.org/package=broom"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-gutenbergr">
+      David Robinson,
+      <em>gutenbergr: Download and Process Public Domain Works from Project Gutenberg</em>,
+      R package version 0.1.2, 2016.
+      <url href="https://cran.rstudio.com/package=gutenbergr"
+           visual="cran.rstudio.com/package=gutenbergr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-tokenizers">
+      Lincoln Mullen,
+      <em>tokenizers: A Consistent Interface to Tokenize Natural Language Text</em>,
+      R package version 0.1.3, 2016.
+      <url href="https://CRAN.R-project.org/package=tokenizers"
+           visual="CRAN.R-project.org/package=tokenizers"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-dplyr">
+      Hadley Wickham and Romain Francois,
+      <em>dplyr: A Grammar of Data Manipulation</em>,
+      R package version 0.5.0, 2016.
+      <url href="https://CRAN.R-project.org/package=dplyr"
+           visual="CRAN.R-project.org/package=dplyr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-tidyr">
+      Hadley Wickham,
+      <em>tidyr: Easily Tidy Data with spread() and gather() Functions</em>,
+      R package version 0.6.0, 2016.
+      <url href="https://CRAN.R-project.org/package=tidyr"
+           visual="CRAN.R-project.org/package=tidyr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-purrr">
+      Lionel Henry and Hadley Wickham,
+      <em>purrr: Functional Programming Tools</em>,
+      R package version 0.2.5, 2018.
+      <url href="https://CRAN.R-project.org/package=purrr"
+           visual="CRAN.R-project.org/package=purrr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-ggplot2">
+      Hadley Wickham,
+      <em>ggplot2: Elegant Graphics for Data Analysis</em>,
+      Springer-Verlag New York, 2009.
+      ISBN 978-0-387-98140-6.
+      <url href="http://ggplot2.org" visual="ggplot2.org"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-quanteda">
+      Kenneth Benoit and Paul Nulty,
+      <em>quanteda: Quantitative Analysis of Textual Data</em>,
+      R package version 0.9.8, 2016.
+      <url href="https://CRAN.R-project.org/package=quanteda"
+           visual="CRAN.R-project.org/package=quanteda"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-janeaustenr">
+      Julia Silge,
+      <em>janeaustenr: Jane Austen's Complete Novels</em>,
+      R package version 0.1.2, 2016.
+      <url href="https://CRAN.R-project.org/package=janeaustenr"
+           visual="CRAN.R-project.org/package=janeaustenr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-reshape2">
+      Hadley Wickham,
+      <q>Reshaping Data with the reshape Package,</q>
+      <em>Journal of Statistical Software</em>, vol. 21, no. 12, pp. 1–20, 2007.
+      <url href="http://www.jstatsoft.org/v21/i12/" visual="jstatsoft.org/v21/i12"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="loughran2011liability">
+      Tim Loughran and Bill McDonald,
+      <q>When Is a Liability Not a Liability? Textual Analysis, Dictionaries, and 10-Ks,</q>
+      <em>The Journal of Finance</em>, vol. 66, no. 1, pp. 35–65, 2011.
+      DOI: <url href="https://doi.org/10.1111/j.1540-6261.2010.01625.x"
+                 visual="doi.org/10.1111/j.1540-6261.2010.01625.x">10.1111/j.1540-6261.2010.01625.x</url>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-mallet">
+      David Mimno,
+      <em>mallet: A wrapper around the Java machine learning tool MALLET</em>,
+      R package version 1.0, 2013.
+      <url href="https://cran.r-project.org/package=mallet"
+           visual="cran.r-project.org/package=mallet"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-sentimentr">
+      Tyler W. Rinker,
+      <em>sentimentr: Calculate Text Polarity Sentiment</em>,
+      version 1.0.0, University at Buffalo/SUNY, Buffalo, New York, 2017.
+      <url href="http://github.com/trinker/sentimentr"
+           visual="github.com/trinker/sentimentr"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-coreNLP">
+      Taylor Arnold and Lauren Tilton,
+      <em>coreNLP: Wrappers Around Stanford CoreNLP Tools</em>,
+      R package version 0.4.2, 2016.
+      <url href="https://cran.r-project.org/package=coreNLP"
+           visual="cran.r-project.org/package=coreNLP"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-cleanNLP">
+      Taylor B. Arnold,
+      <em>cleanNLP: A Tidy Data Model for Natural Language Processing</em>,
+      R package version 0.24, 2016.
+      <url href="https://cran.r-project.org/package=cleanNLP"
+           visual="cran.r-project.org/package=cleanNLP"/>.
+    </biblio>
+
+    <biblio type="raw" xml:id="R-ggraph">
+      Thomas Lin Pedersen,
+      <em>ggraph: An Implementation of Grammar of Graphics for Graphs and Networks</em>,
+      R package version 1.0.0, 2017.
+      <url href="https://cran.r-project.org/package=ggraph"
+           visual="cran.r-project.org/package=ggraph"/>.
+    </biblio>
+
+  </references>
+
   <index>
     <title>Index</title>
     <index-list/>
   </index>
+
 </backmatter>
