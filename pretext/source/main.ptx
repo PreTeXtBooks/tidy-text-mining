@@ -29,6 +29,9 @@
     <!-- Chapter 1: The tidy text format -->
     <xi:include href="./ch_tidytext.ptx" />
 
+    <!-- Chapter 2: Sentiment analysis with tidy data -->
+    <xi:include href="./ch_sentiment.ptx" />
+    
     <!-- Chapter 3: Analyzing word and document frequency: tf-idf -->
     <xi:include href="./ch_tfidf.ptx" />
 
