@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-intro" xmlns:xi="http://www.w3.org/2001/XInclude">
-  <title>Introduction</title>
+  <title>Welcome to Text Mining with R</title>
 
   <p>
-    This book describes text analysis within the tidy data framework.
-    It uses the <em>tidytext</em> package and other tidy tools in R.
+    This is the <url href="http://tidytextmining.com/" visual="tidytextmining.com">website</url>
+    for <em>Text Mining with R</em>! Visit the
+    <url href="https://github.com/juliasilge/tidy-text-mining"
+         visual="github.com/juliasilge/tidy-text-mining">GitHub repository for this site</url>,
+    find the book at
+    <url href="http://www.jdoqocy.com/click-4428796-11290546?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F0636920067153.do%3Fcmp%3Daf-strata-books-video-product_cj_0636920067153_%25zp&amp;cjsku=0636920067153"
+         visual="shop.oreilly.com/product/0636920067153.do">O'Reilly</url>, or
+    <url href="http://amzn.to/2tZkmxG" visual="amzn.to/2tZkmxG">buy it on Amazon</url>.
   </p>
 
   <p>
-    Visit the <url href="https://www.tidytextmining.com/" visual="tidytextmining.com">companion website</url>
-    or the <url href="https://github.com/juliasilge/tidy-text-mining" visual="github.com/juliasilge/tidy-text-mining">GitHub repository</url>
-    for more details.
+    This work by
+    <url href="http://juliasilge.com/" visual="juliasilge.com">Julia Silge</url>
+    and
+    <url href="http://varianceexplained.org/" visual="varianceexplained.org">David Robinson</url>
+    is licensed under a
+    <url href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"
+         visual="creativecommons.org/licenses/by-nc-sa/3.0/us">Creative Commons
+    Attribution-NonCommercial-ShareAlike 3.0 United States License</url>.
   </p>
+
 </chapter>

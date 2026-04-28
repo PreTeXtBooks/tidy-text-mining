@@ -138,7 +138,8 @@ ap_topics
       <p>
         Notice that this has turned the model into a one-topic-per-term-per-row format. For each
         combination, the model computes the probability of that term being generated from that
-        topic.
+        topic. For example, the term <q>aaron</q> has a very small probability of being generated
+        from topic 1, and a similarly small probability from topic 2.
       </p>
 
       <p>
@@ -256,11 +257,16 @@ ap_documents
 
       <p>
         Each of these values is an estimated proportion of words from that document that are
-        generated from that topic. We can see that many of these documents were drawn from a mix
-        of the two topics, but that document 6 was drawn almost entirely from topic 2, having a
-        <m>\gamma</m> from topic 1 close to zero. To check this answer, we could <c>tidy()</c>
-        the document-term matrix (see <xref ref="sec-tidy-dtm"/>) and check what the most common
-        words in that document were.
+        generated from that topic. For example, the model estimates that only a small fraction of
+        the words in document 1 were generated from topic 1.
+      </p>
+
+      <p>
+        We can see that many of these documents were drawn from a mix of the two topics, but that
+        document 6 was drawn almost entirely from topic 2, having a <m>\gamma</m> from topic 1
+        close to zero. To check this answer, we could <c>tidy()</c> the document-term matrix
+        (see <xref ref="sec-tidy-dtm"/>) and check what the most common words in that document
+        were.
       </p>
 
       <program language="r">
@@ -415,7 +421,8 @@ chapter_topics
       <p>
         Notice that this has turned the model into a one-topic-per-term-per-row format. For each
         combination, the model computes the probability of that term being generated from that
-        topic.
+        topic. For example, the term <q>joe</q> has an almost zero probability of being generated
+        from topics 1, 2, or 3, but it makes up a notable proportion of topic 4.
       </p>
 
       <p>
@@ -486,7 +493,9 @@ chapters_gamma
 
       <p>
         Each of these values is an estimated proportion of words from that document that are
-        generated from that topic.
+        generated from that topic. For example, the model estimates that each word in the first
+        chapter document has only a very small probability of coming from topic 1 (Pride and
+        Prejudice).
       </p>
 
       <p>

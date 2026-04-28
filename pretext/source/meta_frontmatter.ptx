@@ -244,6 +244,36 @@
     </paragraphs>
 
     <paragraphs>
+      <title>Using code examples</title>
+
+      <p>
+        This book was written in
+        <url href="http://www.rstudio.com/ide/" visual="rstudio.com/ide">RStudio</url>
+        using <url href="http://bookdown.org/" visual="bookdown.org">bookdown</url>.
+        The <url href="https://www.tidytextmining.com/" visual="tidytextmining.com">website</url>
+        is hosted via <url href="http://netlify.com/" visual="netlify.com">Netlify</url>,
+        and automatically built after every push by
+        <url href="https://help.github.com/actions" visual="help.github.com/actions">GitHub
+        Actions</url>. While we show the code behind the vast majority of the analyses, in the
+        interest of space we sometimes choose not to show the code generating a particular
+        visualization if we've already provided the code for several similar graphs. We trust the
+        reader can learn from and build on our examples, and the code used to generate the book
+        can be found in our
+        <url href="https://github.com/juliasilge/tidy-text-mining"
+             visual="github.com/juliasilge/tidy-text-mining">public GitHub repository</url>.
+        We generated all plots in this book using
+        <url href="https://ggplot2.tidyverse.org/" visual="ggplot2.tidyverse.org">ggplot2</url>
+        and its light theme (<c>theme_light()</c>).
+      </p>
+
+      <p>
+        The packages used in this book, along with their versions, are listed in the
+        <url href="https://github.com/juliasilge/tidy-text-mining"
+             visual="github.com/juliasilge/tidy-text-mining">GitHub repository</url>.
+      </p>
+    </paragraphs>
+
+    <paragraphs>
       <title>Acknowledgements</title>
 
       <p>

@@ -416,7 +416,7 @@ austen_dtm
     <p>
       This casting process allows for reading, filtering, and processing to be done using dplyr
       and other tidy tools, after which the data can be converted into a document-term matrix for
-      machine learning applications. In <xref provisional="ch-topicmodeling"/>, we'll examine some
+      machine learning applications. In <xref ref="ch-topicmodeling"/>, we'll examine some
       examples where a tidy-text dataset has to be converted into a DocumentTermMatrix for
       processing.
     </p>
@@ -618,7 +618,7 @@ stock_tf_idf %&gt;%
         decisions, we'd likely want to use sentiment analysis to determine whether the news
         coverage was positive or negative. Before we run such an analysis, we should look at what
         words would contribute the most to positive and negative sentiments, as was shown in
-        <xref provisional="sec-most-positive-negative"/>. For example, we could examine this
+        <xref ref="sec-most-positive-negative"/>. For example, we could examine this
         within the AFINN lexicon (<xref ref="fig-stockafinn"/>).
       </p>
 
