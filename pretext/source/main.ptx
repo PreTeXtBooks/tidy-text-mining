@@ -12,10 +12,10 @@
 
   <!-- The <book> tags wrap all the content.  Change the @xml:id   -->
   <!-- to some short (non-spaced) description of your book         -->
-  <book xml:id="book-id-here">
+  <book xml:id="tidy-text-mining">
     <!-- The book needs a title and can have a subtitle  -->
-    <title>Title</title>
-    <subtitle>Subtitle</subtitle>
+    <title>Text Mining with R</title>
+    <subtitle>A Tidy Approach</subtitle>
 
     <!-- Now we include files containing each main devision.       -->
 
