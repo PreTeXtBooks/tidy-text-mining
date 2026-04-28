@@ -1,0 +1,502 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter xml:id="ch-tfidf" xmlns:xi="http://www.w3.org/2001/XInclude">
+  <title>Analyzing word and document frequency: tf-idf</title>
+
+  <p>
+    A central question in text mining and natural language processing is how to quantify what a
+    document is about. Can we do this by looking at the words that make up the document? One measure
+    of how important a word may be is its <em>term frequency</em> (tf), how frequently a word occurs
+    in a document, as we examined in <xref ref="ch-tidytext"/>. There are words in a document,
+    however, that occur many times but may not be important; in English, these are probably words
+    like <q>the</q>, <q>is</q>, <q>of</q>, and so forth. We might take the approach of adding
+    words like these to a list of stop words and removing them before analysis, but it is possible
+    that some of these words might be more important in some documents than others. A list of stop
+    words is not a very sophisticated approach to adjusting term frequency for commonly used words.
+  </p>
+
+  <p>
+    Another approach is to look at a term's <em>inverse document frequency</em> (idf), which
+    decreases the weight for commonly used words and increases the weight for words that are not
+    used very much in a collection of documents. This can be combined with term frequency to
+    calculate a term's <em>tf-idf</em> (the two quantities multiplied together), the frequency of a
+    term adjusted for how rarely it is used.
+  </p>
+
+  <note>
+    <p>
+      The statistic <alert>tf-idf</alert> is intended to measure how important a word is to a
+      document in a collection (or corpus) of documents, for example, to one novel in a collection
+      of novels or to one website in a collection of websites.
+    </p>
+  </note>
+
+  <p>
+    It is a rule-of-thumb or heuristic quantity; while it has proved useful in text mining, search
+    engines, etc., its theoretical foundations are considered less than firm by information theory
+    experts. The inverse document frequency for any given term is defined as
+  </p>
+
+  <me>idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}</me>
+
+  <p>
+    We can use tidy data principles, as described in <xref ref="ch-tidytext"/>, to approach tf-idf
+    analysis and use consistent, effective tools to quantify how important various terms are in a
+    document that is part of a collection.
+  </p>
+
+  <section xml:id="sec-term-frequency-jane-austen">
+    <title>Term frequency in Jane Austen's novels</title>
+
+    <p>
+      Let's start by looking at the published novels of Jane Austen and examine first term
+      frequency, then tf-idf. We can start just by using dplyr verbs such as <c>group_by()</c> and
+      <c>join()</c>. What are the most commonly used words in Jane Austen's novels? (Let's also
+      calculate the total words in each novel here, for later use.)
+    </p>
+
+    <program language="r">
+      <input>
+library(dplyr)
+library(janeaustenr)
+library(tidytext)
+
+book_words &lt;- austen_books() %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  count(book, word, sort = TRUE)
+
+total_words &lt;- book_words %&gt;%
+  group_by(book) %&gt;%
+  summarize(total = sum(n))
+
+book_words &lt;- left_join(book_words, total_words)
+
+book_words
+      </input>
+    </program>
+
+    <p>
+      There is one row in this <c>book_words</c> data frame for each word-book combination;
+      <c>n</c> is the number of times that word is used in that book and <c>total</c> is the total
+      words in that book. The usual suspects are here with the highest <c>n</c>, <q>the</q>,
+      <q>and</q>, <q>to</q>, and so forth. In <xref ref="fig-plottf"/>, let's look at the
+      distribution of <c>n/total</c> for each novel, the number of times a word appears in a novel
+      divided by the total number of terms (words) in that novel. This is exactly what term
+      frequency is.
+    </p>
+
+    <listing xml:id="fig-plottf">
+      <caption>Term frequency distribution in Jane Austen's novels</caption>
+      <program language="r">
+        <input>
+library(ggplot2)
+
+ggplot(book_words, aes(n/total, fill = book)) +
+  geom_histogram(show.legend = FALSE) +
+  xlim(NA, 0.0009) +
+  facet_wrap(~book, ncol = 2, scales = "free_y")
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      There are long tails to the right for these novels (those extremely common words!) that we
+      have not shown in these plots. These plots exhibit similar distributions for all the novels,
+      with many words that occur rarely and fewer words that occur frequently.
+    </p>
+  </section>
+
+  <section xml:id="sec-zipfs-law">
+    <title>Zipf's law</title>
+
+    <p>
+      Distributions like those shown in <xref ref="fig-plottf"/> are typical in language. In fact,
+      those types of long-tailed distributions are so common in any given corpus of natural language
+      (like a book, or a lot of text from a website, or spoken words) that the relationship between
+      the frequency that a word is used and its rank has been the subject of study; a classic
+      version of this relationship is called Zipf's law, after George Zipf, a 20th century American
+      linguist.
+    </p>
+
+    <note>
+      <p>
+        Zipf's law states that the frequency that a word appears is inversely proportional to its
+        rank.
+      </p>
+    </note>
+
+    <p>
+      Since we have the data frame we used to plot term frequency, we can examine Zipf's law for
+      Jane Austen's novels with just a few lines of dplyr functions.
+    </p>
+
+    <program language="r">
+      <input>
+freq_by_rank &lt;- book_words %&gt;%
+  group_by(book) %&gt;%
+  mutate(rank = row_number(),
+         term_frequency = n/total) %&gt;%
+  ungroup()
+
+freq_by_rank
+      </input>
+    </program>
+
+    <p>
+      The <c>rank</c> column here tells us the rank of each word within the frequency table; the
+      table was already ordered by <c>n</c> so we could use <c>row_number()</c> to find the rank.
+      Then, we can calculate the term frequency in the same way we did before. Zipf's law is often
+      visualized by plotting rank on the x-axis and term frequency on the y-axis, on logarithmic
+      scales. Plotting this way, an inversely proportional relationship will have a constant,
+      negative slope.
+    </p>
+
+    <listing xml:id="fig-zipf">
+      <caption>Zipf's law for Jane Austen's novels</caption>
+      <program language="r">
+        <input>
+freq_by_rank %&gt;%
+  ggplot(aes(rank, term_frequency, color = book)) +
+  geom_line(linewidth = 1.1, alpha = 0.8, show.legend = FALSE) +
+  scale_x_log10() +
+  scale_y_log10()
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      Notice that <xref ref="fig-zipf"/> is in log-log coordinates. We see that all six of Jane
+      Austen's novels are similar to each other, and that the relationship between rank and
+      frequency does have negative slope. It is not quite constant, though; perhaps we could view
+      this as a broken
+      <url href="https://en.wikipedia.org/wiki/Power_law" visual="en.wikipedia.org/wiki/Power_law">power law</url>
+      with, say, three sections. Let's see what the exponent of the power law is for the middle
+      section of the rank range.
+    </p>
+
+    <program language="r">
+      <input>
+rank_subset &lt;- freq_by_rank %&gt;%
+  filter(rank &lt; 500,
+         rank &gt; 10)
+
+lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
+      </input>
+    </program>
+
+    <p>
+      Classic versions of Zipf's law have
+    </p>
+
+    <me>\text{frequency} \propto \frac{1}{\text{rank}}</me>
+
+    <p>
+      and we have in fact gotten a slope close to -1 here. Let's plot this fitted power law with
+      the data in <xref ref="fig-zipffit"/> to see how it looks.
+    </p>
+
+    <listing xml:id="fig-zipffit">
+      <caption>Fitting an exponent for Zipf's law with Jane Austen's novels</caption>
+      <program language="r">
+        <input>
+freq_by_rank %&gt;%
+  ggplot(aes(rank, term_frequency, color = book)) +
+  geom_abline(intercept = -0.62, slope = -1.1,
+              color = "gray50", linetype = 2) +
+  geom_line(linewidth = 1.1, alpha = 0.8, show.legend = FALSE) +
+  scale_x_log10() +
+  scale_y_log10()
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      We have found a result close to the classic version of Zipf's law for the corpus of Jane
+      Austen's novels. The deviations we see here at high rank are not uncommon for many kinds of
+      language; a corpus of language often contains fewer rare words than predicted by a single
+      power law. The deviations at low rank are more unusual. Jane Austen uses a lower percentage
+      of the most common words than many collections of language. This kind of analysis could be
+      extended to compare authors, or to compare any other collections of text; it can be
+      implemented simply using tidy data principles.
+    </p>
+  </section>
+
+  <section xml:id="sec-bind-tf-idf">
+    <title>The <c>bind_tf_idf()</c> function</title>
+
+    <p>
+      The idea of tf-idf is to find the important words for the content of each document by
+      decreasing the weight for commonly used words and increasing the weight for words that are not
+      used very much in a collection or corpus of documents, in this case, the group of Jane
+      Austen's novels as a whole. Calculating tf-idf attempts to find the words that are important
+      (i.e., common) in a text, but not <em>too</em> common. Let's do that now.
+    </p>
+
+    <p>
+      The <c>bind_tf_idf()</c> function in the tidytext package takes a tidy text dataset as input
+      with one row per token (term), per document. One column (<c>word</c> here) contains the
+      terms/tokens, one column contains the documents (<c>book</c> in this case), and the last
+      necessary column contains the counts, how many times each document contains each term
+      (<c>n</c> in this example). We calculated a <c>total</c> for each book for our explorations
+      in previous sections, but it is not necessary for the <c>bind_tf_idf()</c> function; the
+      table only needs to contain all the words in each document.
+    </p>
+
+    <program language="r">
+      <input>
+book_tf_idf &lt;- book_words %&gt;%
+  bind_tf_idf(word, book, n)
+
+book_tf_idf
+      </input>
+    </program>
+
+    <p>
+      Notice that idf and thus tf-idf are zero for these extremely common words. These are all
+      words that appear in all six of Jane Austen's novels, so the idf term (which will then be the
+      natural log of 1) is zero. The inverse document frequency (and thus tf-idf) is very low (near
+      zero) for words that occur in many of the documents in a collection; this is how this approach
+      decreases the weight for common words. The inverse document frequency will be a higher number
+      for words that occur in fewer of the documents in the collection.
+    </p>
+
+    <p>
+      Let's look at terms with high tf-idf in Jane Austen's works.
+    </p>
+
+    <program language="r">
+      <input>
+book_tf_idf %&gt;%
+  select(-total) %&gt;%
+  arrange(desc(tf_idf))
+      </input>
+    </program>
+
+    <p>
+      Here we see all proper nouns, names that are in fact important in these novels. None of them
+      occur in all of novels, and they are important, characteristic words for each text within the
+      corpus of Jane Austen's novels.
+    </p>
+
+    <note>
+      <p>
+        Some of the values for idf are the same for different terms because there are 6 documents
+        in this corpus and we are seeing the numerical value for <m>\ln(6/1)</m>,
+        <m>\ln(6/2)</m>, etc.
+      </p>
+    </note>
+
+    <p>
+      Let's look at a visualization for these high tf-idf words in
+      <xref ref="fig-plotseparate"/>.
+    </p>
+
+    <listing xml:id="fig-plotseparate">
+      <caption>Highest tf-idf words in each Jane Austen novel</caption>
+      <program language="r">
+        <input>
+library(forcats)
+
+book_tf_idf %&gt;%
+  group_by(book) %&gt;%
+  slice_max(tf_idf, n = 15) %&gt;%
+  ungroup() %&gt;%
+  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = book)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~book, ncol = 2, scales = "free") +
+  labs(x = "tf-idf", y = NULL)
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      Still all proper nouns in <xref ref="fig-plotseparate"/>! These words are, as measured by
+      tf-idf, the most important to each novel and most readers would likely agree. What measuring
+      tf-idf has done here is show us that Jane Austen used similar language across her six novels,
+      and what distinguishes one novel from the rest within the collection of her works are the
+      proper nouns, the names of people and places. This is the point of tf-idf; it identifies
+      words that are important to one document within a collection of documents.
+    </p>
+  </section>
+
+  <section xml:id="sec-physics-texts">
+    <title>A corpus of physics texts</title>
+
+    <p>
+      Let's work with another corpus of documents, to see what terms are important in a different
+      set of works. In fact, let's leave the world of fiction and narrative entirely. Let's download
+      some classic physics texts from Project Gutenberg and see what terms are important in these
+      works, as measured by tf-idf. Let's download
+      <url href="http://www.gutenberg.org/ebooks/37729"
+           visual="www.gutenberg.org/ebooks/37729"><em>Discourse on Floating Bodies</em> by Galileo Galilei</url>,
+      <url href="http://www.gutenberg.org/ebooks/14725"
+           visual="www.gutenberg.org/ebooks/14725"><em>Treatise on Light</em> by Christiaan Huygens</url>,
+      <url href="http://www.gutenberg.org/ebooks/13476"
+           visual="www.gutenberg.org/ebooks/13476"><em>Experiments with Alternate Currents of High Potential and High Frequency</em> by Nikola Tesla</url>,
+      and
+      <url href="http://www.gutenberg.org/ebooks/30155"
+           visual="www.gutenberg.org/ebooks/30155"><em>Relativity: The Special and General Theory</em> by Albert Einstein</url>.
+    </p>
+
+    <p>
+      This is a pretty diverse bunch. They may all be physics classics, but they were written across
+      a 300-year timespan, and some of them were first written in other languages and then
+      translated to English. Perfectly homogeneous these are not, but that doesn't stop this from
+      being an interesting exercise!
+    </p>
+
+    <program language="r">
+      <input>
+library(gutenbergr)
+physics &lt;- gutenberg_download(c(37729, 14725, 13476, 30155),
+                              meta_fields = "author")
+      </input>
+    </program>
+
+    <p>
+      Now that we have the texts, let's use <c>unnest_tokens()</c> and <c>count()</c> to find out
+      how many times each word was used in each text.
+    </p>
+
+    <program language="r">
+      <input>
+physics_words &lt;- physics %&gt;%
+  unnest_tokens(word, text) %&gt;%
+  count(author, word, sort = TRUE)
+
+physics_words
+      </input>
+    </program>
+
+    <p>
+      Here we see just the raw counts; we need to remember that these documents are all different
+      lengths. Let's go ahead and calculate tf-idf, then visualize the high tf-idf words in
+      <xref ref="fig-physicsseparate"/>.
+    </p>
+
+    <listing xml:id="fig-physicsseparate">
+      <caption>Highest tf-idf words in each physics texts</caption>
+      <program language="r">
+        <input>
+plot_physics &lt;- physics_words %&gt;%
+  bind_tf_idf(word, author, n) %&gt;%
+  mutate(author = factor(author, levels = c("Galilei, Galileo",
+                                            "Huygens, Christiaan",
+                                            "Tesla, Nikola",
+                                            "Einstein, Albert")))
+
+plot_physics %&gt;%
+  group_by(author) %&gt;%
+  slice_max(tf_idf, n = 15) %&gt;%
+  ungroup() %&gt;%
+  mutate(word = reorder(word, tf_idf)) %&gt;%
+  ggplot(aes(tf_idf, word, fill = author)) +
+  geom_col(show.legend = FALSE) +
+  labs(x = "tf-idf", y = NULL) +
+  facet_wrap(~author, ncol = 2, scales = "free")
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      Very interesting indeed. One thing we see here is <q>_k_</q> in the Einstein text?!
+    </p>
+
+    <program language="r">
+      <input>
+library(stringr)
+
+physics %&gt;%
+  filter(str_detect(text, "_k_")) %&gt;%
+  select(text)
+      </input>
+    </program>
+
+    <p>
+      Some cleaning up of the text may be in order. Also notice that there are separate <q>co</q>
+      and <q>ordinate</q> items in the high tf-idf words for the Einstein text; the
+      <c>unnest_tokens()</c> function separates around punctuation like hyphens by default. Notice
+      that the tf-idf scores for <q>co</q> and <q>ordinate</q> are close to same!
+    </p>
+
+    <p>
+      <q>AB</q>, <q>RC</q>, and so forth are names of rays, circles, angles, and so forth for
+      Huygens.
+    </p>
+
+    <program language="r">
+      <input>
+physics %&gt;%
+  filter(str_detect(text, "RC")) %&gt;%
+  select(text)
+      </input>
+    </program>
+
+    <p>
+      Let's remove some of these less meaningful words to make a better, more meaningful plot.
+      Notice that we make a custom list of stop words and use <c>anti_join()</c> to remove them;
+      this is a flexible approach that can be used in many situations. We will need to go back a few
+      steps since we are removing words from the tidy data frame.
+    </p>
+
+    <listing xml:id="fig-mystopwords">
+      <caption>Highest tf-idf words in classic physics texts</caption>
+      <program language="r">
+        <input>
+mystopwords &lt;- tibble(word = c("eq", "co", "rc", "ac", "ak", "bn",
+                                   "fig", "file", "cg", "cb", "cm",
+                               "ab", "_k", "_k_", "_x"))
+
+physics_words &lt;- anti_join(physics_words, mystopwords,
+                           by = "word")
+
+plot_physics &lt;- physics_words %&gt;%
+  bind_tf_idf(word, author, n) %&gt;%
+  mutate(word = str_remove_all(word, "_")) %&gt;%
+  group_by(author) %&gt;%
+  slice_max(tf_idf, n = 15) %&gt;%
+  ungroup() %&gt;%
+  mutate(word = fct_reorder(word, tf_idf)) %&gt;%
+  mutate(author = factor(author, levels = c("Galilei, Galileo",
+                                            "Huygens, Christiaan",
+                                            "Tesla, Nikola",
+                                            "Einstein, Albert")))
+
+ggplot(plot_physics, aes(tf_idf, word, fill = author)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~author, ncol = 2, scales = "free") +
+  labs(x = "tf-idf", y = NULL)
+        </input>
+      </program>
+    </listing>
+
+    <p>
+      One thing we can conclude from <xref ref="fig-mystopwords"/> is that we don't hear enough
+      about ramparts or things being ethereal in physics today.
+    </p>
+
+    <note>
+      <p>
+        The Jane Austen and physics examples in this chapter did not have much overlap in words
+        with high tf-idf across categories (books, authors). If you find you do share words with
+        high tf-idf across categories, you may want to use <c>reorder_within()</c> and
+        <c>scale_*_reordered()</c> to create visualizations, as shown in
+        <xref provisional="sec-word-topic-probabilities"/>.
+      </p>
+    </note>
+  </section>
+
+  <section xml:id="sec-tfidf-summary">
+    <title>Summary</title>
+
+    <p>
+      Using term frequency and inverse document frequency allows us to find words that are
+      characteristic for one document within a collection of documents, whether that document is a
+      novel or physics text or webpage. Exploring term frequency on its own can give us insight into
+      how language is used in a collection of natural language, and dplyr verbs like <c>count()</c>
+      and <c>rank()</c> give us tools to reason about term frequency. The tidytext package uses an
+      implementation of tf-idf consistent with tidy data principles that enables us to see how
+      different words are important in documents within a collection or corpus of documents.
+    </p>
+  </section>
+
+</chapter>
