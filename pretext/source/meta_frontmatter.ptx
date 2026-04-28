@@ -24,8 +24,25 @@
 
   <abstract>
     <p>
-      A guide to text analysis within the tidy data framework, using the
-      tidytext package and other tidy tools in R.
+      This is the <url href="http://tidytextmining.com/" visual="tidytextmining.com">website</url>
+      for <em>Text Mining with R</em>! Visit the
+      <url href="https://github.com/juliasilge/tidy-text-mining"
+           visual="github.com/juliasilge/tidy-text-mining">GitHub repository for this site</url>,
+      find the book at
+      <url href="http://www.jdoqocy.com/click-4428796-11290546?url=http%3A%2F%2Fshop.oreilly.com%2Fproduct%2F0636920067153.do%3Fcmp%3Daf-strata-books-video-product_cj_0636920067153_%25zp&amp;cjsku=0636920067153"
+           visual="shop.oreilly.com/product/0636920067153.do">O'Reilly</url>, or
+      <url href="http://amzn.to/2tZkmxG" visual="amzn.to/2tZkmxG">buy it on Amazon</url>.
+    </p>
+
+    <p>
+      This work by
+      <url href="http://juliasilge.com/" visual="juliasilge.com">Julia Silge</url>
+      and
+      <url href="http://varianceexplained.org/" visual="varianceexplained.org">David Robinson</url>
+      is licensed under a
+      <url href="http://creativecommons.org/licenses/by-nc-sa/3.0/us/"
+           visual="creativecommons.org/licenses/by-nc-sa/3.0/us">Creative Commons
+      Attribution-NonCommercial-ShareAlike 3.0 United States License</url>.
     </p>
   </abstract>
 
@@ -77,12 +94,12 @@
       We developed the
       <url href="https://github.com/juliasilge/tidytext"
            visual="github.com/juliasilge/tidytext">tidytext</url>
-      R package because we were familiar with many methods for data wrangling and visualization,
-      but couldn't easily apply these same methods to text. We found that using tidy data
-      principles can make many text mining tasks easier, more effective, and consistent with tools
-      already in wide use. Treating text as data frames of individual words allows us to
-      manipulate, summarize, and visualize the characteristics of text easily and integrate
-      natural language processing into effective workflows we were already using.
+      R package <xref ref="R-tidytext"/> because we were familiar with many methods for data
+      wrangling and visualization, but couldn't easily apply these same methods to text. We found
+      that using tidy data principles can make many text mining tasks easier, more effective, and
+      consistent with tools already in wide use. Treating text as data frames of individual words
+      allows us to manipulate, summarize, and visualize the characteristics of text easily and
+      integrate natural language processing into effective workflows we were already using.
     </p>
 
     <p>
@@ -195,8 +212,9 @@
         </li>
         <li>
           <p><alert>More complex tokenization:</alert> The tidytext package trusts the tokenizers
-          package to perform tokenization, which itself wraps a variety of tokenizers with a
-          consistent interface, but many others exist for specific applications.</p>
+          package <xref ref="R-tokenizers"/> to perform tokenization, which itself wraps a variety
+          of tokenizers with a consistent interface, but many others exist for specific
+          applications.</p>
         </li>
         <li>
           <p><alert>Languages other than English:</alert> Some of our users have had success
@@ -229,18 +247,6 @@
         We believe that with a basic background and interest in tidy data, even a user early in
         their R career can understand and apply our examples.
       </p>
-
-      <p>
-        The original book was written in
-        <url href="http://www.rstudio.com/ide/" visual="rstudio.com/ide">RStudio</url> using
-        <url href="http://bookdown.org/" visual="bookdown.org">bookdown</url>. We generated all
-        plots using
-        <url href="https://ggplot2.tidyverse.org/" visual="ggplot2.tidyverse.org">ggplot2</url>
-        and its light theme (<c>theme_light()</c>). The code used to generate the original book
-        can be found in the
-        <url href="https://github.com/juliasilge/tidy-text-mining"
-             visual="github.com/juliasilge/tidy-text-mining">public GitHub repository</url>.
-      </p>
     </paragraphs>
 
     <paragraphs>
@@ -267,10 +273,156 @@
       </p>
 
       <p>
-        The packages used in this book, along with their versions, are listed in the
-        <url href="https://github.com/juliasilge/tidy-text-mining"
-             visual="github.com/juliasilge/tidy-text-mining">GitHub repository</url>.
+        The packages used in this book, along with their versions, are listed below.
       </p>
+
+      <tabular>
+        <row header="yes" bottom="medium">
+          <cell>package</cell>
+          <cell>version</cell>
+          <cell>source</cell>
+        </row>
+        <row>
+          <cell>bookdown</cell>
+          <cell>0.42</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>dplyr</cell>
+          <cell>1.1.4</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>forcats</cell>
+          <cell>1.0.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>ggforce</cell>
+          <cell>0.4.2</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>ggplot2</cell>
+          <cell>3.5.1</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>ggraph</cell>
+          <cell>2.2.1</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>gutenbergr</cell>
+          <cell>0.2.4.9000</cell>
+          <cell>Github (ropensci/gutenbergr@73b1533fcbb7a72c7af6b0518faee2993a498bd4)</cell>
+        </row>
+        <row>
+          <cell>igraph</cell>
+          <cell>2.1.4</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>janeaustenr</cell>
+          <cell>1.0.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>jsonlite</cell>
+          <cell>2.0.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>lubridate</cell>
+          <cell>1.9.4</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>mallet</cell>
+          <cell>1.3.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>Matrix</cell>
+          <cell>1.7-2</cell>
+          <cell>CRAN (R 4.4.3)</cell>
+        </row>
+        <row>
+          <cell>quanteda</cell>
+          <cell>4.2.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>readr</cell>
+          <cell>2.1.5</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>reshape2</cell>
+          <cell>1.4.4</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>sessioninfo</cell>
+          <cell>1.2.3</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>stringr</cell>
+          <cell>1.5.1</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>styler</cell>
+          <cell>1.10.3</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>textdata</cell>
+          <cell>0.4.5</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>tidyr</cell>
+          <cell>1.3.1</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>tidytext</cell>
+          <cell>0.4.2</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>tidyverse</cell>
+          <cell>2.0.0</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>tm</cell>
+          <cell>0.7-16</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>topicmodels</cell>
+          <cell>0.2-17</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>widyr</cell>
+          <cell>0.1.5</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>wordcloud</cell>
+          <cell>2.6</cell>
+          <cell>RSPM</cell>
+        </row>
+        <row>
+          <cell>XML</cell>
+          <cell>3.99-0.18</cell>
+          <cell>RSPM</cell>
+        </row>
+      </tabular>
     </paragraphs>
 
     <paragraphs>

@@ -4,6 +4,14 @@
   <references xml:id="references">
     <title>References</title>
 
+    <biblio type="raw" xml:id="Friedman2008">
+      Hal Abelson,
+      <q>Foreword,</q>
+      in <em>Essentials of Programming Languages, 3rd Edition</em>,
+      Daniel P. Friedman and Mitchell Wand, The MIT Press, 2008.
+      ISBN 978-0-262-06279-4.
+    </biblio>
+
     <biblio type="raw" xml:id="tidytext-archive">
       Julia Silge, David Robinson, and Jim Hester,
       <em>tidytext: Text mining using dplyr, ggplot2, and other tidy tools</em>,

@@ -480,7 +480,7 @@ ggplot(plot_physics, aes(tf_idf, word, fill = author)) +
         with high tf-idf across categories (books, authors). If you find you do share words with
         high tf-idf across categories, you may want to use <c>reorder_within()</c> and
         <c>scale_*_reordered()</c> to create visualizations, as shown in
-        <xref provisional="sec-word-topic-probabilities"/>.
+        <xref ref="subsec-word-topic-probs"/>.
       </p>
     </note>
   </section>

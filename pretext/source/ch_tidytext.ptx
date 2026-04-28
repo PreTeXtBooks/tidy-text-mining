@@ -6,8 +6,7 @@
   <p>
     Using tidy data principles is a powerful way to make handling data easier and more effective,
     and this is no less true when it comes to dealing with text. As described by Hadley Wickham
-    <fn><p>Wickham, H. (2014). Tidy Data. <em>Journal of Statistical Software</em>, 59(10),
-    1–23.</p></fn>, tidy data has a specific structure:
+    <xref ref="tidydata"/>, tidy data has a specific structure:
   </p>
 
   <ul>
@@ -29,19 +28,21 @@
 
   <p>
     Tidy data sets allow manipulation with a standard set of <q>tidy</q> tools, including popular
-    packages such as dplyr, tidyr, ggplot2, and broom. By keeping the input and output in tidy
-    tables, users can transition fluidly between these packages. We've found these tidy tools extend
-    naturally to many text analyses and explorations.
+    packages such as dplyr <xref ref="R-dplyr"/>, tidyr <xref ref="R-tidyr"/>, ggplot2
+    <xref ref="R-ggplot2"/>, and broom <xref ref="R-broom"/>. By keeping the input and output in
+    tidy tables, users can transition fluidly between these packages. We've found these tidy tools
+    extend naturally to many text analyses and explorations.
   </p>
 
   <p>
     At the same time, the tidytext package doesn't expect a user to keep text data in a tidy form
     at all times during an analysis. The package includes functions to <c>tidy()</c> objects (see
-    the broom package [Robinson et al cited above]) from popular text mining R packages such as tm
-    and quanteda. This allows, for example, a workflow where importing, filtering, and processing is
-    done using dplyr and other tidy tools, after which the data is converted into a document-term
-    matrix for machine learning applications. The models can then be re-converted into a tidy form
-    for interpretation and visualization with ggplot2.
+    the broom package <xref ref="R-broom"/>) from popular text mining R packages such as tm
+    <xref ref="tm"/> and quanteda <xref ref="R-quanteda"/>. This allows, for example, a workflow
+    where importing, filtering, and processing is done using dplyr and other tidy tools, after
+    which the data is converted into a document-term matrix for machine learning applications. The
+    models can then be re-converted into a tidy form for interpretation and visualization with
+    ggplot2.
   </p>
 </introduction>
 
@@ -68,13 +69,13 @@
         <p><alert>Document-term matrix</alert>: This is a sparse matrix describing a collection
         (i.e., a corpus) of documents with one row for each document and one column for each term.
         The value in the matrix is typically word count or tf-idf (see
-        <xref provisional="ch-tfidf"/>).</p>
+        <xref ref="ch-tfidf"/>).</p>
       </li>
     </ul>
 
     <p>
       Let's hold off on exploring corpus and document-term matrix objects until
-      <xref provisional="ch-dtm"/>, and get down to
+      <xref ref="ch-dtm"/>, and get down to
       the basics of converting text to a tidy format.
     </p>
   </section>
@@ -95,6 +96,10 @@ text &lt;- c("Because I could not stop for Death -",
 
 text
       </input>
+      <output>
+#> [1] "Because I could not stop for Death -"   "He kindly stopped for me -"
+#> [3] "The Carriage held but just Ourselves -" "and Immortality"
+      </output>
     </program>
 
     <p>
@@ -199,7 +204,7 @@ text_df %&gt;%
       Let's use the text of Jane Austen's 6 completed, published novels from the
       <url href="https://cran.r-project.org/package=janeaustenr"
            visual="cran.r-project.org/package=janeaustenr">janeaustenr</url>
-      package, and transform them into a tidy format. The janeaustenr package provides these texts
+      package <xref ref="R-janeaustenr"/>, and transform them into a tidy format. The janeaustenr package provides these texts
       in a one-row-per-line format, where a line in this context is analogous to a literal printed
       line in a physical book. Let's start with that, and also use <c>mutate()</c> to annotate a
       <c>linenumber</c> quantity to keep track of lines in the original format and a
@@ -312,7 +317,7 @@ tidy_books %&gt;%
       analyze, but in other cases we may need to perform cleaning of text data, such as removing
       copyright headers or formatting. You'll see examples of this kind of pre-processing in the
       case study chapters, particularly
-      <xref provisional="ch-preprocessing-case-study"/>.
+      <xref ref="subsec-usenet-preprocessing-text"/>.
     </p>
   </section>
 
@@ -323,7 +328,7 @@ tidy_books %&gt;%
       Now that we've used the janeaustenr package to explore tidying text, let's introduce the
       <url href="https://github.com/ropensci/gutenbergr"
            visual="github.com/ropensci/gutenbergr">gutenbergr</url>
-      package. The gutenbergr package provides access to the public domain works from the
+      package <xref ref="R-gutenbergr"/>. The gutenbergr package provides access to the public domain works from the
       <url href="https://www.gutenberg.org/" visual="www.gutenberg.org">Project Gutenberg</url>
       collection. The package includes tools both for downloading books (stripping out the unhelpful
       header/footer information), and a complete dataset of Project Gutenberg metadata that can be

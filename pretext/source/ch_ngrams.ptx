@@ -416,8 +416,9 @@ bigram_graph
       <p>
         igraph has plotting functions built in, but they're not what the package is designed to
         do, so many other packages have developed visualization methods for graph objects. We
-        recommend the ggraph package, because it implements these visualizations in terms of the
-        grammar of graphics, which we are already familiar with from ggplot2.
+        recommend the ggraph package <xref ref="R-ggraph"/>, because it implements these
+        visualizations in terms of the grammar of graphics, which we are already familiar with from
+        ggplot2.
       </p>
 
       <p>

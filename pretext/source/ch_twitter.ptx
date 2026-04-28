@@ -343,9 +343,9 @@ nested_data
     <p>
       This data frame has one row for each person-word combination; the <c>data</c> column is a
       list column that contains data frames, one for each combination of person and word. Let's
-      use <c>map()</c> from purrr to apply our modeling procedure to each of those little data
-      frames inside our big data frame. This is count data so let's use <c>glm()</c> with
-      <c>family = "binomial"</c> for modeling.
+      use <c>map()</c> from purrr <xref ref="R-purrr"/> to apply our modeling procedure to each
+      of those little data frames inside our big data frame. This is count data so let's use
+      <c>glm()</c> with <c>family = "binomial"</c> for modeling.
     </p>
 
     <remark>

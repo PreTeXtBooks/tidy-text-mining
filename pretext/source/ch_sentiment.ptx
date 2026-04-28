@@ -116,7 +116,7 @@ get_sentiments("nrc")
 
     <p>
       There are also some domain-specific sentiment lexicons available, constructed to be used with
-      text from a specific content area. <xref provisional="sec-financial"/> explores an analysis
+      text from a specific content area. <xref ref="subsec-financial-articles"/> explores an analysis
       using a sentiment lexicon specifically for finance.
     </p>
 
@@ -134,7 +134,7 @@ get_sentiments("nrc")
       unigrams only. For many kinds of text (like the narrative examples below), there are not
       sustained sections of sarcasm or negated text, so this is not an important effect. Also, we
       can use a tidy text approach to begin to understand what kinds of negation words are important
-      in a given text; see <xref provisional="ch-usenet"/> for an extended example of such an
+      in a given text; see <xref ref="ch-usenet"/> for an extended example of such an
       analysis.
     </p>
 
@@ -549,8 +549,9 @@ tidy_books %&gt;%
     </blockquote>
 
     <p>
-      is a sad sentence, not a happy one, because of negation. R packages including coreNLP,
-      cleanNLP, and sentimentr are examples of such sentiment analysis algorithms. For these, we
+      is a sad sentence, not a happy one, because of negation. R packages including coreNLP
+      <xref ref="R-coreNLP"/>, cleanNLP <xref ref="R-cleanNLP"/>, and sentimentr
+      <xref ref="R-sentimentr"/> are examples of such sentiment analysis algorithms. For these, we
       may want to tokenize text into sentences, and it makes sense to use a new name for the
       output column in such a case.
     </p>

@@ -23,10 +23,10 @@
   <p>
     Computer scientist Hal Abelson has observed that <q>No matter how complex and polished the
     individual operations are, it is often the quality of the glue that most directly determines
-    the power of the system.</q> In that spirit, this chapter will discuss the <q>glue</q> that
-    connects the tidy text format with other important packages and data structures, allowing you
-    to rely on both existing text mining packages and the suite of tidy tools to perform your
-    analysis.
+    the power of the system.</q> <xref ref="Friedman2008"/> In that spirit, this chapter will
+    discuss the <q>glue</q> that connects the tidy text format with other important packages and
+    data structures, allowing you to rely on both existing text mining packages and the suite of
+    tidy tools to perform your analysis.
   </p>
 
   <figure xml:id="fig-tidyflowchartch5">
@@ -83,8 +83,8 @@
     <ul>
       <li>
         <p><c>tidy()</c> turns a document-term matrix into a tidy data frame. This verb comes from
-        the broom package, which provides similar tidying functions for many statistical models and
-        objects.</p>
+        the broom package <xref ref="R-broom"/>, which provides similar tidying functions for many
+        statistical models and objects.</p>
       </li>
       <li>
         <p><c>cast()</c> turns a tidy one-term-per-row data frame into a matrix. tidytext provides
@@ -153,7 +153,8 @@ ap_td
       <p>
         Notice that we now have a tidy three-column <c>tbl_df</c>, with variables
         <c>document</c>, <c>term</c>, and <c>count</c>. This tidying operation is similar to the
-        <c>melt()</c> function from the reshape2 package for non-sparse matrices.
+        <c>melt()</c> function from the reshape2 package <xref ref="R-reshape2"/> for non-sparse
+        matrices.
       </p>
 
       <note>
@@ -213,9 +214,10 @@ ap_sentiments %&gt;%
 
       <p>
         Other text mining packages provide alternative implementations of document-term matrices,
-        such as the <c>dfm</c> (document-feature matrix) class from the quanteda package. For
-        example, the quanteda package comes with a corpus of presidential inauguration speeches,
-        which can be converted to a <c>dfm</c> using the appropriate functions.
+        such as the <c>dfm</c> (document-feature matrix) class from the quanteda package
+        <xref ref="R-quanteda"/>. For example, the quanteda package comes with a corpus of
+        presidential inauguration speeches, which can be converted to a <c>dfm</c> using the
+        appropriate functions.
       </p>
 
       <program language="r">
@@ -656,10 +658,10 @@ stock_tokens %&gt;%
 
       <p>
         Instead, we introduce another sentiment lexicon: the Loughran and McDonald dictionary of
-        financial sentiment terms. This dictionary was developed based on analyses of financial
-        reports, and intentionally avoids words like <q>share</q> and <q>fool</q>, as well as
-        subtler terms like <q>liability</q> and <q>risk</q> that may not have a negative meaning
-        in a financial context.
+        financial sentiment terms <xref ref="loughran2011liability"/>. This dictionary was developed
+        based on analyses of financial reports, and intentionally avoids words like <q>share</q>
+        and <q>fool</q>, as well as subtler terms like <q>liability</q> and <q>risk</q> that may
+        not have a negative meaning in a financial context.
       </p>
 
       <p>
