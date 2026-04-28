@@ -35,6 +35,12 @@
     <!-- Chapter 3: Analyzing word and document frequency: tf-idf -->
     <xi:include href="./ch_tfidf.ptx" />
 
+    <!-- Chapter 4: Relationships between words: n-grams and correlations -->
+    <xi:include href="./ch_ngrams.ptx" />
+
+    <!-- Chapter 5: Converting to and from non-tidy formats -->
+    <xi:include href="./ch_dtm.ptx" />
+
     <!-- Additional chapters will be added here as the book develops -->
 
     <!-- This chapter contains a wide variety of elements to  -->
