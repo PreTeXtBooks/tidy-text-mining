@@ -331,14 +331,14 @@ tidy_books %&gt;%
       author, language, etc., or gather information about authors.
     </p>
 
-    <note>
+    <remark>
       <p>
         To learn more about gutenbergr, check out the
         <url href="https://docs.ropensci.org/gutenbergr/"
              visual="docs.ropensci.org/gutenbergr">package's documentation at rOpenSci</url>,
         where it is one of rOpenSci's packages for data access.
       </p>
-    </note>
+    </remark>
   </section>
 
   <section xml:id="sec-word-frequencies">
