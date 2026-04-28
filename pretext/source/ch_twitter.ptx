@@ -348,13 +348,13 @@ nested_data
       <c>family = "binomial"</c> for modeling.
     </p>
 
-    <note>
+    <remark>
       <p>
         We can think about this modeling procedure answering a question like, <q>Was a given word
         mentioned in a given time bin? Yes or no? How does the count of word mentions depend on
         time?</q>
       </p>
-    </note>
+    </remark>
 
     <program language="r">
       <input>
@@ -426,6 +426,17 @@ words_by_time %&gt;%
       he was there and then quickly stopped. He has tweeted more about Stack Overflow toward the
       end of the year and less about ggplot2 as the year has progressed.
     </p>
+
+    <blockquote>
+      <p>Me: I'm so sick of data science wars. #rstats vs Python, frequentist vs Bayesian...</p>
+      <p>Them: base vs ggplot2...</p>
+      <p>Me: WHY WHICH SIDE ARE YOU ON</p>
+      <attribution>
+        David Robinson (<url href="https://twitter.com/drob" visual="twitter.com/drob">@drob</url>),
+        <url href="https://twitter.com/drob/status/712639593703542785"
+             visual="twitter.com/drob/status/712639593703542785">March 23, 2016</url>
+      </attribution>
+    </blockquote>
 
     <p>
       Now let's plot words that have changed frequency in Julia's tweets in
@@ -641,8 +652,22 @@ word_by_favs %&gt;%
       largely the same words as for retweets. In general, the same words that lead to retweets
       lead to favorites. A prominent word for Julia in both plots is the hashtag for the NASA
       Datanauts program that she has participated in; read on to <xref ref="ch-nasa"/> to learn
-      more about NASA data and what we can learn from text analysis of NASA datasets.
+      more about NASA data and what we can learn from text analysis of NASA datasets. Wondering
+      about the <q>=</q> in David's list?
     </p>
+
+    <blockquote>
+      <p>Me: You can't just add two p-values together.</p>
+      <p>Dev: The hell I can't:</p>
+      <p>newPval = pval1 + pval2;</p>
+      <p>Me: But-</p>
+      <p>Dev: Is all statistics this easy</p>
+      <attribution>
+        David Robinson (<url href="https://twitter.com/drob" visual="twitter.com/drob">@drob</url>),
+        <url href="https://twitter.com/drob/status/714879071725993986"
+             visual="twitter.com/drob/status/714879071725993986">March 29, 2016</url>
+      </attribution>
+    </blockquote>
   </section>
 
   <section xml:id="sec-twitter-summary">
