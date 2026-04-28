@@ -204,11 +204,11 @@ text_df %&gt;%
       Let's use the text of Jane Austen's 6 completed, published novels from the
       <url href="https://cran.r-project.org/package=janeaustenr"
            visual="cran.r-project.org/package=janeaustenr">janeaustenr</url>
-      package <xref ref="R-janeaustenr"/>, and transform them into a tidy format. The janeaustenr package provides these texts
-      in a one-row-per-line format, where a line in this context is analogous to a literal printed
-      line in a physical book. Let's start with that, and also use <c>mutate()</c> to annotate a
-      <c>linenumber</c> quantity to keep track of lines in the original format and a
-      <c>chapter</c> (using a regex) to find where all the chapters are.
+      package <xref ref="R-janeaustenr"/>, and transform them into a tidy format. This package
+      provides these texts in a one-row-per-line format, where a line in this context is analogous
+      to a literal printed line in a physical book. Let's start with that, and also use
+      <c>mutate()</c> to annotate a <c>linenumber</c> quantity to keep track of lines in the
+      original format and a <c>chapter</c> (using a regex) to find where all the chapters are.
     </p>
 
     <program language="r">
@@ -328,7 +328,8 @@ tidy_books %&gt;%
       Now that we've used the janeaustenr package to explore tidying text, let's introduce the
       <url href="https://github.com/ropensci/gutenbergr"
            visual="github.com/ropensci/gutenbergr">gutenbergr</url>
-      package <xref ref="R-gutenbergr"/>. The gutenbergr package provides access to the public domain works from the
+      package <xref ref="R-gutenbergr"/>, which provides access to the public domain works from
+      the
       <url href="https://www.gutenberg.org/" visual="www.gutenberg.org">Project Gutenberg</url>
       collection. The package includes tools both for downloading books (stripping out the unhelpful
       header/footer information), and a complete dataset of Project Gutenberg metadata that can be
