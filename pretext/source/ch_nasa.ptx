@@ -207,14 +207,14 @@ nasa_desc %&gt;%
         data frames for many types of analyses; they are not too meaningful for most audiences.
       </p>
 
-      <note>
+      <remark>
         <p>
           We can do this by making a list of custom stop words and using <c>anti_join()</c> to
           remove them from the data frame, just like we removed the default stop words that are in
           the tidytext package. This approach can be used in many instances and is a great tool to
           bear in mind.
         </p>
-      </note>
+      </remark>
 
       <program language="r">
         <input>
@@ -255,7 +255,7 @@ nasa_keyword &lt;- nasa_keyword %&gt;%
   </section>
 
   <section xml:id="sec-nasa-cooccurrences">
-    <title>Word co-occurrences and correlations</title>
+    <title>Word co-ocurrences and correlations</title>
 
     <p>
       As a next step, let's examine which words commonly occur together in the titles,
