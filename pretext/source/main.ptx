@@ -31,6 +31,27 @@
 
     <!-- Chapter 2: Sentiment analysis with tidy data -->
     <xi:include href="./ch_sentiment.ptx" />
+    
+    <!-- Chapter 3: Analyzing word and document frequency: tf-idf -->
+    <xi:include href="./ch_tfidf.ptx" />
+
+    <!-- Chapter 4: Relationships between words: n-grams and correlations -->
+    <xi:include href="./ch_ngrams.ptx" />
+
+    <!-- Chapter 5: Converting to and from non-tidy formats -->
+    <xi:include href="./ch_dtm.ptx" />
+
+    <!-- Chapter 6: Topic modeling -->
+    <xi:include href="./ch_topicmodels.ptx" />
+
+    <!-- Chapter 7: Case study: comparing Twitter archives -->
+    <xi:include href="./ch_twitter.ptx" />
+
+    <!-- Chapter 8: Case study: mining NASA metadata -->
+    <xi:include href="./ch_nasa.ptx" />
+
+    <!-- Chapter 9: Case study: analyzing usenet text -->
+    <xi:include href="./ch_usenet.ptx" />
 
     <!-- Additional chapters will be added here as the book develops -->
 
