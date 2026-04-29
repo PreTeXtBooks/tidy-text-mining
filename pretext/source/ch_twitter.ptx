@@ -121,6 +121,22 @@ frequency &lt;- tidy_tweets %&gt;%
 
 frequency
       </input>
+      <output>
+#> # A tibble: 20,722 × 5
+#>    person word               n total    freq
+#>    &lt;chr&gt;  &lt;chr&gt;          &lt;int&gt; &lt;int&gt;   &lt;dbl&gt;
+#>  1 Julia  time             584 74541 0.00783
+#>  2 Julia  @selkie1970      570 74541 0.00765
+#>  3 Julia  @skedman         531 74541 0.00712
+#>  4 Julia  day              467 74541 0.00627
+#>  5 Julia  baby             408 74541 0.00547
+#>  6 David  @hadleywickham   315 20150 0.0156
+#>  7 Julia  love             304 74541 0.00408
+#>  8 Julia  @haleynburke     299 74541 0.00401
+#>  9 Julia  house            289 74541 0.00388
+#> 10 Julia  morning          278 74541 0.00373
+#> # ℹ 20,712 more rows
+      </output>
     </program>
 
     <p>
@@ -140,6 +156,22 @@ frequency &lt;- frequency %&gt;%
 
 frequency
       </input>
+      <output>
+#> # A tibble: 17,629 × 3
+#>    word                 Julia     David
+#>    &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;
+#>  1 's               0.0000134 0.0000496
+#>  2 1x               0.0000134 0.0000496
+#>  3 5k               0.0000134 0.0000496
+#>  4 @accidental__art 0.0000134 0.0000496
+#>  5 @alice_data      0.0000134 0.0000496
+#>  6 @alistaire       0.0000134 0.0000496
+#>  7 @corynissen      0.0000134 0.0000496
+#>  8 @jennybryan's    0.0000134 0.0000496
+#>  9 @jsvine          0.0000134 0.0000496
+#> 10 @lizasperling    0.0000134 0.0000496
+#> # ℹ 17,619 more rows
+      </output>
     </program>
 
     <p>
@@ -242,6 +274,22 @@ word_ratios &lt;- tidy_tweets %&gt;%
 word_ratios %&gt;%
   arrange(abs(logratio))
       </input>
+      <output>
+#> # A tibble: 377 × 4
+#>    word         David   Julia logratio
+#>    &lt;chr&gt;        &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#>  1 email      0.00229 0.00228  0.00463
+#>  2 file       0.00229 0.00228  0.00463
+#>  3 map        0.00252 0.00254 -0.00543
+#>  4 names      0.00413 0.00406  0.0170
+#>  5 account    0.00183 0.00177  0.0328
+#>  6 api        0.00183 0.00177  0.0328
+#>  7 function   0.00367 0.00355  0.0328
+#>  8 population 0.00183 0.00177  0.0328
+#>  9 sad        0.00183 0.00177  0.0328
+#> 10 words      0.00367 0.00355  0.0328
+#> # ℹ 367 more rows
+      </output>
     </program>
 
     <p>
@@ -315,6 +363,22 @@ words_by_time &lt;- tidy_tweets %&gt;%
 
 words_by_time
       </input>
+      <output>
+#> # A tibble: 327 × 6
+#>    time_floor          person word    count time_total word_total
+#>    &lt;dttm&gt;              &lt;chr&gt;  &lt;chr&gt;   &lt;int&gt;      &lt;int&gt;      &lt;int&gt;
+#>  1 2016-01-01 00:00:00 David  #rstats     2        306        208
+#>  2 2016-01-01 00:00:00 David  broom       2        306         39
+#>  3 2016-01-01 00:00:00 David  data        2        306        165
+#>  4 2016-01-01 00:00:00 David  ggplot2     1        306         39
+#>  5 2016-01-01 00:00:00 David  tidy        1        306         46
+#>  6 2016-01-01 00:00:00 David  time        2        306         58
+#>  7 2016-01-01 00:00:00 David  tweets      1        306         46
+#>  8 2016-01-01 00:00:00 Julia  #rstats    10        401        116
+#>  9 2016-01-01 00:00:00 Julia  blog        2        401         33
+#> 10 2016-01-01 00:00:00 Julia  data        5        401        111
+#> # ℹ 317 more rows
+      </output>
     </program>
 
     <p>
@@ -338,6 +402,22 @@ nested_data &lt;- words_by_time %&gt;%
 
 nested_data
       </input>
+      <output>
+#> # A tibble: 32 × 3
+#>    person word    data             
+#>    &lt;chr&gt;  &lt;chr&gt;   &lt;list&gt;           
+#>  1 David  #rstats &lt;tibble [12 × 4]&gt;
+#>  2 David  broom   &lt;tibble [10 × 4]&gt;
+#>  3 David  data    &lt;tibble [12 × 4]&gt;
+#>  4 David  ggplot2 &lt;tibble [10 × 4]&gt;
+#>  5 David  tidy    &lt;tibble [11 × 4]&gt;
+#>  6 David  time    &lt;tibble [12 × 4]&gt;
+#>  7 David  tweets  &lt;tibble [8 × 4]&gt;
+#>  8 Julia  #rstats &lt;tibble [12 × 4]&gt;
+#>  9 Julia  blog    &lt;tibble [10 × 4]&gt;
+#> 10 Julia  data    &lt;tibble [12 × 4]&gt;
+#> # ℹ 22 more rows
+      </output>
     </program>
 
     <p>
@@ -366,6 +446,22 @@ nested_models &lt;- nested_data %&gt;%
 
 nested_models
       </input>
+      <output>
+#> # A tibble: 32 × 4
+#>    person word    data              models
+#>    &lt;chr&gt;  &lt;chr&gt;   &lt;list&gt;            &lt;list&gt;
+#>  1 David  #rstats &lt;tibble [12 × 4]&gt; &lt;glm&gt;
+#>  2 David  broom   &lt;tibble [10 × 4]&gt; &lt;glm&gt;
+#>  3 David  data    &lt;tibble [12 × 4]&gt; &lt;glm&gt;
+#>  4 David  ggplot2 &lt;tibble [10 × 4]&gt; &lt;glm&gt;
+#>  5 David  tidy    &lt;tibble [11 × 4]&gt; &lt;glm&gt;
+#>  6 David  time    &lt;tibble [12 × 4]&gt; &lt;glm&gt;
+#>  7 David  tweets  &lt;tibble [8 × 4]&gt;  &lt;glm&gt;
+#>  8 Julia  #rstats &lt;tibble [12 × 4]&gt; &lt;glm&gt;
+#>  9 Julia  blog    &lt;tibble [10 × 4]&gt; &lt;glm&gt;
+#> 10 Julia  data    &lt;tibble [12 × 4]&gt; &lt;glm&gt;
+#> # ℹ 22 more rows
+      </output>
     </program>
 
     <p>
@@ -400,6 +496,18 @@ top_slopes &lt;- slopes %&gt;%
 
 top_slopes
       </input>
+      <output>
+#> # A tibble: 6 × 9
+#>   person word      data              term   estimate std.error statistic p.value
+#>   &lt;chr&gt;  &lt;chr&gt;     &lt;list&gt;            &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+#> 1 David  ggplot2   &lt;tibble [10 × 4]&gt; time_… -8.27e-8   1.97e-8     -4.20 2.69e-5
+#> 2 Julia  #rstats   &lt;tibble [12 × 4]&gt; time_… -4.49e-8   1.12e-8     -4.01 5.97e-5
+#> 3 Julia  post      &lt;tibble [12 × 4]&gt; time_… -4.82e-8   1.45e-8     -3.31 9.27e-4
+#> 4 David  overflow  &lt;tibble [10 × 4]&gt; time_…  7.25e-8   2.23e-8      3.25 1.17e-3
+#> 5 David  stack     &lt;tibble [10 × 4]&gt; time_…  8.04e-8   2.19e-8      3.67 2.47e-4
+#> 6 David  #user2016 &lt;tibble [3 × 4]&gt;  time_… -8.18e-7   1.55e-7     -5.27 1.34e-7
+#> # ℹ 1 more variable: adjusted.p.value &lt;dbl&gt;
+      </output>
     </program>
 
     <p>
@@ -510,6 +618,22 @@ tidy_tweets &lt;- tweets %&gt;%
 
 tidy_tweets
       </input>
+      <output>
+#> # A tibble: 11,074 × 7
+#>         id created_at          source            retweets favorites person word
+#>      &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;
+#>  1 8.04e17 2016-12-01 16:44:03 Twitter Web Clie…        0         0 Julia  score
+#>  2 8.04e17 2016-12-01 16:44:03 Twitter Web Clie…        0         0 Julia  50
+#>  3 8.04e17 2016-12-01 16:42:03 Twitter Web Clie…        0         9 Julia  snow…
+#>  4 8.04e17 2016-12-01 16:42:03 Twitter Web Clie…        0         9 Julia  drin…
+#>  5 8.04e17 2016-12-01 16:42:03 Twitter Web Clie…        0         9 Julia  tea
+#>  6 8.04e17 2016-12-01 16:42:03 Twitter Web Clie…        0         9 Julia  #rst…
+#>  7 8.04e17 2016-12-01 02:56:10 Twitter Web Clie…        0        11 Julia  julie
+#>  8 8.04e17 2016-12-01 02:56:10 Twitter Web Clie…        0        11 Julia  help…
+#>  9 8.04e17 2016-12-01 02:56:10 Twitter Web Clie…        0        11 Julia  pyth…
+#> 10 8.04e17 2016-12-01 02:56:10 Twitter Web Clie…        0        11 Julia  pack…
+#> # ℹ 11,064 more rows
+      </output>
     </program>
 
     <p>
@@ -527,6 +651,13 @@ totals &lt;- tidy_tweets %&gt;%
 
 totals
       </input>
+      <output>
+#> # A tibble: 2 × 2
+#>   person total_rts
+#>   &lt;chr&gt;      &lt;dbl&gt;
+#> 1 David      13012
+#> 2 Julia       1749
+      </output>
     </program>
 
     <p>
@@ -555,6 +686,22 @@ word_by_rts %&gt;%
   filter(uses &gt;= 5) %&gt;%
   arrange(desc(retweets))
       </input>
+      <output>
+#> # A tibble: 178 × 5
+#>    person word          retweets  uses total_rts
+#>    &lt;chr&gt;  &lt;chr&gt;            &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;
+#>  1 David  animation         85       5     13012
+#>  2 David  download          52       5     13012
+#>  3 David  start             51       7     13012
+#>  4 Julia  tidytext          50       7      1749
+#>  5 David  gganimate         45       8     13012
+#>  6 David  introducing       45       6     13012
+#>  7 David  understanding     37       6     13012
+#>  8 David  0                 35       7     13012
+#>  9 David  error             34.5     8     13012
+#> 10 David  bayesian          34       7     13012
+#> # ℹ 168 more rows
+      </output>
     </program>
 
     <p>
