@@ -53,6 +53,22 @@ austen_bigrams &lt;- austen_books() %&gt;%
 
 austen_bigrams
       </input>
+      <output>
+#> # A tibble: 662,792 × 2
+#>    book                bigram         
+#>    &lt;fct&gt;               &lt;chr&gt;          
+#>  1 Sense &amp; Sensibility sense and      
+#>  2 Sense &amp; Sensibility and sensibility
+#>  3 Sense &amp; Sensibility by jane        
+#>  4 Sense &amp; Sensibility jane austen    
+#>  5 Sense &amp; Sensibility chapter 1      
+#>  6 Sense &amp; Sensibility the family     
+#>  7 Sense &amp; Sensibility family of      
+#>  8 Sense &amp; Sensibility of dashwood    
+#>  9 Sense &amp; Sensibility dashwood had   
+#> 10 Sense &amp; Sensibility had long       
+#> # ℹ 662,782 more rows
+      </output>
     </program>
 
     <p>
@@ -81,6 +97,22 @@ austen_bigrams
 austen_bigrams %&gt;%
   count(bigram, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 193,212 × 2
+#>    bigram       n
+#>    &lt;chr&gt;    &lt;int&gt;
+#>  1 of the    2853
+#>  2 to be     2670
+#>  3 in the    2221
+#>  4 it was    1691
+#>  5 i am      1485
+#>  6 she had   1405
+#>  7 of her    1363
+#>  8 to the    1315
+#>  9 she was   1309
+#> 10 had been  1206
+#> # ℹ 193,202 more rows
+        </output>
       </program>
 
       <p>
@@ -109,6 +141,22 @@ bigram_counts &lt;- bigrams_filtered %&gt;%
 
 bigram_counts
         </input>
+        <output>
+#> # A tibble: 28,971 × 3
+#>    word1   word2         n
+#>    &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;
+#>  1 sir     thomas      266
+#>  2 miss    crawford    196
+#>  3 captain wentworth   143
+#>  4 miss    woodhouse   143
+#>  5 frank   churchill   114
+#>  6 lady    russell     110
+#>  7 sir     walter      108
+#>  8 lady    bertram     101
+#>  9 miss    fairfax      98
+#> 10 colonel brandon      96
+#> # ℹ 28,961 more rows
+        </output>
       </program>
 
       <p>
@@ -130,6 +178,22 @@ bigrams_united &lt;- bigrams_filtered %&gt;%
 
 bigrams_united
         </input>
+        <output>
+#> # A tibble: 38,910 × 2
+#>    book                bigram                  
+#>    &lt;fct&gt;               &lt;chr&gt;                   
+#>  1 Sense &amp; Sensibility jane austen             
+#>  2 Sense &amp; Sensibility chapter 1               
+#>  3 Sense &amp; Sensibility norland park            
+#>  4 Sense &amp; Sensibility surrounding acquaintance
+#>  5 Sense &amp; Sensibility late owner              
+#>  6 Sense &amp; Sensibility advanced age            
+#>  7 Sense &amp; Sensibility constant companion      
+#>  8 Sense &amp; Sensibility happened ten            
+#>  9 Sense &amp; Sensibility henry dashwood          
+#> 10 Sense &amp; Sensibility norland estate          
+#> # ℹ 38,900 more rows
+        </output>
       </program>
 
       <p>
@@ -148,6 +212,22 @@ austen_books() %&gt;%
          !word3 %in% stop_words$word) %&gt;%
   count(word1, word2, word3, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 6,139 × 4
+#>    word1     word2     word3         n
+#>    &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
+#>  1 dear      miss      woodhouse    20
+#>  2 miss      de        bourgh       17
+#>  3 lady      catherine de           11
+#>  4 poor      miss      taylor       11
+#>  5 sir       walter    elliot       10
+#>  6 catherine de        bourgh        9
+#>  7 dear      sir       thomas        8
+#>  8 replied   miss      crawford      7
+#>  9 sir       william   lucas         7
+#> 10 ten       thousand  pounds        7
+#> # ℹ 6,129 more rows
+        </output>
       </program>
     </subsection>
 
@@ -166,6 +246,22 @@ bigrams_filtered %&gt;%
   filter(word2 == "street") %&gt;%
   count(book, word1, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 33 × 3
+#>    book                word1           n
+#>    &lt;fct&gt;               &lt;chr&gt;       &lt;int&gt;
+#>  1 Sense &amp; Sensibility harley         16
+#>  2 Sense &amp; Sensibility berkeley       15
+#>  3 Northanger Abbey    milsom         10
+#>  4 Northanger Abbey    pulteney       10
+#>  5 Mansfield Park      wimpole         9
+#>  6 Pride &amp; Prejudice   gracechurch     8
+#>  7 Persuasion          milsom          5
+#>  8 Sense &amp; Sensibility bond            4
+#>  9 Sense &amp; Sensibility conduit         4
+#> 10 Persuasion          rivers          4
+#> # ℹ 23 more rows
+        </output>
       </program>
 
       <p>
@@ -184,6 +280,22 @@ bigram_tf_idf &lt;- bigrams_united %&gt;%
 
 bigram_tf_idf
         </input>
+        <output>
+#> # A tibble: 31,388 × 6
+#>    book                bigram                n     tf   idf tf_idf
+#>    &lt;fct&gt;               &lt;chr&gt;             &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 Mansfield Park      sir thomas          266 0.0304  1.79 0.0546
+#>  2 Persuasion          captain wentworth   143 0.0290  1.79 0.0519
+#>  3 Mansfield Park      miss crawford       196 0.0224  1.79 0.0402
+#>  4 Persuasion          lady russell        110 0.0223  1.79 0.0399
+#>  5 Persuasion          sir walter          108 0.0219  1.79 0.0392
+#>  6 Emma                miss woodhouse      143 0.0173  1.79 0.0309
+#>  7 Northanger Abbey    miss tilney          74 0.0165  1.79 0.0295
+#>  8 Sense &amp; Sensibility colonel brandon      96 0.0155  1.79 0.0278
+#>  9 Sense &amp; Sensibility sir john             94 0.0152  1.79 0.0273
+#> 10 Pride &amp; Prejudice   lady catherine       87 0.0139  1.79 0.0248
+#> # ℹ 31,378 more rows
+        </output>
       </program>
 
       <listing xml:id="fig-bigramtfidf">
@@ -246,6 +358,22 @@ bigrams_separated %&gt;%
   filter(word1 == "not") %&gt;%
   count(word1, word2, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 1,178 × 3
+#>    word1 word2     n
+#>    &lt;chr&gt; &lt;chr&gt; &lt;int&gt;
+#>  1 not   be      580
+#>  2 not   to      335
+#>  3 not   have    307
+#>  4 not   know    237
+#>  5 not   a       184
+#>  6 not   think   162
+#>  7 not   been    151
+#>  8 not   the     135
+#>  9 not   at      126
+#> 10 not   in      110
+#> # ℹ 1,168 more rows
+        </output>
       </program>
 
       <p>
@@ -266,6 +394,22 @@ AFINN &lt;- get_sentiments("afinn")
 
 AFINN
         </input>
+        <output>
+#> # A tibble: 2,477 × 2
+#>    word       value
+#>    &lt;chr&gt;      &lt;dbl&gt;
+#>  1 abandon       -2
+#>  2 abandoned     -2
+#>  3 abandons      -2
+#>  4 abducted      -2
+#>  5 abduction     -2
+#>  6 abductions    -2
+#>  7 abhor         -3
+#>  8 abhorred      -3
+#>  9 abhorrent     -3
+#> 10 abhors        -3
+#> # ℹ 2,467 more rows
+        </output>
       </program>
 
       <p>
@@ -282,6 +426,22 @@ not_words &lt;- bigrams_separated %&gt;%
 
 not_words
         </input>
+        <output>
+#> # A tibble: 229 × 3
+#>    word2   value     n
+#>    &lt;chr&gt;   &lt;dbl&gt; &lt;int&gt;
+#>  1 like        2    95
+#>  2 help        2    77
+#>  3 want        1    41
+#>  4 wish        1    39
+#>  5 allow       1    30
+#>  6 care        2    21
+#>  7 sorry      -1    20
+#>  8 leave      -1    17
+#>  9 pretend    -1    17
+#> 10 worth       2    17
+#> # ℹ 219 more rows
+        </output>
       </program>
 
       <p>
@@ -411,6 +571,34 @@ bigram_graph &lt;- bigram_counts %&gt;%
 
 bigram_graph
         </input>
+        <output>
+#> # A tibble: 28,971 × 3
+#>    word1   word2         n
+#>    &lt;chr&gt;   &lt;chr&gt;     &lt;int&gt;
+#>  1 sir     thomas      266
+#>  2 miss    crawford    196
+#>  3 captain wentworth   143
+#>  4 miss    woodhouse   143
+#>  5 frank   churchill   114
+#>  6 lady    russell     110
+#>  7 sir     walter      108
+#>  8 lady    bertram     101
+#>  9 miss    fairfax      98
+#> 10 colonel brandon      96
+#> # ℹ 28,961 more rows
+#> IGRAPH 9227c3a DN-- 85 70 --
+#> + attr: name (v/c), n (e/n)
+#> + edges from 9227c3a (vertex names):
+#>  [1] sir     ->thomas     miss    ->crawford   captain ->wentworth
+#>  [4] miss    ->woodhouse  frank   ->churchill  lady    ->russell
+#>  [7] sir     ->walter     lady    ->bertram    miss    ->fairfax
+#> [10] colonel ->brandon    sir     ->john       miss    ->bates
+#> [13] jane    ->fairfax    lady    ->catherine  lady    ->middleton
+#> [16] miss    ->tilney     miss    ->bingley    thousand->pounds
+#> [19] miss    ->dashwood   dear    ->miss       miss    ->bennet
+#> [22] miss    ->morland    captain ->benwick    miss    ->smith
+#> + ... omitted several edges
+        </output>
       </program>
 
       <p>
@@ -661,6 +849,22 @@ austen_section_words &lt;- austen_books() %&gt;%
 
 austen_section_words
         </input>
+        <output>
+#> # A tibble: 37,240 × 3
+#>    book              section word        
+#>    &lt;fct&gt;               &lt;dbl&gt; &lt;chr&gt;       
+#>  1 Pride &amp; Prejudice       1 truth       
+#>  2 Pride &amp; Prejudice       1 universally 
+#>  3 Pride &amp; Prejudice       1 acknowledged
+#>  4 Pride &amp; Prejudice       1 single      
+#>  5 Pride &amp; Prejudice       1 possession  
+#>  6 Pride &amp; Prejudice       1 fortune     
+#>  7 Pride &amp; Prejudice       1 wife        
+#>  8 Pride &amp; Prejudice       1 feelings    
+#>  9 Pride &amp; Prejudice       1 views       
+#> 10 Pride &amp; Prejudice       1 entering    
+#> # ℹ 37,230 more rows
+        </output>
       </program>
 
       <p>
@@ -680,6 +884,22 @@ word_pairs &lt;- austen_section_words %&gt;%
 
 word_pairs
         </input>
+        <output>
+#> # A tibble: 796,008 × 3
+#>    item1     item2         n
+#>    &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
+#>  1 darcy     elizabeth   188
+#>  2 elizabeth darcy       188
+#>  3 elizabeth miss        167
+#>  4 miss      elizabeth   167
+#>  5 darcy     miss        157
+#>  6 miss      darcy       157
+#>  7 elizabeth jane        152
+#>  8 jane      elizabeth   152
+#>  9 catherine lady        150
+#> 10 lady      catherine   150
+#> # ℹ 795,998 more rows
+        </output>
       </program>
 
       <p>
@@ -699,6 +919,22 @@ word_pairs
 word_pairs %&gt;%
   filter(item1 == "darcy")
         </input>
+        <output>
+#> # A tibble: 2,930 × 3
+#>    item1 item2         n
+#>    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;
+#>  1 darcy elizabeth   188
+#>  2 darcy miss        157
+#>  3 darcy bingley     137
+#>  4 darcy jane         65
+#>  5 darcy bennet       61
+#>  6 darcy lady         61
+#>  7 darcy time         57
+#>  8 darcy wickham      55
+#>  9 darcy sister       52
+#> 10 darcy friend       48
+#> # ℹ 2,920 more rows
+        </output>
       </program>
     </subsection>
 
@@ -784,6 +1020,22 @@ word_cors &lt;- austen_section_words %&gt;%
 
 word_cors
         </input>
+        <output>
+#> # A tibble: 154,842 × 3
+#>    item1     item2     correlation
+#>    &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;
+#>  1 bourgh    de              0.951
+#>  2 de        bourgh          0.951
+#>  3 pounds    thousand        0.701
+#>  4 thousand  pounds          0.701
+#>  5 sir       william         0.664
+#>  6 william   sir             0.664
+#>  7 catherine lady            0.663
+#>  8 lady      catherine       0.663
+#>  9 colonel   forster         0.622
+#> 10 forster   colonel         0.622
+#> # ℹ 154,832 more rows
+        </output>
       </program>
 
       <p>
@@ -796,6 +1048,22 @@ word_cors
 word_cors %&gt;%
   filter(item1 == "pounds")
         </input>
+        <output>
+#> # A tibble: 393 × 3
+#>    item1  item2     correlation
+#>    &lt;chr&gt;  &lt;chr&gt;           &lt;dbl&gt;
+#>  1 pounds thousand       0.701 
+#>  2 pounds ten            0.231 
+#>  3 pounds fortune        0.164 
+#>  4 pounds settled        0.149 
+#>  5 pounds wickham's      0.142 
+#>  6 pounds children       0.129 
+#>  7 pounds mother's       0.119 
+#>  8 pounds believed       0.0932
+#>  9 pounds estate         0.0890
+#> 10 pounds ready          0.0860
+#> # ℹ 383 more rows
+        </output>
       </program>
 
       <p>
