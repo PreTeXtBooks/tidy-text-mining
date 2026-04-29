@@ -84,6 +84,13 @@ library(topicmodels)
 data("AssociatedPress")
 AssociatedPress
       </input>
+      <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
+#> Non-/sparse entries: 302031/23244447
+#> Sparsity           : 99%
+#> Maximal term length: 18
+#> Weighting          : term frequency (tf)
+      </output>
     </program>
 
     <p>
@@ -109,6 +116,9 @@ AssociatedPress
 ap_lda &lt;- LDA(AssociatedPress, k = 2, control = list(seed = 1234))
 ap_lda
       </input>
+      <output>
+#> A LDA_VEM topic model with 2 topics.
+      </output>
     </program>
 
     <p>
@@ -133,6 +143,22 @@ library(tidytext)
 ap_topics &lt;- tidy(ap_lda, matrix = "beta")
 ap_topics
         </input>
+        <output>
+#> # A tibble: 20,946 × 3
+#>    topic term            beta
+#>    &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;
+#>  1     1 aaron       1.69e-5
+#>  2     1 abandon     6.43e-5
+#>  3     1 abandons    1.06e-5
+#>  4     1 abate       1.17e-5
+#>  5     1 abatement   1.27e-5
+#>  6     1 abbreviates 1.05e-5
+#>  7     1 abbreviation 3.16e-5
+#>  8     1 abiding     2.00e-5
+#>  9     1 ability     2.58e-4
+#> 10     1 able        2.32e-4
+#> # ℹ 20,936 more rows
+        </output>
       </program>
 
       <p>
@@ -205,6 +231,22 @@ beta_wide &lt;- ap_topics %&gt;%
 
 beta_wide
         </input>
+        <output>
+#> # A tibble: 198 × 4
+#>    term         topic1  topic2 log_ratio
+#>    &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+#>  1 actually    0.00133 0.00116   -0.198 
+#>  2 ago         0.00104 0.00110    0.0794
+#>  3 american    0.00189 0.00202    0.0979
+#>  4 bank        0.00193 0.00101   -0.934 
+#>  5 billion     0.00664 0.00145   -2.19  
+#>  6 budget      0.00180 0.000848  -1.09  
+#>  7 bush        0.00100 0.00271    1.44  
+#>  8 business    0.00160 0.000841  -0.929 
+#>  9 came        0.00101 0.000856  -0.241 
+#> 10 campaign    0.000982 0.00237   1.27  
+#> # ℹ 188 more rows
+        </output>
       </program>
 
       <p>
@@ -253,6 +295,22 @@ beta_wide %&gt;%
 ap_documents &lt;- tidy(ap_lda, matrix = "gamma")
 ap_documents
         </input>
+        <output>
+#> # A tibble: 4,492 × 3
+#>    document topic   gamma
+#>    &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt;
+#>  1 1            1 0.248  
+#>  2 2            1 0.362  
+#>  3 3            1 0.527  
+#>  4 4            1 0.357  
+#>  5 5            1 0.181  
+#>  6 6            1 0.000588
+#>  7 7            1 0.773  
+#>  8 8            1 0.277  
+#>  9 9            1 0.652  
+#> 10 10           1 0.655  
+#> # ℹ 4,482 more rows
+        </output>
       </program>
 
       <p>
@@ -275,6 +333,22 @@ tidy(AssociatedPress) %&gt;%
   filter(document == 6) %&gt;%
   arrange(desc(count))
         </input>
+        <output>
+#> # A tibble: 287 × 3
+#>    document term         count
+#>       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+#>  1        6 noriega         16
+#>  2        6 panama          12
+#>  3        6 military         8
+#>  4        6 american         6
+#>  5        6 government       6
+#>  6        6 president        5
+#>  7        6 general          5
+#>  8        6 united           3
+#>  9        6 drug             3
+#> 10        6 reagan           3
+#> # ℹ 277 more rows
+        </output>
       </program>
 
       <p>
@@ -372,6 +446,22 @@ word_counts &lt;- by_chapter_word %&gt;%
 
 word_counts
       </input>
+      <output>
+#> # A tibble: 104,721 × 3
+#>    document                                  word      n
+#>    &lt;chr&gt;                                     &lt;chr&gt; &lt;int&gt;
+#>  1 Great Expectations_57                     joe     131
+#>  2 Great Expectations_7                      joe      88
+#>  3 Great Expectations_17                     joe      71
+#>  4 Great Expectations_27                     joe      70
+#>  5 Great Expectations_17                     pip      58
+#>  6 Great Expectations_2                      joe      55
+#>  7 Great Expectations_23                     pip      53
+#>  8 Great Expectations_35                     pip      52
+#>  9 Twenty Thousand Leagues under the Sea_12  captain  45
+#> 10 Great Expectations_2                      pip      43
+#> # ℹ 104,711 more rows
+      </output>
     </program>
 
     <subsection xml:id="subsec-lda-chapters">
@@ -391,6 +481,13 @@ chapters_dtm &lt;- word_counts %&gt;%
 
 chapters_dtm
         </input>
+        <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 182, terms: 18215)&gt;&gt;
+#> Non-/sparse entries: 104721/3210409
+#> Sparsity           : 97%
+#> Maximal term length: 19
+#> Weighting          : term frequency (tf)
+        </output>
       </program>
 
       <p>
@@ -404,6 +501,9 @@ chapters_dtm
 chapters_lda &lt;- LDA(chapters_dtm, k = 4, control = list(seed = 1234))
 chapters_lda
         </input>
+        <output>
+#> A LDA_VEM topic model with 4 topics.
+        </output>
       </program>
 
       <p>
@@ -416,6 +516,22 @@ chapters_lda
 chapter_topics &lt;- tidy(chapters_lda, matrix = "beta")
 chapter_topics
         </input>
+        <output>
+#> # A tibble: 72,860 × 3
+#>    topic term         beta
+#>    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
+#>  1     1 joe      1.28e-6
+#>  2     1 pip      1.11e-6
+#>  3     1 captain  9.06e-5
+#>  4     1 miss     4.28e-5
+#>  5     1 havisham 1.37e-6
+#>  6     1 time     8.09e-5
+#>  7     1 wemmick  8.84e-7
+#>  8     1 herbert  1.20e-6
+#>  9     1 great    8.02e-5
+#> 10     1 estella  5.13e-6
+#> # ℹ 72,850 more rows
+        </output>
       </program>
 
       <p>
@@ -439,6 +555,31 @@ top_terms &lt;- chapter_topics %&gt;%
 
 top_terms
         </input>
+        <output>
+#> # A tibble: 20 × 3
+#>    topic term         beta
+#>    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
+#>  1     1 elizabeth 0.0141 
+#>  2     1 darcy     0.00976
+#>  3     1 miss      0.00827
+#>  4     1 bennet    0.00807
+#>  5     1 jane      0.00653
+#>  6     2 captain   0.0155 
+#>  7     2 nautilus  0.0131 
+#>  8     2 sea       0.00876
+#>  9     2 nemo      0.00786
+#> 10     2 conseil   0.00681
+#> 11     3 martians  0.0177 
+#> 12     3 black     0.00656
+#> 13     3 night     0.00638
+#> 14     3 time      0.00557
+#> 15     3 people    0.00513
+#> 16     4 joe       0.0125 
+#> 17     4 pip       0.0123 
+#> 18     4 miss      0.00499
+#> 19     4 time      0.00447
+#> 20     4 herbert   0.00439
+        </output>
       </program>
 
       <p>
@@ -489,6 +630,22 @@ top_terms %&gt;%
 chapters_gamma &lt;- tidy(chapters_lda, matrix = "gamma")
 chapters_gamma
         </input>
+        <output>
+#> # A tibble: 728 × 3
+#>    document              topic    gamma
+#>    &lt;chr&gt;                 &lt;int&gt;    &lt;dbl&gt;
+#>  1 Great Expectations_57     1 0.00401
+#>  2 Great Expectations_57     2 0.00271
+#>  3 Great Expectations_57     3 0.00346
+#>  4 Great Expectations_57     4 0.990  
+#>  5 Great Expectations_7      1 0.00506
+#>  6 Great Expectations_7      2 0.00271
+#>  7 Great Expectations_7      3 0.00282
+#>  8 Great Expectations_7      4 0.989  
+#>  9 Great Expectations_17     1 0.00296
+#> 10 Great Expectations_17     2 0.00214
+#> # ℹ 718 more rows
+        </output>
       </program>
 
       <p>
@@ -517,6 +674,22 @@ chapters_gamma &lt;- chapters_gamma %&gt;%
 
 chapters_gamma
         </input>
+        <output>
+#> # A tibble: 728 × 4
+#>    title             chapter topic    gamma
+#>    &lt;chr&gt;               &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;
+#>  1 Great Expectations     57     1 0.00401
+#>  2 Great Expectations     57     2 0.00271
+#>  3 Great Expectations     57     3 0.00346
+#>  4 Great Expectations     57     4 0.990  
+#>  5 Great Expectations      7     1 0.00506
+#>  6 Great Expectations      7     2 0.00271
+#>  7 Great Expectations      7     3 0.00282
+#>  8 Great Expectations      7     4 0.989  
+#>  9 Great Expectations     17     1 0.00296
+#> 10 Great Expectations     17     2 0.00214
+#> # ℹ 718 more rows
+        </output>
       </program>
 
       <listing xml:id="fig-chaptersldagamma">
@@ -557,6 +730,22 @@ chapter_classifications &lt;- chapters_gamma %&gt;%
 
 chapter_classifications
         </input>
+        <output>
+#> # A tibble: 182 × 4
+#>    title             chapter topic gamma
+#>    &lt;chr&gt;               &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
+#>  1 Great Expectations     57     4 0.990
+#>  2 Great Expectations      7     4 0.989
+#>  3 Great Expectations     17     4 0.986
+#>  4 Great Expectations     27     4 0.989
+#>  5 Great Expectations      2     4 0.975
+#>  6 Great Expectations     23     4 0.983
+#>  7 Great Expectations     35     4 0.987
+#>  8 Great Expectations     58     4 0.975
+#>  9 Great Expectations     28     4 0.981
+#> 10 Great Expectations     47     4 0.982
+#> # ℹ 172 more rows
+        </output>
       </program>
 
       <p>
@@ -577,6 +766,13 @@ chapter_classifications %&gt;%
   inner_join(book_topics, by = "topic") %&gt;%
   filter(title != consensus)
         </input>
+        <output>
+#> # A tibble: 2 × 5
+#>   title             chapter topic gamma consensus              
+#>   &lt;chr&gt;               &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;                 
+#> 1 Great Expectations      5     1 0.476 Pride and Prejudice    
+#> 2 Great Expectations     54     3 0.503 The War of the Worlds  
+        </output>
       </program>
 
       <p>
@@ -608,6 +804,22 @@ chapter_classifications %&gt;%
 assignments &lt;- augment(chapters_lda, data = chapters_dtm)
 assignments
         </input>
+        <output>
+#> # A tibble: 104,721 × 4
+#>    document              term  count .topic
+#>    &lt;chr&gt;                 &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt;
+#>  1 Great Expectations_57 joe     131      4
+#>  2 Great Expectations_7  joe      88      4
+#>  3 Great Expectations_17 joe      71      4
+#>  4 Great Expectations_27 joe      70      4
+#>  5 Great Expectations_2  joe      55      4
+#>  6 Great Expectations_23 joe      38      4
+#>  7 Great Expectations_35 joe      32      4
+#>  8 Great Expectations_47 joe      28      4
+#>  9 Great Expectations_28 joe      22      4
+#> 10 Great Expectations_15 joe      21      4
+#> # ℹ 104,711 more rows
+        </output>
       </program>
 
       <p>
@@ -627,6 +839,22 @@ assignments &lt;- assignments %&gt;%
 
 assignments
         </input>
+        <output>
+#> # A tibble: 104,721 × 6
+#>    title             chapter term  count .topic consensus         
+#>    &lt;chr&gt;               &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt; &lt;chr&gt;             
+#>  1 Great Expectations     57 joe     131      4 Great Expectations
+#>  2 Great Expectations      7 joe      88      4 Great Expectations
+#>  3 Great Expectations     17 joe      71      4 Great Expectations
+#>  4 Great Expectations     27 joe      70      4 Great Expectations
+#>  5 Great Expectations      2 joe      55      4 Great Expectations
+#>  6 Great Expectations     23 joe      38      4 Great Expectations
+#>  7 Great Expectations     35 joe      32      4 Great Expectations
+#>  8 Great Expectations     47 joe      28      4 Great Expectations
+#>  9 Great Expectations     28 joe      22      4 Great Expectations
+#> 10 Great Expectations     15 joe      21      4 Great Expectations
+#> # ℹ 104,711 more rows
+        </output>
       </program>
 
       <p>
@@ -686,6 +914,36 @@ wrong_words %&gt;%
   ungroup() %&gt;%
   arrange(desc(n))
         </input>
+        <output>
+#> # A tibble: 4,725 × 6
+#>    title             chapter term  count .topic consensus          
+#>    &lt;chr&gt;               &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;int&gt; &lt;chr&gt;              
+#>  1 Great Expectations     57 love      5      1 Pride and Prejudice
+#>  2 Great Expectations      7 love      4      1 Pride and Prejudice
+#>  3 Great Expectations     17 love      3      1 Pride and Prejudice
+#>  4 Great Expectations     27 love      2      1 Pride and Prejudice
+#>  5 Great Expectations      2 lady      5      1 Pride and Prejudice
+#>  6 Great Expectations     23 love      3      1 Pride and Prejudice
+#>  7 Great Expectations     35 love      2      1 Pride and Prejudice
+#>  8 Great Expectations      5 love      2      1 Pride and Prejudice
+#>  9 Great Expectations     54 night     4      3 The War of the Worlds
+#> 10 Great Expectations     54 black     3      3 The War of the Worlds
+#> # ℹ 4,715 more rows
+#> # A tibble: 2,873 × 4
+#>    title             consensus           term     n
+#>    &lt;chr&gt;             &lt;chr&gt;               &lt;chr&gt; &lt;dbl&gt;
+#>  1 Great Expectations Pride and Prejudice love     54
+#>  2 Great Expectations Pride and Prejudice lady     44
+#>  3 Great Expectations Pride and Prejudice miss     34
+#>  4 Great Expectations Pride and Prejudice dear     30
+#>  5 Great Expectations Pride and Prejudice heart    24
+#>  6 Great Expectations Pride and Prejudice well     20
+#>  7 Great Expectations Pride and Prejudice hand     18
+#>  8 Great Expectations The War of the Worlds night   12
+#>  9 Great Expectations The War of the Worlds black    9
+#> 10 Great Expectations The War of the Worlds time     8
+#> # ℹ 2,863 more rows
+        </output>
       </program>
 
       <p>
@@ -707,6 +965,14 @@ wrong_words %&gt;%
 word_counts %&gt;%
   filter(word == "flopson")
         </input>
+        <output>
+#> # A tibble: 3 × 3
+#>   document                  word        n
+#>   &lt;chr&gt;                     &lt;chr&gt;   &lt;int&gt;
+#> 1 Great Expectations_22     flopson     3
+#> 2 Great Expectations_23     flopson     1
+#> 3 Great Expectations_26     flopson     1
+        </output>
       </program>
 
       <p>
