@@ -273,7 +273,7 @@
       </p>
 
       <p>
-        The packages used in this book, along with their versions, are listed below.
+        This version of the book was built with R version 4.4.3 (2025-02-28) and the following packages:
       </p>
 
       <tabular>
