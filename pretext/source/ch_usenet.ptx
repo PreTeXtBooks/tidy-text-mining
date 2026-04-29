@@ -62,6 +62,22 @@ raw_text &lt;- tibble(folder = dir(training_folder, full.names = TRUE)) %&gt;%
       <input>
 raw_text
       </input>
+      <output>
+#> # A tibble: 511,655 × 3
+#>    newsgroup   id    text                                        
+#>    &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;                                       
+#>  1 alt.atheism 49960 From: mathew &lt;mathew@mantis.co.uk&gt;          
+#>  2 alt.atheism 49960 Subject: Alt.Atheism FAQ: Atheist Resources  
+#>  3 alt.atheism 49960 Summary: Books, addresses, music -- anythi…  
+#>  4 alt.atheism 49960 Keywords: FAQ, atheism, books, music, fict…  
+#>  5 alt.atheism 49960 Expires: Thu, 29 Apr 1993 11:57:19 GMT       
+#>  6 alt.atheism 49960 Distribution: world                          
+#>  7 alt.atheism 49960 Organization: Mantis Consultants, Cambridge… 
+#>  8 alt.atheism 49960 Supersedes: &lt;19930301143317@mantis.co.uk&gt;    
+#>  9 alt.atheism 49960 Lines: 290                                   
+#> 10 alt.atheism 49960 ""                                           
+#> # ℹ 511,645 more rows
+      </output>
     </program>
 
     <p>
@@ -190,6 +206,36 @@ words_by_newsgroup &lt;- usenet_words %&gt;%
 
 words_by_newsgroup
       </input>
+      <output>
+#> # A tibble: 54,374 × 2
+#>    word        n
+#>    &lt;chr&gt;   &lt;int&gt;
+#>  1 people   3869
+#>  2 time     2705
+#>  3 god      2602
+#>  4 writes   2422
+#>  5 don't    2301
+#>  6 system   1916
+#>  7 anyone   1845
+#>  8 problem  1802
+#>  9 windows  1766
+#> 10 program  1683
+#> # ℹ 54,364 more rows
+#> # A tibble: 173,913 × 3
+#>    newsgroup                    word       n
+#>    &lt;chr&gt;                        &lt;chr&gt;  &lt;int&gt;
+#>  1 talk.politics.mideast        people  1322
+#>  2 soc.religion.christian       god     1173
+#>  3 talk.politics.misc           people  1060
+#>  4 alt.atheism                  god      987
+#>  5 talk.politics.guns           people   886
+#>  6 talk.politics.mideast        writes   871
+#>  7 talk.religion.misc           god      861
+#>  8 talk.politics.mideast        don't    853
+#>  9 rec.sport.hockey             team     843
+#> 10 comp.os.ms-windows.misc      windows  841
+#> # ℹ 173,903 more rows
+      </output>
     </program>
 
     <subsection xml:id="subsec-usenet-tfidf">
@@ -209,6 +255,22 @@ tf_idf &lt;- words_by_newsgroup %&gt;%
 
 tf_idf
         </input>
+        <output>
+#> # A tibble: 173,913 × 6
+#>    newsgroup            word         n      tf   idf tf_idf
+#>    &lt;chr&gt;                &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 sci.crypt            key        705 0.0286  2.996 0.0856
+#>  2 sci.crypt            clipper    326 0.0132  2.996 0.0396
+#>  3 sci.electronics      circuit    231 0.00968 2.996 0.0290
+#>  4 sci.space            nasa       293 0.00899 2.996 0.0269
+#>  5 rec.motorcycles      bike       413 0.0135  1.897 0.0256
+#>  6 rec.sport.hockey     hockey     420 0.0134  1.897 0.0254
+#>  7 sci.crypt            encryption 274 0.0111  2.303 0.0256
+#>  8 sci.electronics      voltage    214 0.00897 2.996 0.0269
+#>  9 rec.sport.baseball   baseball   335 0.0118  1.897 0.0224
+#> 10 comp.windows.x       motif      268 0.00941 2.303 0.0217
+#> # ℹ 173,903 more rows
+        </output>
       </program>
 
       <p>
@@ -258,6 +320,22 @@ newsgroup_cors &lt;- words_by_newsgroup %&gt;%
 
 newsgroup_cors
         </input>
+        <output>
+#> # A tibble: 380 × 3
+#>    item1                    item2                    correlation
+#>    &lt;chr&gt;                    &lt;chr&gt;                          &lt;dbl&gt;
+#>  1 talk.politics.misc       talk.politics.mideast          0.876
+#>  2 talk.politics.mideast    talk.politics.misc             0.876
+#>  3 talk.religion.misc       alt.atheism                    0.868
+#>  4 alt.atheism              talk.religion.misc             0.868
+#>  5 talk.politics.misc       talk.religion.misc             0.819
+#>  6 talk.religion.misc       talk.politics.misc             0.819
+#>  7 comp.sys.ibm.pc.hardware comp.sys.mac.hardware          0.800
+#>  8 comp.sys.mac.hardware    comp.sys.ibm.pc.hardware       0.800
+#>  9 comp.os.ms-windows.misc  comp.windows.x                 0.787
+#> 10 comp.windows.x           comp.os.ms-windows.misc        0.787
+#> # ℹ 370 more rows
+        </output>
       </program>
 
       <p>
@@ -467,6 +545,22 @@ contributions &lt;- usenet_words %&gt;%
         <input>
 contributions
         </input>
+        <output>
+#> # A tibble: 2,027 × 3
+#>    word      occurences contribution
+#>    &lt;chr&gt;          &lt;int&gt;        &lt;int&gt;
+#>  1 right            948         1896
+#>  2 well             873         1746
+#>  3 good             866         1732
+#>  4 free             556         1112
+#>  5 great            437          874
+#>  6 true             411          822
+#>  7 like             347          694
+#>  8 nice             337          674
+#>  9 better           310          620
+#> 10 perfect          264          528
+#> # ℹ 2,017 more rows
+        </output>
       </program>
 
       <p>
@@ -520,6 +614,22 @@ top_sentiment_words &lt;- words_by_newsgroup %&gt;%
         <input>
 top_sentiment_words
         </input>
+        <output>
+#> # A tibble: 40,468 × 5
+#>    newsgroup               word      n value contribution
+#>    &lt;chr&gt;                   &lt;chr&gt; &lt;int&gt; &lt;int&gt;        &lt;dbl&gt;
+#>  1 talk.politics.mideast   right   310     2     1.33e-3
+#>  2 talk.religion.misc      right   134     2     5.75e-4
+#>  3 alt.atheism             right   133     2     5.71e-4
+#>  4 talk.politics.misc      right   132     2     5.67e-4
+#>  5 soc.religion.christian  right   126     2     5.41e-4
+#>  6 talk.politics.mideast   good     98     3     6.32e-4
+#>  7 talk.religion.misc      true     94     2     4.04e-4
+#>  8 talk.politics.guns      right    90     2     3.87e-4
+#>  9 alt.atheism             god      87    -1    -3.74e-4
+#> 10 talk.politics.mideast   don't    85    -2    -3.65e-4
+#> # ℹ 40,458 more rows
+        </output>
       </program>
 
       <listing xml:id="fig-newsgroupsentiment">
@@ -595,6 +705,22 @@ sentiment_messages &lt;- usenet_words %&gt;%
 sentiment_messages %&gt;%
   arrange(desc(sentiment))
         </input>
+        <output>
+#> # A tibble: 3,873 × 4
+#>    newsgroup        id    sentiment words
+#>    &lt;chr&gt;            &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;
+#>  1 rec.sport.hockey 53560      4.11    18
+#>  2 rec.sport.hockey 53803      4.00     5
+#>  3 rec.sport.hockey 53913      4.00     5
+#>  4 misc.forsale     75936      4.00     5
+#>  5 misc.forsale     74733      3.67     6
+#>  6 rec.sport.hockey 53776      3.56     9
+#>  7 rec.motorcycles  102801     3.50     6
+#>  8 rec.sport.hockey 53773      3.44     9
+#>  9 comp.graphics    37928      3.40     5
+#> 10 rec.sport.hockey 53598      3.33    12
+#> # ℹ 3,863 more rows
+        </output>
       </program>
 
       <p>
@@ -613,6 +739,33 @@ print_message &lt;- function(group, message_id) {
 
 print_message("rec.sport.hockey", 53560)
         </input>
+        <output>
+#> Everybody.  Please send me your predictions for the Stanley Cup Playoffs!
+#> I want to see who people think will win.!!!!!!!
+#> Please Send them in this format, or something comparable:
+#> 1. Winner of Buffalo-Boston
+#> 2. Winner of Montreal-Quebec
+#> 3. Winner of Pittsburgh-New York
+#> 4. Winner of New Jersey-Washington
+#> 5. Winner of Chicago-(Minnesota/St.Louis)
+#> 6. Winner of Toronto-Detroit
+#> 7. Winner of Vancouver-Winnipeg
+#> 8. Winner of Calgary-Los Angeles
+#> 9. Winner of Adams Division (1-2 above)
+#> 10. Winner of Patrick Division (3-4 above)
+#> 11. Winner of Norris Division (5-6 above)
+#> 12. Winner of Smythe Division (7-8 above)
+#> 13. Winner of Wales Conference (9-10 above)
+#> 14. Winner of Campbell Conference (11-12 above)
+#> 15. Winner of Stanley Cup (13-14 above)
+#> I will summarize the predictions, and see who is the biggest
+#> INTERNET GURU PREDICTING GUY/GAL.
+#> Send entries to Richard Madison
+#> rrmadiso@napier.uwaterloo.ca
+#> PS:  I will send my entries to one of you folks so you know when I say
+#> I won, that I won!!!!!
+#> :)
+        </output>
       </program>
 
       <p>
@@ -628,6 +781,29 @@ sentiment_messages %&gt;%
 
 print_message("rec.sport.hockey", 53907)
         </input>
+        <output>
+#> # A tibble: 3,873 × 4
+#>    newsgroup          id    sentiment words
+#>    &lt;chr&gt;              &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;
+#>  1 rec.sport.hockey   53907     -3.00    12
+#>  2 talk.politics.guns 52771     -2.83     6
+#>  3 talk.politics.misc 72282     -2.67     9
+#>  4 rec.sport.hockey   52850     -2.50     8
+#>  5 talk.religion.misc 83926     -2.50     8
+#>  6 alt.atheism        52559     -2.43     7
+#>  7 talk.politics.guns 52893     -2.40    10
+#>  8 talk.politics.misc 76067     -2.33     9
+#>  9 rec.sport.hockey   53907     -3.00    12
+#> 10 talk.politics.misc 78454     -2.22     9
+#> # ℹ 3,863 more rows
+#> Losers like us? You are the fucking moron who has never heard of the Western
+#> Business School, or the University of Western Ontario for that matter. Why
+#> don't you pull your head out of your asshole and smell something other than
+#> shit for once so you can look on a map to see where UWO is! Back to hockey,
+#> the North Stars should be moved because for the past few years they have
+#> just been SHIT. A real team like Toronto would never be moved!!!
+#> Andrew--
+        </output>
       </program>
 
       <p>
