@@ -95,11 +95,11 @@ text &lt;- c("Because I could not stop for Death -",
           "and Immortality")
 
 text
+#&lt; [1] "Because I could not stop for Death -"  
+#&lt; [2] "He kindly stopped for me -"            
+#&lt; [3] "The Carriage held but just Ourselves -"
+#&lt; [4] "and Immortality"
       </input>
-      <output>
-#> [1] "Because I could not stop for Death -"   "He kindly stopped for me -"
-#> [3] "The Carriage held but just Ourselves -" "and Immortality"
-      </output>
     </program>
 
     <p>
