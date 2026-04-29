@@ -377,9 +377,14 @@ tidy_books %&gt;%
       of the most common words (<xref ref="fig-plotcount"/>).
     </p>
 
-    <listing xml:id="fig-plotcount">
+    <figure xml:id="fig-plotcount">
       <caption>The most common words in Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-plotcount.png" width="90%">
+        <description>Bar chart showing the most common words in Jane Austen's novels.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(ggplot2)
 
@@ -613,10 +618,15 @@ frequency
       Now let's plot (<xref ref="fig-plotcompare"/>).
     </p>
 
-    <listing xml:id="fig-plotcompare">
+    <figure xml:id="fig-plotcompare">
       <caption>Comparing the word frequencies of Jane Austen, the Brontë sisters, and H.G.
       Wells</caption>
-      <program language="r">
+      <image source="images/fig-plotcompare.png" width="90%">
+        <description>Scatter plot comparing word frequencies between Jane Austen and other authors.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(scales)
 

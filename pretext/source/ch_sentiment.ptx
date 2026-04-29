@@ -325,9 +325,14 @@ jane_austen_sentiment &lt;- tidy_books %&gt;%
       in sections of text.
     </p>
 
-    <listing xml:id="fig-sentimentplot">
+    <figure xml:id="fig-sentimentplot">
       <caption>Sentiment through the narratives of Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-sentimentplot.png" width="90%">
+        <description>Sentiment arc for each of Jane Austen's novels over the narrative.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(ggplot2)
 
@@ -431,9 +436,14 @@ bing_and_nrc &lt;- bind_rows(
       <xref ref="fig-compareplot"/>.
     </p>
 
-    <listing xml:id="fig-compareplot">
+    <figure xml:id="fig-compareplot">
       <caption>Comparing three sentiment lexicons using <em>Pride and Prejudice</em></caption>
-      <program language="r">
+      <image source="images/fig-compareplot.png" width="90%">
+        <description>Comparison of three sentiment lexicons for Pride and Prejudice.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 bind_rows(afinn,
           bing_and_nrc) %&gt;%
@@ -547,10 +557,15 @@ bing_word_counts
       the way we are consistently using tools built for handling tidy data frames.
     </p>
 
-    <listing xml:id="fig-pipetoplot">
+    <figure xml:id="fig-pipetoplot">
       <caption>Words that contribute to positive and negative sentiment in Jane Austen's
       novels</caption>
-      <program language="r">
+      <image source="images/fig-pipetoplot.png" width="90%">
+        <description>Bar chart of words contributing most to positive and negative sentiment.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 bing_word_counts %&gt;%
   group_by(sentiment) %&gt;%
@@ -615,9 +630,14 @@ custom_stop_words
       <xref ref="fig-firstwordcloud"/>.
     </p>
 
-    <listing xml:id="fig-firstwordcloud">
+    <figure xml:id="fig-firstwordcloud">
       <caption>The most common words in Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-firstwordcloud.png" width="90%">
+        <description>Word cloud of the most common words in Jane Austen's novels.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(wordcloud)
 
@@ -637,9 +657,14 @@ tidy_books %&gt;%
       this can all be done with joins, piping, and dplyr because our data is in tidy format.
     </p>
 
-    <listing xml:id="fig-wordcloud">
+    <figure xml:id="fig-wordcloud">
       <caption>Most common positive and negative words in Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-wordcloud.png" width="90%">
+        <description>Comparison word cloud of positive and negative words in Jane Austen's novels.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(reshape2)
 
