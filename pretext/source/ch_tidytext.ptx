@@ -6,8 +6,7 @@
   <p>
     Using tidy data principles is a powerful way to make handling data easier and more effective,
     and this is no less true when it comes to dealing with text. As described by Hadley Wickham
-    <fn><p>Wickham, H. (2014). Tidy Data. <em>Journal of Statistical Software</em>, 59(10),
-    1–23.</p></fn>, tidy data has a specific structure:
+    <xref ref="tidydata"/>, tidy data has a specific structure:
   </p>
 
   <ul>
@@ -29,19 +28,21 @@
 
   <p>
     Tidy data sets allow manipulation with a standard set of <q>tidy</q> tools, including popular
-    packages such as dplyr, tidyr, ggplot2, and broom. By keeping the input and output in tidy
-    tables, users can transition fluidly between these packages. We've found these tidy tools extend
-    naturally to many text analyses and explorations.
+    packages such as dplyr <xref ref="R-dplyr"/>, tidyr <xref ref="R-tidyr"/>, ggplot2
+    <xref ref="R-ggplot2"/>, and broom <xref ref="R-broom"/>. By keeping the input and output in
+    tidy tables, users can transition fluidly between these packages. We've found these tidy tools
+    extend naturally to many text analyses and explorations.
   </p>
 
   <p>
     At the same time, the tidytext package doesn't expect a user to keep text data in a tidy form
     at all times during an analysis. The package includes functions to <c>tidy()</c> objects (see
-    the broom package [Robinson et al cited above]) from popular text mining R packages such as tm
-    and quanteda. This allows, for example, a workflow where importing, filtering, and processing is
-    done using dplyr and other tidy tools, after which the data is converted into a document-term
-    matrix for machine learning applications. The models can then be re-converted into a tidy form
-    for interpretation and visualization with ggplot2.
+    the broom package <xref ref="R-broom"/>) from popular text mining R packages such as tm
+    <xref ref="tm"/> and quanteda <xref ref="R-quanteda"/>. This allows, for example, a workflow
+    where importing, filtering, and processing is done using dplyr and other tidy tools, after
+    which the data is converted into a document-term matrix for machine learning applications. The
+    models can then be re-converted into a tidy form for interpretation and visualization with
+    ggplot2.
   </p>
 </introduction>
 
@@ -68,13 +69,13 @@
         <p><alert>Document-term matrix</alert>: This is a sparse matrix describing a collection
         (i.e., a corpus) of documents with one row for each document and one column for each term.
         The value in the matrix is typically word count or tf-idf (see
-        <xref provisional="ch-tfidf"/>).</p>
+        <xref ref="ch-tfidf"/>).</p>
       </li>
     </ul>
 
     <p>
       Let's hold off on exploring corpus and document-term matrix objects until
-      <xref provisional="ch-dtm"/>, and get down to
+      <xref ref="ch-dtm"/>, and get down to
       the basics of converting text to a tidy format.
     </p>
   </section>
@@ -95,6 +96,10 @@ text &lt;- c("Because I could not stop for Death -",
 
 text
       </input>
+      <output>
+#> [1] "Because I could not stop for Death -"   "He kindly stopped for me -"
+#> [3] "The Carriage held but just Ourselves -" "and Immortality"
+      </output>
     </program>
 
     <p>
@@ -109,6 +114,15 @@ text_df &lt;- tibble(line = 1:4, text = text)
 
 text_df
       </input>
+      <output>
+#> # A tibble: 4 × 2
+#>    line text                                  
+#>   &lt;int&gt; &lt;chr&gt;                                 
+#> 1     1 Because I could not stop for Death -  
+#> 2     2 He kindly stopped for me -            
+#> 3     3 The Carriage held but just Ourselves -
+#> 4     4 and Immortality
+      </output>
     </program>
 
     <p>
@@ -150,6 +164,31 @@ library(tidytext)
 text_df %&gt;%
   unnest_tokens(word, text)
       </input>
+      <output>
+#> # A tibble: 20 × 2
+#>     line word       
+#>    &lt;int&gt; &lt;chr&gt;      
+#>  1     1 because    
+#>  2     1 i          
+#>  3     1 could      
+#>  4     1 not        
+#>  5     1 stop       
+#>  6     1 for        
+#>  7     1 death      
+#>  8     2 he         
+#>  9     2 kindly     
+#> 10     2 stopped    
+#> 11     2 for        
+#> 12     2 me         
+#> 13     3 the        
+#> 14     3 carriage   
+#> 15     3 held       
+#> 16     3 but        
+#> 17     3 just       
+#> 18     3 ourselves  
+#> 19     4 and        
+#> 20     4 immortality
+      </output>
     </program>
 
     <p>
@@ -199,11 +238,11 @@ text_df %&gt;%
       Let's use the text of Jane Austen's 6 completed, published novels from the
       <url href="https://cran.r-project.org/package=janeaustenr"
            visual="cran.r-project.org/package=janeaustenr">janeaustenr</url>
-      package, and transform them into a tidy format. The janeaustenr package provides these texts
-      in a one-row-per-line format, where a line in this context is analogous to a literal printed
-      line in a physical book. Let's start with that, and also use <c>mutate()</c> to annotate a
-      <c>linenumber</c> quantity to keep track of lines in the original format and a
-      <c>chapter</c> (using a regex) to find where all the chapters are.
+      package <xref ref="R-janeaustenr"/>, and transform them into a tidy format. This package
+      provides these texts in a one-row-per-line format, where a line in this context is analogous
+      to a literal printed line in a physical book. Let's start with that, and also use
+      <c>mutate()</c> to annotate a <c>linenumber</c> quantity to keep track of lines in the
+      original format and a <c>chapter</c> (using a regex) to find where all the chapters are.
     </p>
 
     <program language="r">
@@ -222,6 +261,22 @@ original_books &lt;- austen_books() %&gt;%
 
 original_books
       </input>
+      <output>
+#> # A tibble: 73,422 × 4
+#>    text                    book                linenumber chapter
+#>    &lt;chr&gt;                   &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt;
+#>  1 "SENSE AND SENSIBILITY" Sense &amp; Sensibility          1       0
+#>  2 ""                      Sense &amp; Sensibility          2       0
+#>  3 "by Jane Austen"        Sense &amp; Sensibility          3       0
+#>  4 ""                      Sense &amp; Sensibility          4       0
+#>  5 "(1811)"                Sense &amp; Sensibility          5       0
+#>  6 ""                      Sense &amp; Sensibility          6       0
+#>  7 ""                      Sense &amp; Sensibility          7       0
+#>  8 ""                      Sense &amp; Sensibility          8       0
+#>  9 ""                      Sense &amp; Sensibility          9       0
+#> 10 "CHAPTER 1"             Sense &amp; Sensibility         10       1
+#> # ℹ 73,412 more rows
+      </output>
     </program>
 
     <p>
@@ -238,6 +293,22 @@ tidy_books &lt;- original_books %&gt;%
 
 tidy_books
       </input>
+      <output>
+#> # A tibble: 725,064 × 4
+#>    book                linenumber chapter word       
+#>    &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+#>  1 Sense &amp; Sensibility          1       0 sense      
+#>  2 Sense &amp; Sensibility          1       0 and        
+#>  3 Sense &amp; Sensibility          1       0 sensibility
+#>  4 Sense &amp; Sensibility          3       0 by         
+#>  5 Sense &amp; Sensibility          3       0 jane       
+#>  6 Sense &amp; Sensibility          3       0 austen     
+#>  7 Sense &amp; Sensibility          5       0 1811       
+#>  8 Sense &amp; Sensibility         10       1 chapter    
+#>  9 Sense &amp; Sensibility         10       1 1          
+#> 10 Sense &amp; Sensibility         13       1 the        
+#> # ℹ 725,054 more rows
+      </output>
     </program>
 
     <p>
@@ -282,6 +353,22 @@ tidy_books &lt;- tidy_books %&gt;%
 tidy_books %&gt;%
   count(word, sort = TRUE)
       </input>
+      <output>
+#> # A tibble: 13,910 × 2
+#>    word       n
+#>    &lt;chr&gt;  &lt;int&gt;
+#>  1 miss    1855
+#>  2 time    1337
+#>  3 fanny    862
+#>  4 dear     822
+#>  5 lady     817
+#>  6 sir      806
+#>  7 day      797
+#>  8 emma     787
+#>  9 sister   727
+#> 10 house    699
+#> # ℹ 13,900 more rows
+      </output>
     </program>
 
     <p>
@@ -312,7 +399,7 @@ tidy_books %&gt;%
       analyze, but in other cases we may need to perform cleaning of text data, such as removing
       copyright headers or formatting. You'll see examples of this kind of pre-processing in the
       case study chapters, particularly
-      <xref provisional="ch-preprocessing-case-study"/>.
+      <xref ref="subsec-usenet-preprocessing-text"/>.
     </p>
   </section>
 
@@ -323,7 +410,8 @@ tidy_books %&gt;%
       Now that we've used the janeaustenr package to explore tidying text, let's introduce the
       <url href="https://github.com/ropensci/gutenbergr"
            visual="github.com/ropensci/gutenbergr">gutenbergr</url>
-      package. The gutenbergr package provides access to the public domain works from the
+      package <xref ref="R-gutenbergr"/>, which provides access to the public domain works from
+      the
       <url href="https://www.gutenberg.org/" visual="www.gutenberg.org">Project Gutenberg</url>
       collection. The package includes tools both for downloading books (stripping out the unhelpful
       header/footer information), and a complete dataset of Project Gutenberg metadata that can be
@@ -389,6 +477,22 @@ tidy_hgwells &lt;- hgwells %&gt;%
 tidy_hgwells %&gt;%
   count(word, sort = TRUE)
       </input>
+      <output>
+#> # A tibble: 11,768 × 2
+#>    word       n
+#>    &lt;chr&gt;  &lt;int&gt;
+#>  1 time     454
+#>  2 people   302
+#>  3 door     260
+#>  4 heard    249
+#>  5 black    232
+#>  6 stood    229
+#>  7 white    222
+#>  8 hand     218
+#>  9 kemp     213
+#> 10 eyes     210
+#> # ℹ 11,758 more rows
+      </output>
     </program>
 
     <p>
@@ -431,6 +535,22 @@ tidy_bronte &lt;- bronte %&gt;%
 tidy_bronte %&gt;%
   count(word, sort = TRUE)
       </input>
+      <output>
+#> # A tibble: 23,042 × 2
+#>    word       n
+#>    &lt;chr&gt;  &lt;int&gt;
+#>  1 time    1065
+#>  2 miss     855
+#>  3 day      827
+#>  4 hand     768
+#>  5 eyes     713
+#>  6 night    647
+#>  7 heart    638
+#>  8 looked   602
+#>  9 door     592
+#> 10 half     586
+#> # ℹ 23,032 more rows
+      </output>
     </program>
 
     <p>
@@ -463,6 +583,22 @@ frequency &lt;- bind_rows(mutate(tidy_bronte, author = "Brontë Sisters"),
 
 frequency
       </input>
+      <output>
+#> # A tibble: 57,812 × 4
+#>    word    `Jane Austen` author          proportion
+#>    &lt;chr&gt;           &lt;dbl&gt; &lt;chr&gt;                &lt;dbl&gt;
+#>  1 a          0.00000919 Brontë Sisters  0.00000797
+#>  2 a          0.00000919 H.G. Wells     NA         
+#>  3 a'most    NA          Brontë Sisters  0.0000159 
+#>  4 a'most    NA          H.G. Wells     NA         
+#>  5 aback     NA          Brontë Sisters  0.00000398
+#>  6 aback     NA          H.G. Wells      0.0000150 
+#>  7 abaht     NA          Brontë Sisters  0.00000398
+#>  8 abaht     NA          H.G. Wells     NA         
+#>  9 abandon   NA          Brontë Sisters  0.0000319 
+#> 10 abandon   NA          H.G. Wells      0.0000150 
+#> # ℹ 57,802 more rows
+      </output>
     </program>
 
     <p>
@@ -538,6 +674,30 @@ cor.test(data = frequency[frequency$author == "Brontë Sisters",],
 cor.test(data = frequency[frequency$author == "H.G. Wells",],
          ~ proportion + `Jane Austen`)
       </input>
+      <output>
+#> 
+#> 	Pearson's product-moment correlation
+#> 
+#> data:  proportion and Jane Austen
+#> t = 119.65, df = 10404, p-value &lt; 2.2e-16
+#> alternative hypothesis: true correlation is not equal to 0
+#> 95 percent confidence interval:
+#>  0.7527854 0.7689628
+#> sample estimates:
+#>       cor 
+#> 0.7609924 
+#> 
+#> 	Pearson's product-moment correlation
+#> 
+#> data:  proportion and Jane Austen
+#> t = 36.436, df = 6052, p-value &lt; 2.2e-16
+#> alternative hypothesis: true correlation is not equal to 0
+#> 95 percent confidence interval:
+#>  0.4032663 0.4445889
+#> sample estimates:
+#>       cor 
+#> 0.4241484
+      </output>
     </program>
 
     <p>

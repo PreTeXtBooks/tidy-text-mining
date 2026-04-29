@@ -54,6 +54,17 @@ library(jsonlite)
 metadata &lt;- fromJSON("https://data.nasa.gov/data.json")
 names(metadata$dataset)
       </input>
+      <output>
+#>  [1] "_id"                "@type"              "accessLevel"
+#>  [4] "accrualPeriodicity" "bureauCode"         "contactPoint"
+#>  [7] "description"        "distribution"       "identifier"
+#> [10] "issued"             "keyword"            "landingPage"
+#> [13] "language"           "modified"           "programCode"
+#> [16] "publisher"          "spatial"            "temporal"
+#> [19] "theme"              "title"              "license"
+#> [22] "isPartOf"           "references"         "rights"
+#> [25] "describedBy"
+      </output>
     </program>
 
     <p>
@@ -72,6 +83,11 @@ class(metadata$dataset$title)
 class(metadata$dataset$description)
 class(metadata$dataset$keyword)
       </input>
+      <output>
+#> [1] "character"
+#> [1] "character"
+#> [1] "list"
+      </output>
     </program>
 
     <p>
@@ -95,6 +111,22 @@ nasa_title &lt;- tibble(id = metadata$dataset$`_id`$`$oid`,
                      title = metadata$dataset$title)
 nasa_title
         </input>
+        <output>
+#> # A tibble: 32,089 × 2
+#>    id                       title
+#>    &lt;chr&gt;                    &lt;chr&gt;
+#>  1 55942a57c63a7fe59b495a77 15 Minute Stream Flow Data: USGS (FIFE)
+#>  2 55942a57c63a7fe59b495a78 15 Minute Stream Flow Data: USGS (FIFE)
+#>  3 55942a58c63a7fe59b495a79 15 Minute Stream Flow Data: USGS (FIFE)
+#>  4 55942a58c63a7fe59b495a7a 2000 Pilot Environmental Sustainability Index (ESI)
+#>  5 55942a58c63a7fe59b495a7b 2000 Pilot Environmental Sustainability Index (ESI)
+#>  6 55942a58c63a7fe59b495a7c 2000 Pilot Environmental Sustainability Index (ESI)
+#>  7 55942a58c63a7fe59b495a7d 2001 Environmental Sustainability Index (ESI)
+#>  8 55942a58c63a7fe59b495a7e 2001 Environmental Sustainability Index (ESI)
+#>  9 55942a58c63a7fe59b495a7f 2001 Environmental Sustainability Index (ESI)
+#> 10 55942a58c63a7fe59b495a80 2001 Environmental Sustainability Index (ESI)
+#> # ℹ 32,079 more rows
+        </output>
       </program>
 
       <p>
@@ -112,6 +144,16 @@ nasa_desc %&gt;%
   select(desc) %&gt;%
   sample_n(5)
         </input>
+        <output>
+#> # A tibble: 5 × 1
+#>   desc
+#>   &lt;chr&gt;
+#> 1 "MODIS (or Moderate Resolution Imaging Spectroradiometer) is a key instrum…
+#> 2 "MODIS (or Moderate Resolution Imaging Spectroradiometer) is a key instrum…
+#> 3 "ML2HNO3 is the EOS Aura Microwave Limb Sounder (MLS) standard product for…
+#> 4 "This dataset is part of the collection of Special Sensor Microwave/Imager…
+#> 5 "The goal of this STTR program is to employ nanostructured materials in an…
+        </output>
       </program>
 
       <p>
@@ -133,6 +175,22 @@ nasa_keyword &lt;- tibble(id = metadata$dataset$`_id`$`$oid`,
 
 nasa_keyword
         </input>
+        <output>
+#> # A tibble: 126,814 × 2
+#>    id                       keyword
+#>    &lt;chr&gt;                    &lt;chr&gt;
+#>  1 55942a57c63a7fe59b495a77 EARTH SCIENCE
+#>  2 55942a57c63a7fe59b495a77 HYDROSPHERE
+#>  3 55942a57c63a7fe59b495a77 SURFACE WATER
+#>  4 55942a57c63a7fe59b495a78 EARTH SCIENCE
+#>  5 55942a57c63a7fe59b495a78 HYDROSPHERE
+#>  6 55942a57c63a7fe59b495a78 SURFACE WATER
+#>  7 55942a58c63a7fe59b495a79 EARTH SCIENCE
+#>  8 55942a58c63a7fe59b495a79 HYDROSPHERE
+#>  9 55942a58c63a7fe59b495a79 SURFACE WATER
+#> 10 55942a58c63a7fe59b495a7a EARTH SCIENCE
+#> # ℹ 126,804 more rows
+        </output>
       </program>
 
       <p>
@@ -172,6 +230,36 @@ nasa_desc &lt;- nasa_desc %&gt;%
 nasa_title
 nasa_desc
         </input>
+        <output>
+#> # A tibble: 210,742 × 2
+#>    id                       word
+#>    &lt;chr&gt;                    &lt;chr&gt;
+#>  1 55942a57c63a7fe59b495a77 15
+#>  2 55942a57c63a7fe59b495a77 minute
+#>  3 55942a57c63a7fe59b495a77 stream
+#>  4 55942a57c63a7fe59b495a77 flow
+#>  5 55942a57c63a7fe59b495a77 data
+#>  6 55942a57c63a7fe59b495a77 usgs
+#>  7 55942a57c63a7fe59b495a77 fife
+#>  8 55942a57c63a7fe59b495a78 15
+#>  9 55942a57c63a7fe59b495a78 minute
+#> 10 55942a57c63a7fe59b495a78 stream
+#> # ℹ 210,732 more rows
+#> # A tibble: 2,691,556 × 2
+#>    id                       word
+#>    &lt;chr&gt;                    &lt;chr&gt;
+#>  1 55942a57c63a7fe59b495a77 usgs
+#>  2 55942a57c63a7fe59b495a77 15
+#>  3 55942a57c63a7fe59b495a77 minute
+#>  4 55942a57c63a7fe59b495a77 stream
+#>  5 55942a57c63a7fe59b495a77 flow
+#>  6 55942a57c63a7fe59b495a77 data
+#>  7 55942a57c63a7fe59b495a77 kings
+#>  8 55942a57c63a7fe59b495a77 creek
+#>  9 55942a57c63a7fe59b495a77 konza
+#> 10 55942a57c63a7fe59b495a77 prairie
+#> # ℹ 2,691,546 more rows
+        </output>
       </program>
     </subsection>
 
@@ -188,6 +276,22 @@ nasa_desc
 nasa_title %&gt;%
   count(word, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 11,607 × 2
+#>    word        n
+#>    &lt;chr&gt;   &lt;int&gt;
+#>  1 project  7735
+#>  2 data     3354
+#>  3 1        2841
+#>  4 level    2400
+#>  5 global   1809
+#>  6 v1       1478
+#>  7 daily    1397
+#>  8 3        1364
+#>  9 aura     1363
+#> 10 l2       1311
+#> # ℹ 11,597 more rows
+        </output>
       </program>
 
       <p>
@@ -199,6 +303,22 @@ nasa_title %&gt;%
 nasa_desc %&gt;%
   count(word, sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 35,375 × 2
+#>    word           n
+#>    &lt;chr&gt;      &lt;int&gt;
+#>  1 data       68962
+#>  2 modis      24423
+#>  3 global     23028
+#>  4 2          16599
+#>  5 1          15770
+#>  6 system     15480
+#>  7 product    14792
+#>  8 aqua       14738
+#>  9 earth      14374
+#> 10 resolution 13894
+#> # ℹ 35,365 more rows
+        </output>
       </program>
 
       <p>
@@ -238,6 +358,23 @@ nasa_keyword %&gt;%
   group_by(keyword) %&gt;%
   count(sort = TRUE)
         </input>
+        <output>
+#> # A tibble: 1,774 × 2
+#> # Groups:   keyword [1,774]
+#>    keyword                     n
+#>    &lt;chr&gt;                   &lt;int&gt;
+#>  1 EARTH SCIENCE           14362
+#>  2 Project                  7452
+#>  3 ATMOSPHERE               7321
+#>  4 Ocean Color              7268
+#>  5 Ocean Optics             7268
+#>  6 Oceans                   7268
+#>  7 completed                6452
+#>  8 ATMOSPHERIC WATER VAPOR  3142
+#>  9 OCEANS                   2765
+#> 10 LAND SURFACE             2720
+#> # ℹ 1,764 more rows
+        </output>
       </program>
 
       <p>
@@ -281,6 +418,22 @@ title_word_pairs &lt;- nasa_title %&gt;%
 
 title_word_pairs
         </input>
+        <output>
+#> # A tibble: 156,515 × 3
+#>    item1   item2      n
+#>    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
+#>  1 project system   796
+#>  2 eco     lba      683
+#>  3 airs    aqua     641
+#>  4 aqua    level    623
+#>  5 airs    level    612
+#>  6 aura    omi      607
+#>  7 global  grid     597
+#>  8 daily   global   574
+#>  9 boreas  data     551
+#> 10 gpm     ground   550
+#> # ℹ 156,505 more rows
+        </output>
       </program>
 
       <p>

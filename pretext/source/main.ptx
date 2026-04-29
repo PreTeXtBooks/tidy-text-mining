@@ -23,9 +23,6 @@
     <!-- out for now and write this when the book is more complete -->
     <xi:include href="./meta_frontmatter.ptx" />
 
-    <!-- Introduction chapter -->
-    <xi:include href="./ch_intro.ptx" />
-
     <!-- Chapter 1: The tidy text format -->
     <xi:include href="./ch_tidytext.ptx" />
 

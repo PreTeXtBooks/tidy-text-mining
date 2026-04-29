@@ -72,6 +72,22 @@ book_words &lt;- left_join(book_words, total_words)
 
 book_words
       </input>
+      <output>
+#> # A tibble: 40,378 × 4
+#>    book              word      n  total
+#>    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
+#>  1 Mansfield Park    the    6206 160465
+#>  2 Mansfield Park    to     5475 160465
+#>  3 Mansfield Park    and    5438 160465
+#>  4 Emma              to     5239 160996
+#>  5 Emma              the    5201 160996
+#>  6 Emma              and    4896 160996
+#>  7 Mansfield Park    of     4778 160465
+#>  8 Pride &amp; Prejudice the    4331 122204
+#>  9 Emma              of     4291 160996
+#> 10 Pride &amp; Prejudice to     4162 122204
+#> # ℹ 40,368 more rows
+      </output>
     </program>
 
     <p>
@@ -139,6 +155,22 @@ freq_by_rank &lt;- book_words %&gt;%
 
 freq_by_rank
       </input>
+      <output>
+#> # A tibble: 40,378 × 6
+#>    book              word      n  total  rank term_frequency
+#>    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt; &lt;int&gt;          &lt;dbl&gt;
+#>  1 Mansfield Park    the    6206 160465     1         0.0387
+#>  2 Mansfield Park    to     5475 160465     2         0.0341
+#>  3 Mansfield Park    and    5438 160465     3         0.0339
+#>  4 Emma              to     5239 160996     1         0.0325
+#>  5 Emma              the    5201 160996     2         0.0323
+#>  6 Emma              and    4896 160996     3         0.0304
+#>  7 Mansfield Park    of     4778 160465     4         0.0298
+#>  8 Pride &amp; Prejudice the    4331 122204     1         0.0354
+#>  9 Emma              of     4291 160996     4         0.0267
+#> 10 Pride &amp; Prejudice to     4162 122204     2         0.0341
+#> # ℹ 40,368 more rows
+      </output>
     </program>
 
     <p>
@@ -181,6 +213,15 @@ rank_subset &lt;- freq_by_rank %&gt;%
 
 lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
       </input>
+      <output>
+#> 
+#> Call:
+#> lm(formula = log10(term_frequency) ~ log10(rank), data = rank_subset)
+#> 
+#> Coefficients:
+#> (Intercept)  log10(rank)  
+#>     -0.6226      -1.1125
+      </output>
     </program>
 
     <p>
@@ -248,6 +289,22 @@ book_tf_idf &lt;- book_words %&gt;%
 
 book_tf_idf
       </input>
+      <output>
+#> # A tibble: 40,378 × 7
+#>    book              word      n  total     tf   idf tf_idf
+#>    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 Mansfield Park    the    6206 160465 0.0387     0      0
+#>  2 Mansfield Park    to     5475 160465 0.0341     0      0
+#>  3 Mansfield Park    and    5438 160465 0.0339     0      0
+#>  4 Emma              to     5239 160996 0.0325     0      0
+#>  5 Emma              the    5201 160996 0.0323     0      0
+#>  6 Emma              and    4896 160996 0.0304     0      0
+#>  7 Mansfield Park    of     4778 160465 0.0298     0      0
+#>  8 Pride &amp; Prejudice the    4331 122204 0.0354     0      0
+#>  9 Emma              of     4291 160996 0.0267     0      0
+#> 10 Pride &amp; Prejudice to     4162 122204 0.0341     0      0
+#> # ℹ 40,368 more rows
+      </output>
     </program>
 
     <p>
@@ -269,6 +326,22 @@ book_tf_idf %&gt;%
   select(-total) %&gt;%
   arrange(desc(tf_idf))
       </input>
+      <output>
+#> # A tibble: 40,378 × 6
+#>    book                word          n      tf   idf  tf_idf
+#>    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#>  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931
+#>  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735
+#>  3 Mansfield Park      crawford    493 0.00307  1.79 0.00550
+#>  4 Pride &amp; Prejudice   darcy       373 0.00305  1.79 0.00547
+#>  5 Persuasion          elliot      254 0.00304  1.79 0.00544
+#>  6 Emma                emma        786 0.00488  1.10 0.00536
+#>  7 Northanger Abbey    tilney      196 0.00252  1.79 0.00452
+#>  8 Emma                weston      389 0.00242  1.79 0.00433
+#>  9 Pride &amp; Prejudice   bennet      294 0.00241  1.79 0.00431
+#> 10 Persuasion          wentworth   191 0.00228  1.79 0.00409
+#> # ℹ 40,368 more rows
+      </output>
     </program>
 
     <p>
@@ -365,6 +438,22 @@ physics_words &lt;- physics %&gt;%
 
 physics_words
       </input>
+      <output>
+#> # A tibble: 12,667 × 3
+#>    author              word      n
+#>    &lt;chr&gt;               &lt;chr&gt; &lt;int&gt;
+#>  1 Galilei, Galileo    the    3760
+#>  2 Tesla, Nikola       the    3604
+#>  3 Huygens, Christiaan the    3553
+#>  4 Einstein, Albert    the    2993
+#>  5 Galilei, Galileo    of     2049
+#>  6 Einstein, Albert    of     2028
+#>  7 Tesla, Nikola       of     1737
+#>  8 Huygens, Christiaan of     1708
+#>  9 Huygens, Christiaan to     1207
+#> 10 Tesla, Nikola       a      1177
+#> # ℹ 12,657 more rows
+      </output>
     </program>
 
     <p>
@@ -409,6 +498,18 @@ physics %&gt;%
   filter(str_detect(text, "_k_")) %&gt;%
   select(text)
       </input>
+      <output>
+#> # A tibble: 7 × 1
+#>   text                                                                  
+#>   &lt;chr&gt;                                                                 
+#> 1 surface AB at the points AK_k_B. Then instead of the hemispherical    
+#> 2 would needs be that from all the other points K_k_B there should      
+#> 3 necessarily be equal to CD, because C_k_ is equal to CK, and C_g_ to  
+#> 4 the crystal at K_k_, all the points of the wave CO_oc_ will have      
+#> 5 O_o_ has reached K_k_. Which is easy to comprehend, since, of these   
+#> 6 CO_oc_ in the crystal, when O_o_ has arrived at K_k_, because it forms
+#> 7 ρ is the average density of the matter and _k_ is a constant connected
+      </output>
     </program>
 
     <p>
@@ -429,6 +530,22 @@ physics %&gt;%
   filter(str_detect(text, "RC")) %&gt;%
   select(text)
       </input>
+      <output>
+#> # A tibble: 44 × 1
+#>    text                                                                  
+#>    &lt;chr&gt;                                                                 
+#>  1 line RC, parallel and equal to AB, to be a portion of a wave of light,
+#>  2 represents the partial wave coming from the point A, after the wave RC
+#>  3 be the propagation of the wave RC which fell on AB, and would be the  
+#>  4 transparent body; seeing that the wave RC, having come to the aperture
+#>  5 incident rays. Let there be such a ray RC falling upon the surface    
+#>  6 CK. Make CO perpendicular to RC, and across the angle KCO adjust OK,  
+#>  7 the required refraction of the ray RC. The demonstration of this is,  
+#>  8 explaining ordinary refraction. For the refraction of the ray RC is   
+#>  9 29. Now as we have found CI the refraction of the ray RC, similarly   
+#> 10 the ray _r_C is inclined equally with RC, the line C_d_ will          
+#> # ℹ 34 more rows
+      </output>
     </program>
 
     <p>
@@ -480,7 +597,7 @@ ggplot(plot_physics, aes(tf_idf, word, fill = author)) +
         with high tf-idf across categories (books, authors). If you find you do share words with
         high tf-idf across categories, you may want to use <c>reorder_within()</c> and
         <c>scale_*_reordered()</c> to create visualizations, as shown in
-        <xref provisional="sec-word-topic-probabilities"/>.
+        <xref ref="subsec-word-topic-probs"/>.
       </p>
     </note>
   </section>
