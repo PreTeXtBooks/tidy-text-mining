@@ -118,6 +118,13 @@ library(tm)
 data("AssociatedPress", package = "topicmodels")
 AssociatedPress
         </input>
+        <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
+#> Non-/sparse entries: 302031/23244447
+#> Sparsity           : 99%
+#> Maximal term length: 18
+#> Weighting          : term frequency (tf)
+        </output>
       </program>
 
       <p>
@@ -131,6 +138,10 @@ AssociatedPress
 terms &lt;- Terms(AssociatedPress)
 head(terms)
         </input>
+        <output>
+#> [1] "aaron"      "abandon"    "abducted"   "abduction"  "abductions"
+#> [6] "abhor"
+        </output>
       </program>
 
       <p>
@@ -148,6 +159,22 @@ library(tidytext)
 ap_td &lt;- tidy(AssociatedPress)
 ap_td
         </input>
+        <output>
+#> # A tibble: 302,031 × 3
+#>    document term       count
+#>       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
+#>  1        1 adding         1
+#>  2        1 adult          2
+#>  3        1 ago            1
+#>  4        1 agreement      1
+#>  5        1 aid            1
+#>  6        1 air            1
+#>  7        1 all            1
+#>  8        1 american       1
+#>  9        1 and            1
+#> 10        1 anti           1
+#> # ℹ 302,021 more rows
+        </output>
       </program>
 
       <p>
@@ -178,6 +205,22 @@ ap_sentiments &lt;- ap_td %&gt;%
 
 ap_sentiments
         </input>
+        <output>
+#> # A tibble: 30,094 × 4
+#>    document term       count sentiment
+#>       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    
+#>  1        1 adult          2 positive 
+#>  2        1 anti           1 negative 
+#>  3        1 opposition     1 negative 
+#>  4        1 served         1 positive 
+#>  5        2 rejection      1 negative 
+#>  6        2 stress         1 negative 
+#>  7        2 violation      3 negative 
+#>  8        2 well           2 positive 
+#>  9        3 expulsion      1 negative 
+#> 10        3 problem        3 negative 
+#> # ℹ 30,084 more rows
+        </output>
       </program>
 
       <p>
@@ -365,6 +408,13 @@ year_term_counts %&gt;%
 ap_td %&gt;%
   cast_dtm(document, term, count)
       </input>
+      <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
+#> Non-/sparse entries: 302031/23244447
+#> Sparsity           : 99%
+#> Maximal term length: 18
+#> Weighting          : term frequency (tf)
+      </output>
     </program>
 
     <p>
@@ -377,6 +427,20 @@ ap_td %&gt;%
 ap_td %&gt;%
   cast_dfm(document, term, count)
       </input>
+      <output>
+#> Document-feature matrix of: 2,246 documents, 10,473 features (98.72% sparse)
+#>  and 0 docvars.
+#>     features
+#> docs adding adult ago agreement aid air all american and anti
+#>    1      1     2   1         1   1   1   1        1   1    1
+#>    2      0     0   0         0   0   0   1        1   1    0
+#>    3      0     0   0         0   0   0   0        1   0    0
+#>    4      0     0   0         0   0   0   0        1   0    0
+#>    5      0     0   0         0   0   0   0        1   0    0
+#>    6      0     0   0         0   0   0   1        1   1    0
+#> [ reached max_ndoc ... 2,240 more documents, reached max_nfeat ...
+#>  10,463 more features ]
+      </output>
     </program>
 
     <p>
@@ -394,6 +458,12 @@ m &lt;- ap_td %&gt;%
 class(m)
 dim(m)
       </input>
+      <output>
+#> [1] "dgCMatrix"
+#> attr(,"package")
+#> [1] "Matrix"
+#> [1]  2246 10473
+      </output>
     </program>
 
     <p>
@@ -413,6 +483,13 @@ austen_dtm &lt;- austen_books() %&gt;%
 
 austen_dtm
       </input>
+      <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 6, terms: 14516)&gt;&gt;
+#> Non-/sparse entries: 40378/46718
+#> Sparsity           : 54%
+#> Maximal term length: 19
+#> Weighting          : term frequency (tf)
+      </output>
     </program>
 
     <p>
@@ -447,6 +524,14 @@ acq
 # first document
 acq[[1]]
       </input>
+      <output>
+#> &lt;&lt;VCorpus&gt;&gt;
+#> Metadata:  corpus specific: 0, document level (indexed): 0
+#> Content:  documents: 50
+#> &lt;&lt;PlainTextDocument&gt;&gt;
+#> Metadata:  15
+#> Content:  chars: 1287
+      </output>
     </program>
 
     <p>
@@ -466,6 +551,25 @@ acq[[1]]
 acq_td &lt;- tidy(acq)
 acq_td
       </input>
+      <output>
+#> # A tibble: 50 × 16
+#>    author   datetimestamp       description heading id    language origin topics
+#>    &lt;chr&gt;    &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;
+#>  1 &lt;NA&gt;     1987-02-26 15:18:06 ""          COMPUT… 10    en       Reute… YES
+#>  2 &lt;NA&gt;     1987-02-26 15:19:15 ""          OHIO M… 12    en       Reute… YES
+#>  3 &lt;NA&gt;     1987-02-26 15:49:56 ""          MCLEAN… 44    en       Reute… YES
+#>  4 By Cal … 1987-02-26 15:51:17 ""          CHEMLA… 45    en       Reute… YES
+#>  5 &lt;NA&gt;     1987-02-26 16:08:33 ""          &lt;COFAB… 68    en       Reute… YES
+#>  6 &lt;NA&gt;     1987-02-26 16:32:37 ""          INVEST… 96    en       Reute… YES
+#>  7 By Patt… 1987-02-26 16:43:13 ""          AMERIC… 110   en       Reute… YES
+#>  8 &lt;NA&gt;     1987-02-26 16:59:25 ""          HONG K… 125   en       Reute… YES
+#>  9 &lt;NA&gt;     1987-02-26 17:01:28 ""          LIEBER… 128   en       Reute… YES
+#> 10 &lt;NA&gt;     1987-02-26 17:08:27 ""          GULF A… 134   en       Reute… YES
+#> # ℹ 40 more rows
+#> # ℹ 8 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,
+#> #   places &lt;named list&gt;, people &lt;lgl&gt;, orgs &lt;lgl&gt;, exchanges &lt;lgl&gt;,
+#> #   text &lt;chr&gt;
+      </output>
     </program>
 
     <p>
@@ -490,6 +594,36 @@ acq_tokens %&gt;%
   bind_tf_idf(word, id, n) %&gt;%
   arrange(desc(tf_idf))
       </input>
+      <output>
+#> # A tibble: 1,559 × 2
+#>    word         n
+#>    &lt;chr&gt;    &lt;int&gt;
+#>  1 dlrs       100
+#>  2 pct         70
+#>  3 mln         65
+#>  4 company     63
+#>  5 shares      52
+#>  6 reuter      50
+#>  7 stock       46
+#>  8 offer       34
+#>  9 share       34
+#> 10 american    28
+#> # ℹ 1,549 more rows
+#> # A tibble: 2,833 × 6
+#>    id    word         n     tf   idf tf_idf
+#>    &lt;chr&gt; &lt;chr&gt;    &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 186   groupe       2 0.133   3.91  0.522
+#>  2 128   liebert      3 0.130   3.91  0.510
+#>  3 474   esselte      5 0.114   3.91  0.445
+#>  4 371   burdett      6 0.103   3.91  0.405
+#>  5 442   hazleton     4 0.103   3.91  0.401
+#>  6 199   circuit      5 0.102   3.91  0.399
+#>  7 441   rmj          8 0.123   3.22  0.396
+#>  8 162   suffield     2 0.1     3.91  0.391
+#>  9 498   west         3 0.1     3.91  0.391
+#> 10 467   nursery      3 0.0968  3.91  0.379
+#> # ℹ 2,823 more rows
+      </output>
     </program>
 
     <subsection xml:id="subsec-financial-articles">
@@ -550,6 +684,20 @@ stock_articles &lt;- tibble(company = company,
         <input>
 stock_articles
         </input>
+        <output>
+#> # A tibble: 9 × 3
+#>   company   symbol corpus    
+#>   &lt;chr&gt;     &lt;chr&gt;  &lt;list&gt;    
+#> 1 Microsoft MSFT   &lt;WebCorps&gt;
+#> 2 Apple     AAPL   &lt;WebCorps&gt;
+#> 3 Google    GOOG   &lt;WebCorps&gt;
+#> 4 Amazon    AMZN   &lt;WebCorps&gt;
+#> 5 Facebook  FB     &lt;WebCorps&gt;
+#> 6 Twitter   TWTR   &lt;WebCorps&gt;
+#> 7 IBM       IBM    &lt;WebCorps&gt;
+#> 8 Yahoo     YHOO   &lt;WebCorps&gt;
+#> 9 Netflix   NFLX   &lt;WebCorps&gt;
+        </output>
       </program>
 
       <p>
@@ -569,6 +717,22 @@ stock_tokens &lt;- stock_articles %&gt;%
 
 stock_tokens
         </input>
+        <output>
+#> # A tibble: 105,666 × 5
+#>    company   datetimestamp       word        id                         heading
+#>    &lt;chr&gt;     &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;                      &lt;chr&gt;
+#>  1 Microsoft 2017-01-17 12:07:24 microsoft   tag:finance.google.com,cl… Micros…
+#>  2 Microsoft 2017-01-17 12:07:24 corporation tag:finance.google.com,cl… Micros…
+#>  3 Microsoft 2017-01-17 12:07:24 data        tag:finance.google.com,cl… Micros…
+#>  4 Microsoft 2017-01-17 12:07:24 privacy     tag:finance.google.com,cl… Micros…
+#>  5 Microsoft 2017-01-17 12:07:24 could       tag:finance.google.com,cl… Micros…
+#>  6 Microsoft 2017-01-17 12:07:24 send        tag:finance.google.com,cl… Micros…
+#>  7 Microsoft 2017-01-17 12:07:24 msft        tag:finance.google.com,cl… Micros…
+#>  8 Microsoft 2017-01-17 12:07:24 stock       tag:finance.google.com,cl… Micros…
+#>  9 Microsoft 2017-01-17 12:07:24 soaring     tag:finance.google.com,cl… Micros…
+#> 10 Microsoft 2017-01-17 12:07:24 by          tag:finance.google.com,cl… Micros…
+#> # ℹ 105,656 more rows
+        </output>
       </program>
 
       <p>
@@ -714,6 +878,20 @@ stock_sentiment_count &lt;- stock_tokens %&gt;%
 
 stock_sentiment_count
         </input>
+        <output>
+#> # A tibble: 9 × 7
+#>   company   constraining litigious negative positive superfluous uncertainty
+#>   &lt;chr&gt;            &lt;int&gt;     &lt;int&gt;    &lt;int&gt;    &lt;int&gt;       &lt;int&gt;       &lt;int&gt;
+#> 1 Amazon               7         8       84      144           3          70
+#> 2 Apple                9        11      161      156           2         132
+#> 3 Facebook             4        32      128      150           4          81
+#> 4 Google               7         8       60      103           0          58
+#> 5 IBM                  8        22      147      148           0         104
+#> 6 Microsoft            6        19       92      129           3         116
+#> 7 Netflix              4         7      111      162           0         106
+#> 8 Twitter              4        12      157       79           1          75
+#> 9 Yahoo                3        28      130       74           0          71
+        </output>
       </program>
 
       <p>
