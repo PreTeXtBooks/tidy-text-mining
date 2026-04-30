@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-dtm" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Converting to and from non-tidy formats</title>
-
+  <introduction>
   <p>
     In the previous chapters, we've been analyzing text arranged in the tidy text format: a table
     with one-token-per-document-per-row, such as is constructed by the <c>unnest_tokens()</c>
@@ -47,6 +47,7 @@
     explore how to tidy Corpus objects, which combine raw text with document metadata, into text
     data frames, leading to a case study of ingesting and analyzing financial articles.
   </p>
+  </introduction>
 
   <section xml:id="sec-tidy-dtm">
     <title>Tidying a document-term matrix</title>
