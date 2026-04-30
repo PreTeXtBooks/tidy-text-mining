@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-tfidf" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Analyzing word and document frequency: tf-idf</title>
-
+  <introduction>
   <p>
     A central question in text mining and natural language processing is how to quantify what a
     document is about. Can we do this by looking at the words that make up the document? One measure
@@ -43,6 +43,7 @@
     analysis and use consistent, effective tools to quantify how important various terms are in a
     document that is part of a collection.
   </p>
+  </introduction>
 
   <section xml:id="sec-term-frequency-jane-austen">
     <title>Term frequency in Jane Austen's novels</title>
