@@ -103,13 +103,6 @@ book_words
       frequency is.
     </p>
 
-    <figure xml:id="fig-plottf">
-      <caption>Term frequency distribution in Jane Austen's novels</caption>
-      <image source="images/fig-plottf.png" width="90%">
-        <description>Term frequency distribution in Jane Austen's novels.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 library(ggplot2)
@@ -120,7 +113,13 @@ ggplot(book_words, aes(n/total, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_y")
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-plottf">
+      <caption>Term frequency distribution in Jane Austen's novels</caption>
+      <image source="images/fig-plottf.png" width="90%">
+        <description>Term frequency distribution in Jane Austen's novels.</description>
+      </image>
+    </figure>
 
     <p>
       There are long tails to the right for these novels (those extremely common words!) that we
@@ -192,13 +191,6 @@ freq_by_rank
       negative slope.
     </p>
 
-    <figure xml:id="fig-zipf">
-      <caption>Zipf's law for Jane Austen's novels</caption>
-      <image source="images/fig-zipf.png" width="90%">
-        <description>Zipf's law for Jane Austen's novels on log-log axes.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 freq_by_rank %&gt;%
@@ -208,7 +200,12 @@ freq_by_rank %&gt;%
   scale_y_log10()
         </input>
       </program>
-    </listing>
+    <figure xml:id="fig-zipf">
+      <caption>Zipf's law for Jane Austen's novels</caption>
+      <image source="images/fig-zipf.png" width="90%">
+        <description>Zipf's law for Jane Austen's novels on log-log axes.</description>
+      </image>
+    </figure>
 
     <p>
       Notice that <xref ref="fig-zipf"/> is in log-log coordinates. We see that all six of Jane
@@ -252,13 +249,6 @@ lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
       the data in <xref ref="fig-zipffit"/> to see how it looks.
     </p>
 
-    <figure xml:id="fig-zipffit">
-      <caption>Fitting an exponent for Zipf's law with Jane Austen's novels</caption>
-      <image source="images/fig-zipffit.png" width="90%">
-        <description>Fitted power law for Zipf's law with Jane Austen's novels.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 freq_by_rank %&gt;%
@@ -270,7 +260,12 @@ freq_by_rank %&gt;%
   scale_y_log10()
         </input>
       </program>
-    </listing>
+    <figure xml:id="fig-zipffit">
+      <caption>Fitting an exponent for Zipf's law with Jane Austen's novels</caption>
+      <image source="images/fig-zipffit.png" width="90%">
+        <description>Fitted power law for Zipf's law with Jane Austen's novels.</description>
+      </image>
+    </figure>
 
     <p>
       We have found a result close to the classic version of Zipf's law for the corpus of Jane
@@ -389,13 +384,6 @@ book_tf_idf %&gt;%
       <xref ref="fig-plotseparate"/>.
     </p>
 
-    <figure xml:id="fig-plotseparate">
-      <caption>Highest tf-idf words in each Jane Austen novel</caption>
-      <image source="images/fig-plotseparate.png" width="90%">
-        <description>Highest tf-idf words in each Jane Austen novel.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 library(forcats)
@@ -410,7 +398,13 @@ book_tf_idf %&gt;%
   labs(x = "tf-idf", y = NULL)
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-plotseparate">
+      <caption>Highest tf-idf words in each Jane Austen novel</caption>
+      <image source="images/fig-plotseparate.png" width="90%">
+        <description>Highest tf-idf words in each Jane Austen novel.</description>
+      </image>
+    </figure>
 
     <p>
       Still all proper nouns in <xref ref="fig-plotseparate"/>! These words are, as measured by
@@ -495,13 +489,6 @@ physics_words
       <xref ref="fig-physicsseparate"/>.
     </p>
 
-    <figure xml:id="fig-physicsseparate">
-      <caption>Highest tf-idf words in each physics texts</caption>
-      <image source="images/fig-physicsseparate.png" width="90%">
-        <description>Highest tf-idf words in each physics text.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 plot_physics &lt;- physics_words %&gt;%
@@ -522,7 +509,13 @@ plot_physics %&gt;%
   facet_wrap(~author, ncol = 2, scales = "free")
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-physicsseparate">
+      <caption>Highest tf-idf words in each physics texts</caption>
+      <image source="images/fig-physicsseparate.png" width="90%">
+        <description>Highest tf-idf words in each physics text.</description>
+      </image>
+    </figure>
 
     <p>
       Very interesting indeed. One thing we see here is <q>_k_</q> in the Einstein text?!
@@ -597,13 +590,6 @@ physics %&gt;%
       steps since we are removing words from the tidy data frame.
     </p>
 
-    <figure xml:id="fig-mystopwords">
-      <caption>Highest tf-idf words in classic physics texts</caption>
-      <image source="images/fig-mystopwords.png" width="90%">
-        <description>Highest tf-idf words in classic physics texts after removing stopwords.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 mystopwords &lt;- tibble(word = c("eq", "co", "rc", "ac", "ak", "bn",
@@ -631,7 +617,13 @@ ggplot(plot_physics, aes(tf_idf, word, fill = author)) +
   labs(x = "tf-idf", y = NULL)
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-mystopwords">
+      <caption>Highest tf-idf words in classic physics texts</caption>
+      <image source="images/fig-mystopwords.png" width="90%">
+        <description>Highest tf-idf words in classic physics texts after removing stopwords.</description>
+      </image>
+    </figure>
 
     <p>
       One thing we can conclude from <xref ref="fig-mystopwords"/> is that we don't hear enough
