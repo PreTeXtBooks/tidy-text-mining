@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-sentiment" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Sentiment analysis with tidy data</title>
-
+  <introduction>
   <p>
     In the previous chapter, we explored in depth what we mean by the tidy text format and showed
     how this format can be used to approach questions about word frequency. This allowed us to
@@ -30,6 +30,7 @@
     often-used approach, <em>and</em> an approach that naturally takes advantage of the tidy tool
     ecosystem.
   </p>
+  </introduction>
 
   <section xml:id="sec-sentiments-datasets">
     <title>The <c>sentiments</c> datasets</title>
