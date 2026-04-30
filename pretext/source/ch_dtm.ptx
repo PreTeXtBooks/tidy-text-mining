@@ -173,13 +173,13 @@ ap_td
 #>  1        1 adding         1
 #>  2        1 adult          2
 #>  3        1 ago            1
-#>  4        1 agreement      1
-#>  5        1 aid            1
-#>  6        1 air            1
-#>  7        1 all            1
-#>  8        1 american       1
-#>  9        1 and            1
-#> 10        1 anti           1
+#>  4        1 alcohol        1
+#>  5        1 allegedly      1
+#>  6        1 allen          1
+#>  7        1 apparently     2
+#>  8        1 appeared       1
+#>  9        1 arrested       1
+#> 10        1 assault        1
 #> # ℹ 302,021 more rows
         </output>
       </console>
@@ -218,16 +218,16 @@ ap_sentiments
 #> # A tibble: 30,094 × 4
 #>    document term       count sentiment
 #>       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    
-#>  1        1 adult          2 positive 
-#>  2        1 anti           1 negative 
-#>  3        1 opposition     1 negative 
-#>  4        1 served         1 positive 
-#>  5        2 rejection      1 negative 
-#>  6        2 stress         1 negative 
-#>  7        2 violation      3 negative 
-#>  8        2 well           2 positive 
-#>  9        3 expulsion      1 negative 
-#> 10        3 problem        3 negative 
+#>  1        1 assault     1 negative 
+#>  2        1 complex     1 negative 
+#>  3        1 death       1 negative 
+#>  4        1 died        1 negative 
+#>  5        1 good        2 positive 
+#>  6        1 illness     1 negative 
+#>  7        1 killed      2 negative 
+#>  8        1 like        2 positive 
+#>  9        1 liked       1 positive 
+#> 10        1 miracle     1 positive 
 #> # ℹ 30,084 more rows
         </output>
       </console>
@@ -281,6 +281,11 @@ inaug_dfm &lt;- data_corpus_inaugural %&gt;%
 inaug_dfm
         </input>
       </program>
+      <console>
+        <output>
+#> Document-feature matrix of: 59 documents, 9,437 features (91.84% sparse) and 4 docvars.
+        </output>
+      </console>
 
       <p>
         The <c>tidy</c> method works on these document-feature matrices as well, turning them into
@@ -293,7 +298,24 @@ inaug_td &lt;- tidy(inaug_dfm)
 inaug_td
         </input>
       </program>
-
+      <console>
+        <output>
+#> # A tibble: 45,452 × 3
+#>    document        term            count
+#>    &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;    
+#>  1 1789-Washington fellow-citizens     1
+#>  2 1797-Adams      fellow-citizens     3
+#>  3 1801-Jefferson  fellow-citizens     2
+#>  4 1809-Madison    fellow-citizens     1
+#>  5 1813-Madison    fellow-citizens     1
+#>  6 1817-Monroe     fellow-citizens     5
+#>  7 1821-Monroe     fellow-citizens     1
+#>  8 1841-Harrison   fellow-citizens    11
+#>  9 1845-Polk       fellow-citizens     1
+#> 10 1849-Taylor     fellow-citizens     1
+#> # ℹ 30,084 more rows
+        </output>
+      </console>
       <p>
         We may be interested in finding the words most specific to each of the inaugural speeches.
         This could be quantified by calculating the tf-idf of each term-speech pair using the
