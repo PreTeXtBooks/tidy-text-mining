@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-ngrams" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Relationships between words: n-grams and correlations</title>
-
+  <introduction>
   <p>
     So far we've considered words as individual units, and considered their relationships to
     sentiments or to documents. However, many interesting text analyses are based on the
@@ -22,6 +22,7 @@
     and distances within a tidy data frame. Together these expand our toolbox for exploring text
     within the tidy data framework.
   </p>
+  </introduction>
 
   <section xml:id="sec-tokenizing-ngrams">
     <title>Tokenizing by n-gram</title>
@@ -312,13 +313,6 @@ bigram_tf_idf
         </output>
       </console>
 
-      <figure xml:id="fig-bigramtfidf">
-        <caption>Bigrams with the highest tf-idf from each Jane Austen novel</caption>
-        <image source="images/fig-bigramtfidf.png" width="90%">
-          <description>Bigrams with the highest tf-idf from each Jane Austen novel.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 library(ggplot2)
@@ -335,7 +329,13 @@ bigram_tf_idf %&gt;%
   labs(x = "tf-idf of bigram", y = NULL)
           </input>
         </program>
-      </listing>
+
+      <figure xml:id="fig-bigramtfidf">
+        <caption>Bigrams with the highest tf-idf from each Jane Austen novel</caption>
+        <image source="images/fig-bigramtfidf.png" width="90%">
+          <description>Bigrams with the highest tf-idf from each Jane Austen novel.</description>
+        </image>
+      </figure>
 
       <p>
         Much as we discovered in <xref ref="ch-tfidf"/>, the units that distinguish each Austen
@@ -482,14 +482,6 @@ not_words
         (<xref ref="fig-notwordsplot"/>).
       </p>
 
-      <figure xml:id="fig-notwordsplot">
-        <caption>Words preceded by 'not' that had the greatest contribution to sentiment values,
-        in either a positive or negative direction</caption>
-        <image source="images/fig-notwordsplot.png" width="90%">
-          <description>Words preceded by 'not' with greatest contribution to sentiment.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 library(ggplot2)
@@ -505,8 +497,13 @@ not_words %&gt;%
        y = "Words preceded by \"not\"")
           </input>
         </program>
-      </listing>
-
+      <figure xml:id="fig-notwordsplot">
+        <caption>Words preceded by 'not' that had the greatest contribution to sentiment values,
+        in either a positive or negative direction</caption>
+        <image source="images/fig-notwordsplot.png" width="90%">
+          <description>Words preceded by 'not' with greatest contribution to sentiment.</description>
+        </image>
+      </figure>
       <p>
         The bigrams <q>not like</q> and <q>not help</q> were overwhelmingly the largest causes of
         misidentification, making the text seem much more positive than it is. But we can see
@@ -540,14 +537,6 @@ negated_words &lt;- bigrams_separated %&gt;%
         examples of how finding consecutive words can give context to text mining methods.
       </p>
 
-      <figure xml:id="fig-negatedwords">
-        <caption>Most common positive or negative words to follow negations such as 'never', 'no',
-        'not', and 'without'</caption>
-        <image source="images/fig-negatedwords.png" width="90%">
-          <description>Most common positive or negative words to follow negations.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 negated_words %&gt;%
@@ -564,8 +553,14 @@ negated_words %&gt;%
   coord_flip()
           </input>
         </program>
-      </listing>
-    </subsection>
+      <figure xml:id="fig-negatedwords">
+        <caption>Most common positive or negative words to follow negations such as 'never', 'no',
+        'not', and 'without'</caption>
+        <image source="images/fig-negatedwords.png" width="90%">
+          <description>Most common positive or negative words to follow negations.</description>
+        </image>
+      </figure>
+</subsection>
 
     <subsection xml:id="subsec-bigrams-ggraph">
       <title>Visualizing a network of bigrams with ggraph</title>
@@ -652,14 +647,6 @@ bigram_graph
         we need to add three layers: nodes, edges, and text.
       </p>
 
-      <figure xml:id="fig-bigramgraph">
-        <caption>Common bigrams in Jane Austen's novels, showing those that occurred more than 20
-        times and where neither word was a stop word</caption>
-        <image source="images/fig-bigramgraph.png" width="90%">
-          <description>Common bigrams in Jane Austen's novels as a network graph.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 library(ggraph)
@@ -671,8 +658,13 @@ ggraph(bigram_graph, layout = "fr") +
   geom_node_text(aes(label = name), vjust = 1, hjust = 1)
           </input>
         </program>
-      </listing>
-
+      <figure xml:id="fig-bigramgraph">
+        <caption>Common bigrams in Jane Austen's novels, showing those that occurred more than 20
+        times and where neither word was a stop word</caption>
+        <image source="images/fig-bigramgraph.png" width="90%">
+          <description>Common bigrams in Jane Austen's novels as a network graph.</description>
+        </image>
+      </figure>
       <p>
         In <xref ref="fig-bigramgraph"/>, we can visualize some details of the text structure. For
         example, we see that salutations such as <q>miss</q>, <q>lady</q>, <q>sir</q>, and
@@ -705,13 +697,6 @@ ggraph(bigram_graph, layout = "fr") +
         </li>
       </ul>
 
-      <figure xml:id="fig-bigramggraphausten2">
-        <caption>Common bigrams in Jane Austen's novels, with some polishing</caption>
-        <image source="images/fig-bigramggraphausten2.png" width="90%">
-          <description>Polished network graph of common bigrams in Jane Austen's novels.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 set.seed(2020)
@@ -726,8 +711,12 @@ ggraph(bigram_graph, layout = "fr") +
   theme_void()
           </input>
         </program>
-      </listing>
-
+      <figure xml:id="fig-bigramggraphausten2">
+        <caption>Common bigrams in Jane Austen's novels, with some polishing</caption>
+        <image source="images/fig-bigramggraphausten2.png" width="90%">
+          <description>Polished network graph of common bigrams in Jane Austen's novels.</description>
+        </image>
+      </figure>
       <p>
         It may take some experimentation with ggraph to get your networks into a presentable
         format like this, but the network structure is useful and flexible way to visualize
@@ -808,14 +797,6 @@ kjv &lt;- gutenberg_download(10)
         </input>
       </program>
 
-      <figure xml:id="fig-kjvbigrams">
-        <caption>Directed graph of common bigrams in the King James Bible, showing those that
-        occurred more than 40 times</caption>
-        <image source="images/fig-kjvbigrams.png" width="90%">
-          <description>Directed graph of common bigrams in the King James Bible.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 library(stringr)
@@ -831,8 +812,13 @@ kjv_bigrams %&gt;%
   visualize_bigrams()
           </input>
         </program>
-      </listing>
-
+      <figure xml:id="fig-kjvbigrams">
+        <caption>Directed graph of common bigrams in the King James Bible, showing those that
+        occurred more than 40 times</caption>
+        <image source="images/fig-kjvbigrams.png" width="90%">
+          <description>Directed graph of common bigrams in the King James Bible.</description>
+        </image>
+      </figure>
       <p>
         <xref ref="fig-kjvbigrams"/> thus lays out a common <q>blueprint</q> of language within
         the Bible, particularly focused around <q>thy</q> and <q>thou</q> (which could probably be
