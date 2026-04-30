@@ -930,16 +930,16 @@ word_pairs
 #> # A tibble: 796,008 × 3
 #>    item1     item2         n
 #>    &lt;chr&gt;     &lt;chr&gt;     &lt;int&gt;
-#>  1 darcy     elizabeth   188
-#>  2 elizabeth darcy       188
-#>  3 elizabeth miss        167
-#>  4 miss      elizabeth   167
-#>  5 darcy     miss        157
-#>  6 miss      darcy       157
-#>  7 elizabeth jane        152
-#>  8 jane      elizabeth   152
-#>  9 catherine lady        150
-#> 10 lady      catherine   150
+#>  1 darcy     elizabeth   144
+#>  2 elizabeth darcy       144
+#>  3 miss      elizabeth   110
+#>  4 elizabeth miss        110
+#>  5 elizabeth jane        106
+#>  6 jane      elizabeth   106
+#>  7 miss      darcy        92
+#>  8 darcy     miss         92
+#>  9 elizabeth bingley      91
+#> 10 bingley   elizabeth    91
 #> # ℹ 795,998 more rows
         </output>
       </console>
@@ -967,16 +967,16 @@ word_pairs %&gt;%
 #> # A tibble: 2,930 × 3
 #>    item1 item2         n
 #>    &lt;chr&gt; &lt;chr&gt;     &lt;int&gt;
-#>  1 darcy elizabeth   188
-#>  2 darcy miss        157
-#>  3 darcy bingley     137
-#>  4 darcy jane         65
-#>  5 darcy bennet       61
-#>  6 darcy lady         61
-#>  7 darcy time         57
-#>  8 darcy wickham      55
-#>  9 darcy sister       52
-#> 10 darcy friend       48
+#>  1 darcy elizabeth   144
+#>  2 darcy miss         92
+#>  3 darcy bingley      86
+#>  4 darcy jane         46
+#>  5 darcy bennet       45
+#>  6 darcy sister       45
+#>  7 darcy time         41
+#>  8 darcy lady         38
+#>  9 darcy friend       37
+#> 10 darcy wickham      37
 #> # ℹ 2,920 more rows
         </output>
       </console>
