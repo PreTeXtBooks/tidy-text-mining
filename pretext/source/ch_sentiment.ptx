@@ -436,13 +436,6 @@ bing_and_nrc &lt;- bind_rows(
       <xref ref="fig-compareplot"/>.
     </p>
 
-    <figure xml:id="fig-compareplot">
-      <caption>Comparing three sentiment lexicons using <em>Pride and Prejudice</em></caption>
-      <image source="images/fig-compareplot.png" width="90%">
-        <description>Comparison of three sentiment lexicons for Pride and Prejudice.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 bind_rows(afinn,
@@ -452,7 +445,13 @@ bind_rows(afinn,
   facet_wrap(~method, ncol = 1, scales = "free_y")
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-compareplot">
+      <caption>Comparing three sentiment lexicons using <em>Pride and Prejudice</em></caption>
+      <image source="images/fig-compareplot.png" width="90%">
+        <description>Comparison of three sentiment lexicons for Pride and Prejudice.</description>
+      </image>
+    </figure>
 
     <p>
       The three different lexicons for calculating sentiment give results that are different in an
@@ -557,14 +556,6 @@ bing_word_counts
       the way we are consistently using tools built for handling tidy data frames.
     </p>
 
-    <figure xml:id="fig-pipetoplot">
-      <caption>Words that contribute to positive and negative sentiment in Jane Austen's
-      novels</caption>
-      <image source="images/fig-pipetoplot.png" width="90%">
-        <description>Bar chart of words contributing most to positive and negative sentiment.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 bing_word_counts %&gt;%
@@ -579,7 +570,14 @@ bing_word_counts %&gt;%
        y = NULL)
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-pipetoplot">
+      <caption>Words that contribute to positive and negative sentiment in Jane Austen's
+      novels</caption>
+      <image source="images/fig-pipetoplot.png" width="90%">
+        <description>Bar chart of words contributing most to positive and negative sentiment.</description>
+      </image>
+    </figure>
 
     <p>
       <xref ref="fig-pipetoplot"/> lets us spot an anomaly in the sentiment analysis; the word
@@ -630,13 +628,6 @@ custom_stop_words
       <xref ref="fig-firstwordcloud"/>.
     </p>
 
-    <figure xml:id="fig-firstwordcloud">
-      <caption>The most common words in Jane Austen's novels</caption>
-      <image source="images/fig-firstwordcloud.png" width="90%">
-        <description>Word cloud of the most common words in Jane Austen's novels.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 library(wordcloud)
@@ -647,7 +638,13 @@ tidy_books %&gt;%
   with(wordcloud(word, n, max.words = 100))
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-firstwordcloud">
+      <caption>The most common words in Jane Austen's novels</caption>
+      <image source="images/fig-firstwordcloud.png" width="90%">
+        <description>Word cloud of the most common words in Jane Austen's novels.</description>
+      </image>
+    </figure>
 
     <p>
       In other functions, such as <c>comparison.cloud()</c>, you may need to turn the data frame
@@ -657,13 +654,6 @@ tidy_books %&gt;%
       this can all be done with joins, piping, and dplyr because our data is in tidy format.
     </p>
 
-    <figure xml:id="fig-wordcloud">
-      <caption>Most common positive and negative words in Jane Austen's novels</caption>
-      <image source="images/fig-wordcloud.png" width="90%">
-        <description>Comparison word cloud of positive and negative words in Jane Austen's novels.</description>
-      </image>
-    </figure>
-    <listing>
     <program language="r">
         <input>
 library(reshape2)
@@ -676,7 +666,13 @@ tidy_books %&gt;%
                    max.words = 100)
         </input>
       </program>
-    </listing>
+
+    <figure xml:id="fig-wordcloud">
+      <caption>Most common positive and negative words in Jane Austen's novels</caption>
+      <image source="images/fig-wordcloud.png" width="90%">
+        <description>Comparison word cloud of positive and negative words in Jane Austen's novels.</description>
+      </image>
+    </figure>
 
     <p>
       The size of a word's text in <xref ref="fig-wordcloud"/> is in proportion to its frequency
