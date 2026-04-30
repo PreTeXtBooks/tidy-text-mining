@@ -72,6 +72,8 @@ book_words &lt;- left_join(book_words, total_words)
 
 book_words
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 40,378 × 4
 #>    book              word      n  total
@@ -88,7 +90,7 @@ book_words
 #> 10 Pride &amp; Prejudice to     4162 122204
 #> # ℹ 40,368 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       There is one row in this <c>book_words</c> data frame for each word-book combination;
@@ -160,6 +162,8 @@ freq_by_rank &lt;- book_words %&gt;%
 
 freq_by_rank
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 40,378 × 6
 #>    book              word      n  total  rank term_frequency
@@ -176,7 +180,7 @@ freq_by_rank
 #> 10 Pride &amp; Prejudice to     4162 122204     2         0.0341
 #> # ℹ 40,368 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       The <c>rank</c> column here tells us the rank of each word within the frequency table; the
@@ -223,6 +227,8 @@ rank_subset &lt;- freq_by_rank %&gt;%
 
 lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
       </input>
+    </program>
+    <console>
       <output>
 #> 
 #> Call:
@@ -232,7 +238,7 @@ lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
 #> (Intercept)  log10(rank)  
 #>     -0.6226      -1.1125
       </output>
-    </program>
+    </console>
 
     <p>
       Classic versions of Zipf's law have
@@ -304,6 +310,8 @@ book_tf_idf &lt;- book_words %&gt;%
 
 book_tf_idf
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 40,378 × 7
 #>    book              word      n  total     tf   idf tf_idf
@@ -320,7 +328,7 @@ book_tf_idf
 #> 10 Pride &amp; Prejudice to     4162 122204 0.0341     0      0
 #> # ℹ 40,368 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Notice that idf and thus tf-idf are zero for these extremely common words. These are all
@@ -341,6 +349,8 @@ book_tf_idf %&gt;%
   select(-total) %&gt;%
   arrange(desc(tf_idf))
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 40,378 × 6
 #>    book                word          n      tf   idf  tf_idf
@@ -357,7 +367,7 @@ book_tf_idf %&gt;%
 #> 10 Persuasion          wentworth   191 0.00228  1.79 0.00409
 #> # ℹ 40,368 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Here we see all proper nouns, names that are in fact important in these novels. None of them
@@ -458,6 +468,8 @@ physics_words &lt;- physics %&gt;%
 
 physics_words
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 12,667 × 3
 #>    author              word      n
@@ -474,7 +486,7 @@ physics_words
 #> 10 Tesla, Nikola       a      1177
 #> # ℹ 12,657 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Here we see just the raw counts; we need to remember that these documents are all different
@@ -523,6 +535,8 @@ physics %&gt;%
   filter(str_detect(text, "_k_")) %&gt;%
   select(text)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 7 × 1
 #>   text                                                                  
@@ -535,7 +549,7 @@ physics %&gt;%
 #> 6 CO_oc_ in the crystal, when O_o_ has arrived at K_k_, because it forms
 #> 7 ρ is the average density of the matter and _k_ is a constant connected
       </output>
-    </program>
+    </console>
 
     <p>
       Some cleaning up of the text may be in order. Also notice that there are separate <q>co</q>
@@ -555,6 +569,8 @@ physics %&gt;%
   filter(str_detect(text, "RC")) %&gt;%
   select(text)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 44 × 1
 #>    text                                                                  
@@ -571,7 +587,7 @@ physics %&gt;%
 #> 10 the ray _r_C is inclined equally with RC, the line C_d_ will          
 #> # ℹ 34 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Let's remove some of these less meaningful words to make a better, more meaningful plot.

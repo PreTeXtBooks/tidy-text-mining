@@ -62,6 +62,8 @@ raw_text &lt;- tibble(folder = dir(training_folder, full.names = TRUE)) %&gt;%
       <input>
 raw_text
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 511,655 × 3
 #>    newsgroup   id    text                                        
@@ -78,7 +80,7 @@ raw_text
 #> 10 alt.atheism 49960 ""                                           
 #> # ℹ 511,645 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Notice the <c>newsgroup</c> column, which describes which of the 20 newsgroups each message
@@ -211,6 +213,8 @@ words_by_newsgroup &lt;- usenet_words %&gt;%
 
 words_by_newsgroup
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 54,374 × 2
 #>    word        n
@@ -241,7 +245,7 @@ words_by_newsgroup
 #> 10 comp.os.ms-windows.misc      windows  841
 #> # ℹ 173,903 more rows
       </output>
-    </program>
+    </console>
 
     <subsection xml:id="subsec-usenet-tfidf">
       <title>Finding tf-idf within newsgroups</title>
@@ -260,6 +264,8 @@ tf_idf &lt;- words_by_newsgroup %&gt;%
 
 tf_idf
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 173,913 × 6
 #>    newsgroup            word         n      tf   idf tf_idf
@@ -276,7 +282,7 @@ tf_idf
 #> 10 comp.windows.x       motif      268 0.00941 2.303 0.0217
 #> # ℹ 173,903 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We can examine the top tf-idf for a few selected groups to extract words specific to those
@@ -330,6 +336,8 @@ newsgroup_cors &lt;- words_by_newsgroup %&gt;%
 
 newsgroup_cors
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 380 × 3
 #>    item1                    item2                    correlation
@@ -346,7 +354,7 @@ newsgroup_cors
 #> 10 comp.windows.x           comp.os.ms-windows.misc        0.787
 #> # ℹ 370 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We could then filter for stronger correlations among newsgroups, and visualize them in a
@@ -560,6 +568,8 @@ contributions &lt;- usenet_words %&gt;%
         <input>
 contributions
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 2,027 × 3
 #>    word      occurences contribution
@@ -576,7 +586,7 @@ contributions
 #> 10 perfect          264          528
 #> # ℹ 2,017 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Which words had the most effect on sentiment values overall
@@ -634,6 +644,8 @@ top_sentiment_words &lt;- words_by_newsgroup %&gt;%
         <input>
 top_sentiment_words
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 40,468 × 5
 #>    newsgroup               word      n value contribution
@@ -650,7 +662,7 @@ top_sentiment_words
 #> 10 talk.politics.mideast   don't    85    -2    -3.65e-4
 #> # ℹ 40,458 more rows
         </output>
-      </program>
+      </console>
 
       <figure xml:id="fig-newsgroupsentiment">
         <caption>Words that contributed the most to sentiment scores within each of six
@@ -730,6 +742,8 @@ sentiment_messages &lt;- usenet_words %&gt;%
 sentiment_messages %&gt;%
   arrange(desc(sentiment))
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 3,873 × 4
 #>    newsgroup        id    sentiment words
@@ -746,7 +760,7 @@ sentiment_messages %&gt;%
 #> 10 rec.sport.hockey 53598      3.33    12
 #> # ℹ 3,863 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Let's check this by looking at the most positive message in the whole dataset. To assist
@@ -764,6 +778,8 @@ print_message &lt;- function(group, message_id) {
 
 print_message("rec.sport.hockey", 53560)
         </input>
+      </program>
+      <console>
         <output>
 #> Everybody.  Please send me your predictions for the Stanley Cup Playoffs!
 #> I want to see who people think will win.!!!!!!!
@@ -791,7 +807,7 @@ print_message("rec.sport.hockey", 53560)
 #> I won, that I won!!!!!
 #> :)
         </output>
-      </program>
+      </console>
 
       <p>
         It looks like this message was chosen because it uses the word <q>winner</q> many times.
@@ -806,6 +822,8 @@ sentiment_messages %&gt;%
 
 print_message("rec.sport.hockey", 53907)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 3,873 × 4
 #>    newsgroup          id    sentiment words
@@ -829,7 +847,7 @@ print_message("rec.sport.hockey", 53907)
 #> just been SHIT. A real team like Toronto would never be moved!!!
 #> Andrew--
         </output>
-      </program>
+      </console>
 
       <p>
         Well, we can confidently say that the sentiment analysis worked!

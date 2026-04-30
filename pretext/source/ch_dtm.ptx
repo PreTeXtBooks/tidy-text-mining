@@ -118,6 +118,8 @@ library(tm)
 data("AssociatedPress", package = "topicmodels")
 AssociatedPress
         </input>
+      </program>
+      <console>
         <output>
 #> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 #> Non-/sparse entries: 302031/23244447
@@ -125,7 +127,7 @@ AssociatedPress
 #> Maximal term length: 18
 #> Weighting          : term frequency (tf)
         </output>
-      </program>
+      </console>
 
       <p>
         We see that this dataset contains 2246 documents (each of them an AP article) and 10473
@@ -138,11 +140,13 @@ AssociatedPress
 terms &lt;- Terms(AssociatedPress)
 head(terms)
         </input>
+      </program>
+      <console>
         <output>
 #> [1] "aaron"      "abandon"    "abducted"   "abduction"  "abductions"
 #> [6] "abhor"
         </output>
-      </program>
+      </console>
 
       <p>
         If we wanted to analyze this data with tidy tools, we would first need to turn it into a
@@ -159,6 +163,8 @@ library(tidytext)
 ap_td &lt;- tidy(AssociatedPress)
 ap_td
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 302,031 × 3
 #>    document term       count
@@ -175,7 +181,7 @@ ap_td
 #> 10        1 anti           1
 #> # ℹ 302,021 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Notice that we now have a tidy three-column <c>tbl_df</c>, with variables
@@ -205,6 +211,8 @@ ap_sentiments &lt;- ap_td %&gt;%
 
 ap_sentiments
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 30,094 × 4
 #>    document term       count sentiment
@@ -221,7 +229,7 @@ ap_sentiments
 #> 10        3 problem        3 negative 
 #> # ℹ 30,084 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This would let us visualize which words from the AP articles most often contributed to
@@ -408,6 +416,8 @@ year_term_counts %&gt;%
 ap_td %&gt;%
   cast_dtm(document, term, count)
       </input>
+    </program>
+    <console>
       <output>
 #> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 #> Non-/sparse entries: 302031/23244447
@@ -415,7 +425,7 @@ ap_td %&gt;%
 #> Maximal term length: 18
 #> Weighting          : term frequency (tf)
       </output>
-    </program>
+    </console>
 
     <p>
       Similarly, we could cast the table into a <c>dfm</c> object from quanteda's dfm with
@@ -427,6 +437,8 @@ ap_td %&gt;%
 ap_td %&gt;%
   cast_dfm(document, term, count)
       </input>
+    </program>
+    <console>
       <output>
 #> Document-feature matrix of: 2,246 documents, 10,473 features (98.72% sparse)
 #>  and 0 docvars.
@@ -441,7 +453,7 @@ ap_td %&gt;%
 #> [ reached max_ndoc ... 2,240 more documents, reached max_nfeat ...
 #>  10,463 more features ]
       </output>
-    </program>
+    </console>
 
     <p>
       Some tools simply require a sparse matrix:
@@ -458,13 +470,15 @@ m &lt;- ap_td %&gt;%
 class(m)
 dim(m)
       </input>
+    </program>
+    <console>
       <output>
 #> [1] "dgCMatrix"
 #> attr(,"package")
 #> [1] "Matrix"
 #> [1]  2246 10473
       </output>
-    </program>
+    </console>
 
     <p>
       This kind of conversion could easily be done from any of the tidy text structures we've used
@@ -483,6 +497,8 @@ austen_dtm &lt;- austen_books() %&gt;%
 
 austen_dtm
       </input>
+    </program>
+    <console>
       <output>
 #> &lt;&lt;DocumentTermMatrix (documents: 6, terms: 14516)&gt;&gt;
 #> Non-/sparse entries: 40378/46718
@@ -490,7 +506,7 @@ austen_dtm
 #> Maximal term length: 19
 #> Weighting          : term frequency (tf)
       </output>
-    </program>
+    </console>
 
     <p>
       This casting process allows for reading, filtering, and processing to be done using dplyr
@@ -524,6 +540,8 @@ acq
 # first document
 acq[[1]]
       </input>
+    </program>
+    <console>
       <output>
 #> &lt;&lt;VCorpus&gt;&gt;
 #> Metadata:  corpus specific: 0, document level (indexed): 0
@@ -532,7 +550,7 @@ acq[[1]]
 #> Metadata:  15
 #> Content:  chars: 1287
       </output>
-    </program>
+    </console>
 
     <p>
       A corpus object is structured like a list, with each item containing both text and metadata
@@ -551,6 +569,8 @@ acq[[1]]
 acq_td &lt;- tidy(acq)
 acq_td
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 50 × 16
 #>    author   datetimestamp       description heading id    language origin topics
@@ -570,7 +590,7 @@ acq_td
 #> #   places &lt;named list&gt;, people &lt;lgl&gt;, orgs &lt;lgl&gt;, exchanges &lt;lgl&gt;,
 #> #   text &lt;chr&gt;
       </output>
-    </program>
+    </console>
 
     <p>
       This can then be used with <c>unnest_tokens()</c> to, for example, find the most common
@@ -594,6 +614,8 @@ acq_tokens %&gt;%
   bind_tf_idf(word, id, n) %&gt;%
   arrange(desc(tf_idf))
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 1,559 × 2
 #>    word         n
@@ -624,7 +646,7 @@ acq_tokens %&gt;%
 #> 10 467   nursery      3 0.0968  3.91  0.379
 #> # ℹ 2,823 more rows
       </output>
-    </program>
+    </console>
 
     <subsection xml:id="subsec-financial-articles">
       <title>Example: mining financial articles</title>
@@ -684,6 +706,8 @@ stock_articles &lt;- tibble(company = company,
         <input>
 stock_articles
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 9 × 3
 #>   company   symbol corpus    
@@ -698,7 +722,7 @@ stock_articles
 #> 8 Yahoo     YHOO   &lt;WebCorps&gt;
 #> 9 Netflix   NFLX   &lt;WebCorps&gt;
         </output>
-      </program>
+      </console>
 
       <p>
         Each of the items in the <c>corpus</c> list column is a <c>WebCorpus</c> object, which is
@@ -717,6 +741,8 @@ stock_tokens &lt;- stock_articles %&gt;%
 
 stock_tokens
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 105,666 × 5
 #>    company   datetimestamp       word        id                         heading
@@ -733,7 +759,7 @@ stock_tokens
 #> 10 Microsoft 2017-01-17 12:07:24 by          tag:finance.google.com,cl… Micros…
 #> # ℹ 105,656 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Here we see some of each article's metadata alongside the words used. We could use tf-idf
@@ -893,6 +919,8 @@ stock_sentiment_count &lt;- stock_tokens %&gt;%
 
 stock_sentiment_count
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 9 × 7
 #>   company   constraining litigious negative positive superfluous uncertainty
@@ -907,7 +935,7 @@ stock_sentiment_count
 #> 8 Twitter              4        12      157       79           1          75
 #> 9 Yahoo                3        28      130       74           0          71
         </output>
-      </program>
+      </console>
 
       <p>
         It might be interesting to examine which company has the most news with <q>litigious</q>

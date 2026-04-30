@@ -89,6 +89,8 @@ library(tidytext)
 
 get_sentiments("afinn")
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 2,477 × 2
 #>    word       value
@@ -105,12 +107,14 @@ get_sentiments("afinn")
 #> 10 abhors        -3
 #> # ℹ 2,467 more rows
       </output>
-    </program>
+    </console>
 
     <program language="r">
       <input>
 get_sentiments("bing")
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 6,786 × 2
 #>    word        sentiment
@@ -127,12 +131,14 @@ get_sentiments("bing")
 #> 10 aborts      negative 
 #> # ℹ 6,776 more rows
       </output>
-    </program>
+    </console>
 
     <program language="r">
       <input>
 get_sentiments("nrc")
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 13,901 × 2
 #>    word        sentiment
@@ -149,7 +155,7 @@ get_sentiments("nrc")
 #> 10 abandonment fear     
 #> # ℹ 13,891 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       How were these sentiment lexicons put together and validated? They were constructed via either
@@ -256,6 +262,8 @@ tidy_books %&gt;%
   inner_join(nrc_joy) %&gt;%
   count(word, sort = TRUE)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 303 × 2
 #>    word        n
@@ -272,7 +280,7 @@ tidy_books %&gt;%
 #> 10 kind       82
 #> # ℹ 293 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       We see mostly positive, happy words about hope, friendship, and love here. We also see some
@@ -366,6 +374,8 @@ pride_prejudice &lt;- tidy_books %&gt;%
 
 pride_prejudice
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 122,204 × 4
 #>    book              linenumber chapter word     
@@ -382,7 +392,7 @@ pride_prejudice
 #> 10 Pride &amp; Prejudice         10       1 is       
 #> # ℹ 122,194 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Now, we can use <c>inner_join()</c> to calculate the sentiment in different ways.
@@ -479,6 +489,8 @@ get_sentiments("nrc") %&gt;%
   filter(sentiment %in% c("positive", "negative")) %&gt;%
   count(sentiment)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 2 × 2
 #>   sentiment     n
@@ -486,13 +498,15 @@ get_sentiments("nrc") %&gt;%
 #> 1 negative   3324
 #> 2 positive   2312
       </output>
-    </program>
+    </console>
 
     <program language="r">
       <input>
 get_sentiments("bing") %&gt;%
   count(sentiment)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 2 × 2
 #>   sentiment     n
@@ -500,7 +514,7 @@ get_sentiments("bing") %&gt;%
 #> 1 negative   4781
 #> 2 positive   2005
       </output>
-    </program>
+    </console>
 
     <p>
       Both lexicons have more negative than positive words, but the ratio of negative to positive
@@ -533,6 +547,8 @@ bing_word_counts &lt;- tidy_books %&gt;%
 
 bing_word_counts
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 2,585 × 3
 #>    word     sentiment     n
@@ -549,7 +565,7 @@ bing_word_counts
 #> 10 pleasure positive    462
 #> # ℹ 2,575 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       This can be shown visually, and we can pipe straight into ggplot2, if we like, because of
@@ -595,6 +611,8 @@ custom_stop_words &lt;- bind_rows(tibble(word = c("miss"),
 
 custom_stop_words
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 1,150 × 2
 #>    word        lexicon
@@ -611,7 +629,7 @@ custom_stop_words
 #> 10 actually    SMART  
 #> # ℹ 1,140 more rows
       </output>
-    </program>
+    </console>
   </section>
 
   <section xml:id="sec-wordclouds">
@@ -718,10 +736,12 @@ p_and_p_sentences &lt;- tibble(text = prideprejudice) %&gt;%
       <input>
 p_and_p_sentences$sentence[2]
       </input>
+    </program>
+    <console>
       <output>
 #> [1] "by jane austen"
       </output>
-    </program>
+    </console>
 
     <p>
       The sentence tokenizing does seem to have a bit of trouble with UTF-8 encoded text,
@@ -748,6 +768,8 @@ austen_chapters %&gt;%
   group_by(book) %&gt;%
   summarise(chapters = n())
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 6 × 2
 #>   book                chapters
@@ -759,7 +781,7 @@ austen_chapters %&gt;%
 #> 5 Northanger Abbey          32
 #> 6 Persuasion                25
       </output>
-    </program>
+    </console>
 
     <p>
       We have recovered the correct number of chapters in each novel (plus an <q>extra</q> row for
@@ -797,6 +819,8 @@ tidy_books %&gt;%
   slice_max(ratio, n = 1) %&gt;%
   ungroup()
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 6 × 5
 #>   book                chapter negativewords words  ratio
@@ -808,7 +832,7 @@ tidy_books %&gt;%
 #> 5 Northanger Abbey         21           149  2982 0.0500
 #> 6 Persuasion                4            62  1807 0.0343
       </output>
-    </program>
+    </console>
 
     <p>
       These are the chapters with the most sad words in each book, normalized for number of words

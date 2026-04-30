@@ -53,6 +53,8 @@ austen_bigrams &lt;- austen_books() %&gt;%
 
 austen_bigrams
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 662,792 × 2
 #>    book                bigram         
@@ -69,7 +71,7 @@ austen_bigrams
 #> 10 Sense &amp; Sensibility had long       
 #> # ℹ 662,782 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       This data structure is still a variation of the tidy text format. It is structured as
@@ -97,6 +99,8 @@ austen_bigrams
 austen_bigrams %&gt;%
   count(bigram, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 193,212 × 2
 #>    bigram       n
@@ -113,7 +117,7 @@ austen_bigrams %&gt;%
 #> 10 had been  1206
 #> # ℹ 193,202 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         As one might expect, a lot of the most common bigrams are pairs of common (uninteresting)
@@ -141,6 +145,8 @@ bigram_counts &lt;- bigrams_filtered %&gt;%
 
 bigram_counts
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 28,971 × 3
 #>    word1   word2         n
@@ -157,7 +163,7 @@ bigram_counts
 #> 10 colonel brandon      96
 #> # ℹ 28,961 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We can see that names (whether first and last or with a salutation) are the most common
@@ -178,6 +184,8 @@ bigrams_united &lt;- bigrams_filtered %&gt;%
 
 bigrams_united
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 38,910 × 2
 #>    book                bigram                  
@@ -194,7 +202,7 @@ bigrams_united
 #> 10 Sense &amp; Sensibility norland estate          
 #> # ℹ 38,900 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         In other analyses you may be interested in the most common trigrams, which are consecutive
@@ -212,6 +220,8 @@ austen_books() %&gt;%
          !word3 %in% stop_words$word) %&gt;%
   count(word1, word2, word3, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 6,139 × 4
 #>    word1     word2     word3         n
@@ -228,7 +238,7 @@ austen_books() %&gt;%
 #> 10 ten       thousand  pounds        7
 #> # ℹ 6,129 more rows
         </output>
-      </program>
+      </console>
     </subsection>
 
     <subsection xml:id="subsec-analyzing-bigrams">
@@ -246,6 +256,8 @@ bigrams_filtered %&gt;%
   filter(word2 == "street") %&gt;%
   count(book, word1, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 33 × 3
 #>    book                word1           n
@@ -262,7 +274,7 @@ bigrams_filtered %&gt;%
 #> 10 Persuasion          rivers          4
 #> # ℹ 23 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         A bigram can also be treated as a term in a document in the same way that we treated
@@ -280,6 +292,8 @@ bigram_tf_idf &lt;- bigrams_united %&gt;%
 
 bigram_tf_idf
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 31,388 × 6
 #>    book                bigram                n     tf   idf tf_idf
@@ -296,7 +310,7 @@ bigram_tf_idf
 #> 10 Pride &amp; Prejudice   lady catherine       87 0.0139  1.79 0.0248
 #> # ℹ 31,378 more rows
         </output>
-      </program>
+      </console>
 
       <figure xml:id="fig-bigramtfidf">
         <caption>Bigrams with the highest tf-idf from each Jane Austen novel</caption>
@@ -363,6 +377,8 @@ bigrams_separated %&gt;%
   filter(word1 == "not") %&gt;%
   count(word1, word2, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 1,178 × 3
 #>    word1 word2     n
@@ -379,7 +395,7 @@ bigrams_separated %&gt;%
 #> 10 not   in      110
 #> # ℹ 1,168 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         By performing sentiment analysis on the bigram data, we can examine how often
@@ -399,6 +415,8 @@ AFINN &lt;- get_sentiments("afinn")
 
 AFINN
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 2,477 × 2
 #>    word       value
@@ -415,7 +433,7 @@ AFINN
 #> 10 abhors        -3
 #> # ℹ 2,467 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We can then examine the most frequent words that were preceded by <q>not</q> and were
@@ -431,6 +449,8 @@ not_words &lt;- bigrams_separated %&gt;%
 
 not_words
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 229 × 3
 #>    word2   value     n
@@ -447,7 +467,7 @@ not_words
 #> 10 worth       2    17
 #> # ℹ 219 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         For example, the most common sentiment-associated word to follow <q>not</q> was
@@ -586,6 +606,8 @@ bigram_graph &lt;- bigram_counts %&gt;%
 
 bigram_graph
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 28,971 × 3
 #>    word1   word2         n
@@ -614,7 +636,7 @@ bigram_graph
 #> [22] miss    ->morland    captain ->benwick    miss    ->smith
 #> + ... omitted several edges
         </output>
-      </program>
+      </console>
 
       <p>
         igraph has plotting functions built in, but they're not what the package is designed to
@@ -879,6 +901,8 @@ austen_section_words &lt;- austen_books() %&gt;%
 
 austen_section_words
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 37,240 × 3
 #>    book              section word        
@@ -895,7 +919,7 @@ austen_section_words
 #> 10 Pride &amp; Prejudice       1 entering    
 #> # ℹ 37,230 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         One useful function from widyr is the <c>pairwise_count()</c> function. The prefix
@@ -914,6 +938,8 @@ word_pairs &lt;- austen_section_words %&gt;%
 
 word_pairs
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 796,008 × 3
 #>    item1     item2         n
@@ -930,7 +956,7 @@ word_pairs
 #> 10 lady      catherine   150
 #> # ℹ 795,998 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Notice that while the input had one row for each pair of a document (a 10-line section)
@@ -949,6 +975,8 @@ word_pairs
 word_pairs %&gt;%
   filter(item1 == "darcy")
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 2,930 × 3
 #>    item1 item2         n
@@ -965,7 +993,7 @@ word_pairs %&gt;%
 #> 10 darcy friend       48
 #> # ℹ 2,920 more rows
         </output>
-      </program>
+      </console>
     </subsection>
 
     <subsection xml:id="subsec-pairwise-correlation">
@@ -1050,6 +1078,8 @@ word_cors &lt;- austen_section_words %&gt;%
 
 word_cors
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 154,842 × 3
 #>    item1     item2     correlation
@@ -1066,7 +1096,7 @@ word_cors
 #> 10 forster   colonel         0.622
 #> # ℹ 154,832 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This output format is helpful for exploration. For example, we could find the words most
@@ -1078,6 +1108,8 @@ word_cors
 word_cors %&gt;%
   filter(item1 == "pounds")
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 393 × 3
 #>    item1  item2     correlation
@@ -1094,7 +1126,7 @@ word_cors %&gt;%
 #> 10 pounds ready          0.0860
 #> # ℹ 383 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This lets us pick particular interesting words and find the other words most associated
