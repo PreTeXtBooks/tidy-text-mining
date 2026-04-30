@@ -96,11 +96,13 @@ text &lt;- c("Because I could not stop for Death -",
 
 text
       </input>
+    </program>
+    <console>
       <output>
 #> [1] "Because I could not stop for Death -"   "He kindly stopped for me -"
 #> [3] "The Carriage held but just Ourselves -" "and Immortality"
       </output>
-    </program>
+    </console>
 
     <p>
       This is a typical character vector that we might want to analyze. In order to turn it into a
@@ -114,6 +116,8 @@ text_df &lt;- tibble(line = 1:4, text = text)
 
 text_df
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 4 × 2
 #>    line text                                  
@@ -123,7 +127,7 @@ text_df
 #> 3     3 The Carriage held but just Ourselves -
 #> 4     4 and Immortality
       </output>
-    </program>
+    </console>
 
     <p>
       What does it mean that this data frame has printed out as a <q>tibble</q>? A tibble is a
@@ -164,6 +168,8 @@ library(tidytext)
 text_df %&gt;%
   unnest_tokens(word, text)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 20 × 2
 #>     line word       
@@ -189,7 +195,7 @@ text_df %&gt;%
 #> 19     4 and        
 #> 20     4 immortality
       </output>
-    </program>
+    </console>
 
     <p>
       The two basic arguments to <c>unnest_tokens</c> used here are column names. First we have
@@ -261,6 +267,8 @@ original_books &lt;- austen_books() %&gt;%
 
 original_books
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 73,422 × 4
 #>    text                    book                linenumber chapter
@@ -277,7 +285,7 @@ original_books
 #> 10 "CHAPTER 1"             Sense &amp; Sensibility         10       1
 #> # ℹ 73,412 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       To work with this as a tidy dataset, we need to restructure it in the
@@ -293,6 +301,8 @@ tidy_books &lt;- original_books %&gt;%
 
 tidy_books
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 725,064 × 4
 #>    book                linenumber chapter word       
@@ -309,7 +319,7 @@ tidy_books
 #> 10 Sense &amp; Sensibility         13       1 the        
 #> # ℹ 725,054 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       This function uses the
@@ -353,6 +363,8 @@ tidy_books &lt;- tidy_books %&gt;%
 tidy_books %&gt;%
   count(word, sort = TRUE)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 13,910 × 2
 #>    word       n
@@ -369,7 +381,7 @@ tidy_books %&gt;%
 #> 10 house    699
 #> # ℹ 13,900 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Because we've been using tidy tools, our word counts are stored in a tidy data frame. This
@@ -482,6 +494,8 @@ tidy_hgwells &lt;- hgwells %&gt;%
 tidy_hgwells %&gt;%
   count(word, sort = TRUE)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 11,768 × 2
 #>    word       n
@@ -498,7 +512,7 @@ tidy_hgwells %&gt;%
 #> 10 eyes     210
 #> # ℹ 11,758 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Now let's get some well-known works of the Brontë sisters, whose lives overlapped with Jane
@@ -540,6 +554,8 @@ tidy_bronte &lt;- bronte %&gt;%
 tidy_bronte %&gt;%
   count(word, sort = TRUE)
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 23,042 × 2
 #>    word       n
@@ -556,7 +572,7 @@ tidy_bronte %&gt;%
 #> 10 half     586
 #> # ℹ 23,032 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Interesting that <q>time</q>, <q>eyes</q>, and <q>hand</q> are in the top 10 for both H.G.
@@ -588,6 +604,8 @@ frequency &lt;- bind_rows(mutate(tidy_bronte, author = "Brontë Sisters"),
 
 frequency
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 57,812 × 4
 #>    word    `Jane Austen` author          proportion
@@ -604,7 +622,7 @@ frequency
 #> 10 abandon   NA          H.G. Wells      0.0000150 
 #> # ℹ 57,802 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       We use <c>str_extract()</c> here because the UTF-8 encoded texts from Project Gutenberg have
@@ -684,6 +702,8 @@ cor.test(data = frequency[frequency$author == "Brontë Sisters",],
 cor.test(data = frequency[frequency$author == "H.G. Wells",],
          ~ proportion + `Jane Austen`)
       </input>
+    </program>
+    <console>
       <output>
 #> 
 #> 	Pearson's product-moment correlation
@@ -708,7 +728,7 @@ cor.test(data = frequency[frequency$author == "H.G. Wells",],
 #>       cor 
 #> 0.4241484
       </output>
-    </program>
+    </console>
 
     <p>
       Just as we saw in the plots, the word frequencies are more correlated between the Austen and

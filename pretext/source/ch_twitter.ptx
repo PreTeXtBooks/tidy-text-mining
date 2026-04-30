@@ -126,6 +126,8 @@ frequency &lt;- tidy_tweets %&gt;%
 
 frequency
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 20,722 × 5
 #>    person word               n total    freq
@@ -142,7 +144,7 @@ frequency
 #> 10 Julia  morning          278 74541 0.00373
 #> # ℹ 20,712 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       This is a nice and tidy data frame but we would actually like to plot those frequencies on
@@ -161,6 +163,8 @@ frequency &lt;- frequency %&gt;%
 
 frequency
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 17,629 × 3
 #>    word                 Julia     David
@@ -177,7 +181,7 @@ frequency
 #> 10 @lizasperling    0.0000134 0.0000496
 #> # ℹ 17,619 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Now this is ready for us to plot. Let's use <c>geom_jitter()</c> so that we don't see the
@@ -284,6 +288,8 @@ word_ratios &lt;- tidy_tweets %&gt;%
 word_ratios %&gt;%
   arrange(abs(logratio))
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 377 × 4
 #>    word         David   Julia logratio
@@ -300,7 +306,7 @@ word_ratios %&gt;%
 #> 10 words      0.00367 0.00355  0.0328
 #> # ℹ 367 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       We are about equally likely to tweet about maps, email, files, and APIs.
@@ -378,6 +384,8 @@ words_by_time &lt;- tidy_tweets %&gt;%
 
 words_by_time
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 327 × 6
 #>    time_floor          person word    count time_total word_total
@@ -394,7 +402,7 @@ words_by_time
 #> 10 2016-01-01 00:00:00 Julia  data        5        401        111
 #> # ℹ 317 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Each row in this data frame corresponds to one person using one word in a given time bin.
@@ -417,6 +425,8 @@ nested_data &lt;- words_by_time %&gt;%
 
 nested_data
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 32 × 3
 #>    person word    data             
@@ -433,7 +443,7 @@ nested_data
 #> 10 Julia  data    &lt;tibble [12 × 4]&gt;
 #> # ℹ 22 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       This data frame has one row for each person-word combination; the <c>data</c> column is a
@@ -461,6 +471,8 @@ nested_models &lt;- nested_data %&gt;%
 
 nested_models
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 32 × 4
 #>    person word    data              models
@@ -477,7 +489,7 @@ nested_models
 #> 10 Julia  data    &lt;tibble [12 × 4]&gt; &lt;glm&gt;
 #> # ℹ 22 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       Now notice that we have a new column for the modeling results; it is another list column
@@ -511,6 +523,8 @@ top_slopes &lt;- slopes %&gt;%
 
 top_slopes
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 6 × 9
 #>   person word      data              term   estimate std.error statistic p.value
@@ -523,7 +537,7 @@ top_slopes
 #> 6 David  #user2016 &lt;tibble [3 × 4]&gt;  time_… -8.18e-7   1.55e-7     -5.27 1.34e-7
 #> # ℹ 1 more variable: adjusted.p.value &lt;dbl&gt;
       </output>
-    </program>
+    </console>
 
     <p>
       To visualize our results, we can plot these words' use for both David and Julia over this
@@ -643,6 +657,8 @@ tidy_tweets &lt;- tweets %&gt;%
 
 tidy_tweets
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 11,074 × 7
 #>         id created_at          source            retweets favorites person word
@@ -659,7 +675,7 @@ tidy_tweets
 #> 10 8.04e17 2016-12-01 02:56:10 Twitter Web Clie…        0        11 Julia  pack…
 #> # ℹ 11,064 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       To start with, let's look at the number of times each of our tweets was retweeted. Let's
@@ -676,6 +692,8 @@ totals &lt;- tidy_tweets %&gt;%
 
 totals
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 2 × 2
 #>   person total_rts
@@ -683,7 +701,7 @@ totals
 #> 1 David      13012
 #> 2 Julia       1749
       </output>
-    </program>
+    </console>
 
     <p>
       Now let's find the median number of retweets for each word and person. We probably want to
@@ -711,6 +729,8 @@ word_by_rts %&gt;%
   filter(uses &gt;= 5) %&gt;%
   arrange(desc(retweets))
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 178 × 5
 #>    person word          retweets  uses total_rts
@@ -727,7 +747,7 @@ word_by_rts %&gt;%
 #> 10 David  bayesian          34       7     13012
 #> # ℹ 168 more rows
       </output>
-    </program>
+    </console>
 
     <p>
       At the top of this sorted data frame, we see tweets from Julia and David about packages that

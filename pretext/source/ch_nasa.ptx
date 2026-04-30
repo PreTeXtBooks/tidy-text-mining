@@ -54,6 +54,8 @@ library(jsonlite)
 metadata &lt;- fromJSON("https://data.nasa.gov/data.json")
 names(metadata$dataset)
       </input>
+    </program>
+    <console>
       <output>
 #>  [1] "_id"                "@type"              "accessLevel"
 #>  [4] "accrualPeriodicity" "bureauCode"         "contactPoint"
@@ -65,7 +67,7 @@ names(metadata$dataset)
 #> [22] "isPartOf"           "references"         "rights"
 #> [25] "describedBy"
       </output>
-    </program>
+    </console>
 
     <p>
       We see here that we could extract information from who publishes each dataset to what license
@@ -83,12 +85,14 @@ class(metadata$dataset$title)
 class(metadata$dataset$description)
 class(metadata$dataset$keyword)
       </input>
+    </program>
+    <console>
       <output>
 #> [1] "character"
 #> [1] "character"
 #> [1] "list"
       </output>
-    </program>
+    </console>
 
     <p>
       The title and description fields are stored as character vectors, but the keywords are stored
@@ -111,6 +115,8 @@ nasa_title &lt;- tibble(id = metadata$dataset$`_id`$`$oid`,
                      title = metadata$dataset$title)
 nasa_title
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 32,089 × 2
 #>    id                       title
@@ -127,7 +133,7 @@ nasa_title
 #> 10 55942a58c63a7fe59b495a80 2001 Environmental Sustainability Index (ESI)
 #> # ℹ 32,079 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         These are just a few example titles from the datasets we will be exploring. Notice that we
@@ -144,6 +150,8 @@ nasa_desc %&gt;%
   select(desc) %&gt;%
   sample_n(5)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 5 × 1
 #>   desc
@@ -154,7 +162,7 @@ nasa_desc %&gt;%
 #> 4 "This dataset is part of the collection of Special Sensor Microwave/Imager…
 #> 5 "The goal of this STTR program is to employ nanostructured materials in an…
         </output>
-      </program>
+      </console>
 
       <p>
         Here we see the first part of several selected description fields from the metadata.
@@ -175,6 +183,8 @@ nasa_keyword &lt;- tibble(id = metadata$dataset$`_id`$`$oid`,
 
 nasa_keyword
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 126,814 × 2
 #>    id                       keyword
@@ -191,7 +201,7 @@ nasa_keyword
 #> 10 55942a58c63a7fe59b495a7a EARTH SCIENCE
 #> # ℹ 126,804 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This is a tidy data frame because we have one row for each keyword; this means we will
@@ -230,6 +240,8 @@ nasa_desc &lt;- nasa_desc %&gt;%
 nasa_title
 nasa_desc
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 210,742 × 2
 #>    id                       word
@@ -260,7 +272,7 @@ nasa_desc
 #> 10 55942a57c63a7fe59b495a77 prairie
 #> # ℹ 2,691,546 more rows
         </output>
-      </program>
+      </console>
     </subsection>
 
     <subsection xml:id="subsec-nasa-initial-exploration">
@@ -276,6 +288,8 @@ nasa_desc
 nasa_title %&gt;%
   count(word, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 11,607 × 2
 #>    word        n
@@ -292,7 +306,7 @@ nasa_title %&gt;%
 #> 10 l2       1311
 #> # ℹ 11,597 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         What about the descriptions?
@@ -303,6 +317,8 @@ nasa_title %&gt;%
 nasa_desc %&gt;%
   count(word, sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 35,375 × 2
 #>    word           n
@@ -319,7 +335,7 @@ nasa_desc %&gt;%
 #> 10 resolution 13894
 #> # ℹ 35,365 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Words like <q>data</q> and <q>global</q> are used very often in NASA titles and
@@ -358,6 +374,8 @@ nasa_keyword %&gt;%
   group_by(keyword) %&gt;%
   count(sort = TRUE)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 1,774 × 2
 #> # Groups:   keyword [1,774]
@@ -375,7 +393,7 @@ nasa_keyword %&gt;%
 #> 10 LAND SURFACE             2720
 #> # ℹ 1,764 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We likely want to change all of the keywords to either lower or upper case to get rid of
@@ -418,6 +436,8 @@ title_word_pairs &lt;- nasa_title %&gt;%
 
 title_word_pairs
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 156,515 × 3
 #>    item1   item2      n
@@ -434,7 +454,7 @@ title_word_pairs
 #> 10 gpm     ground   550
 #> # ℹ 156,505 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         These are the pairs of words that occur together most often in title fields. Some of these

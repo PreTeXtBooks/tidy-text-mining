@@ -84,6 +84,8 @@ library(topicmodels)
 data("AssociatedPress")
 AssociatedPress
       </input>
+    </program>
+    <console>
       <output>
 #> &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 #> Non-/sparse entries: 302031/23244447
@@ -91,7 +93,7 @@ AssociatedPress
 #> Maximal term length: 18
 #> Weighting          : term frequency (tf)
       </output>
-    </program>
+    </console>
 
     <p>
       We can use the <c>LDA()</c> function from the topicmodels package, setting <c>k = 2</c>, to
@@ -116,10 +118,12 @@ AssociatedPress
 ap_lda &lt;- LDA(AssociatedPress, k = 2, control = list(seed = 1234))
 ap_lda
       </input>
+    </program>
+    <console>
       <output>
 #> A LDA_VEM topic model with 2 topics.
       </output>
-    </program>
+    </console>
 
     <p>
       Fitting the model was the <q>easy part</q>: the rest of the analysis will involve exploring
@@ -143,6 +147,8 @@ library(tidytext)
 ap_topics &lt;- tidy(ap_lda, matrix = "beta")
 ap_topics
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 20,946 × 3
 #>    topic term            beta
@@ -159,7 +165,7 @@ ap_topics
 #> 10     1 able        2.32e-4
 #> # ℹ 20,936 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Notice that this has turned the model into a one-topic-per-term-per-row format. For each
@@ -231,6 +237,8 @@ beta_wide &lt;- ap_topics %&gt;%
 
 beta_wide
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 198 × 4
 #>    term         topic1  topic2 log_ratio
@@ -247,7 +255,7 @@ beta_wide
 #> 10 campaign    0.000982 0.00237   1.27  
 #> # ℹ 188 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         The words with the greatest differences between the two topics are visualized in
@@ -295,6 +303,8 @@ beta_wide %&gt;%
 ap_documents &lt;- tidy(ap_lda, matrix = "gamma")
 ap_documents
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 4,492 × 3
 #>    document topic   gamma
@@ -311,7 +321,7 @@ ap_documents
 #> 10 10           1 0.655  
 #> # ℹ 4,482 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Each of these values is an estimated proportion of words from that document that are
@@ -333,6 +343,8 @@ tidy(AssociatedPress) %&gt;%
   filter(document == 6) %&gt;%
   arrange(desc(count))
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 287 × 3
 #>    document term         count
@@ -349,7 +361,7 @@ tidy(AssociatedPress) %&gt;%
 #> 10        6 reagan           3
 #> # ℹ 277 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Based on the most common words, this appears to be an article about the relationship
@@ -446,6 +458,8 @@ word_counts &lt;- by_chapter_word %&gt;%
 
 word_counts
       </input>
+    </program>
+    <console>
       <output>
 #> # A tibble: 104,721 × 3
 #>    document                                  word      n
@@ -462,7 +476,7 @@ word_counts
 #> 10 Great Expectations_2                      pip      43
 #> # ℹ 104,711 more rows
       </output>
-    </program>
+    </console>
 
     <subsection xml:id="subsec-lda-chapters">
       <title>LDA on chapters</title>
@@ -481,6 +495,8 @@ chapters_dtm &lt;- word_counts %&gt;%
 
 chapters_dtm
         </input>
+      </program>
+      <console>
         <output>
 #> &lt;&lt;DocumentTermMatrix (documents: 182, terms: 18215)&gt;&gt;
 #> Non-/sparse entries: 104721/3210409
@@ -488,7 +504,7 @@ chapters_dtm
 #> Maximal term length: 19
 #> Weighting          : term frequency (tf)
         </output>
-      </program>
+      </console>
 
       <p>
         We can then use the <c>LDA()</c> function to create a four-topic model. In this case we
@@ -501,10 +517,12 @@ chapters_dtm
 chapters_lda &lt;- LDA(chapters_dtm, k = 4, control = list(seed = 1234))
 chapters_lda
         </input>
+      </program>
+      <console>
         <output>
 #> A LDA_VEM topic model with 4 topics.
         </output>
-      </program>
+      </console>
 
       <p>
         Much as we did on the Associated Press data, we can examine per-topic-per-word
@@ -516,6 +534,8 @@ chapters_lda
 chapter_topics &lt;- tidy(chapters_lda, matrix = "beta")
 chapter_topics
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 72,860 × 3
 #>    topic term         beta
@@ -532,7 +552,7 @@ chapter_topics
 #> 10     1 estella  5.13e-6
 #> # ℹ 72,850 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Notice that this has turned the model into a one-topic-per-term-per-row format. For each
@@ -555,6 +575,8 @@ top_terms &lt;- chapter_topics %&gt;%
 
 top_terms
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 20 × 3
 #>    topic term         beta
@@ -580,7 +602,7 @@ top_terms
 #> 19     4 time      0.00447
 #> 20     4 herbert   0.00439
         </output>
-      </program>
+      </console>
 
       <p>
         This tidy output lends itself well to a ggplot2 visualization
@@ -630,6 +652,8 @@ top_terms %&gt;%
 chapters_gamma &lt;- tidy(chapters_lda, matrix = "gamma")
 chapters_gamma
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 728 × 3
 #>    document              topic    gamma
@@ -646,7 +670,7 @@ chapters_gamma
 #> 10 Great Expectations_17     2 0.00214
 #> # ℹ 718 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         Each of these values is an estimated proportion of words from that document that are
@@ -674,6 +698,8 @@ chapters_gamma &lt;- chapters_gamma %&gt;%
 
 chapters_gamma
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 728 × 4
 #>    title             chapter topic    gamma
@@ -690,7 +716,7 @@ chapters_gamma
 #> 10 Great Expectations     17     2 0.00214
 #> # ℹ 718 more rows
         </output>
-      </program>
+      </console>
 
       <listing xml:id="fig-chaptersldagamma">
         <caption>The gamma probabilities for each chapter within each book</caption>
@@ -730,6 +756,8 @@ chapter_classifications &lt;- chapters_gamma %&gt;%
 
 chapter_classifications
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 182 × 4
 #>    title             chapter topic gamma
@@ -746,7 +774,7 @@ chapter_classifications
 #> 10 Great Expectations     47     4 0.982
 #> # ℹ 172 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We can then compare each to the <q>consensus</q> topic for each book (the most common
@@ -766,6 +794,8 @@ chapter_classifications %&gt;%
   inner_join(book_topics, by = "topic") %&gt;%
   filter(title != consensus)
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 2 × 5
 #>   title             chapter topic gamma consensus              
@@ -773,7 +803,7 @@ chapter_classifications %&gt;%
 #> 1 Great Expectations      5     1 0.476 Pride and Prejudice    
 #> 2 Great Expectations     54     3 0.503 The War of the Worlds  
         </output>
-      </program>
+      </console>
 
       <p>
         We see that only two chapters from <em>Great Expectations</em> were misclassified, as LDA
@@ -804,6 +834,8 @@ chapter_classifications %&gt;%
 assignments &lt;- augment(chapters_lda, data = chapters_dtm)
 assignments
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 104,721 × 4
 #>    document              term  count .topic
@@ -820,7 +852,7 @@ assignments
 #> 10 Great Expectations_15 joe      21      4
 #> # ℹ 104,711 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This returns a tidy data frame of book-term counts, but adds an extra column:
@@ -839,6 +871,8 @@ assignments &lt;- assignments %&gt;%
 
 assignments
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 104,721 × 6
 #>    title             chapter term  count .topic consensus         
@@ -855,7 +889,7 @@ assignments
 #> 10 Great Expectations     15 joe      21      4 Great Expectations
 #> # ℹ 104,711 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         This combination of the true book (<c>title</c>) and the book assigned to it
@@ -914,6 +948,8 @@ wrong_words %&gt;%
   ungroup() %&gt;%
   arrange(desc(n))
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 4,725 × 6
 #>    title             chapter term  count .topic consensus          
@@ -944,7 +980,7 @@ wrong_words %&gt;%
 #> 10 Great Expectations The War of the Worlds time     8
 #> # ℹ 2,863 more rows
         </output>
-      </program>
+      </console>
 
       <p>
         We can see that a number of words were often assigned to the Pride and Prejudice or War of
@@ -965,6 +1001,8 @@ wrong_words %&gt;%
 word_counts %&gt;%
   filter(word == "flopson")
         </input>
+      </program>
+      <console>
         <output>
 #> # A tibble: 3 × 3
 #>   document                  word        n
@@ -973,7 +1011,7 @@ word_counts %&gt;%
 #> 2 Great Expectations_23     flopson     1
 #> 3 Great Expectations_26     flopson     1
         </output>
-      </program>
+      </console>
 
       <p>
         The LDA algorithm is stochastic, and it can accidentally land on a topic that spans
