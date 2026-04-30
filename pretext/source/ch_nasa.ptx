@@ -709,9 +709,14 @@ desc_tf_idf &lt;- full_join(desc_tf_idf, nasa_keyword, by = "id")
         plot those words in <xref ref="fig-plottfidf"/>.
       </p>
 
-      <listing xml:id="fig-plottfidf">
+      <figure xml:id="fig-plottfidf">
         <caption>Distribution of tf-idf for words from datasets labeled with selected keywords</caption>
-        <program language="r">
+        <image source="images/fig-plottfidf.png" width="90%">
+          <description>Distribution of tf-idf for words from datasets labeled with selected keywords.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 desc_tf_idf %&gt;%
   filter(!near(tf, 1)) %&gt;%

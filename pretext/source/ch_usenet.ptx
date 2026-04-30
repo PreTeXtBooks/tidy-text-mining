@@ -71,9 +71,14 @@ raw_text
       (<xref ref="fig-messagecounts"/>)?
     </p>
 
-    <listing xml:id="fig-messagecounts">
+    <figure xml:id="fig-messagecounts">
       <caption>Number of messages from each newsgroup</caption>
-      <program language="r">
+      <image source="images/fig-messagecounts.png" width="90%">
+        <description>Number of messages from each Usenet newsgroup.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(ggplot2)
 
@@ -217,9 +222,14 @@ tf_idf
         <xref ref="fig-scitfidf"/>.
       </p>
 
-      <listing xml:id="fig-scitfidf">
+      <figure xml:id="fig-scitfidf">
         <caption>Terms with the highest tf-idf within each of the science-related newsgroups</caption>
-        <program language="r">
+        <image source="images/fig-scitfidf.png" width="90%">
+          <description>Terms with highest tf-idf within science-related Usenet newsgroups.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 tf_idf %&gt;%
   filter(str_detect(newsgroup, "^sci\\.")) %&gt;%
@@ -416,9 +426,14 @@ sci_lda %&gt;%
       (<xref ref="fig-newsgroupsentiments"/>).
     </p>
 
-    <listing xml:id="fig-newsgroupsentiments">
+    <figure xml:id="fig-newsgroupsentiments">
       <caption>Average AFINN value for posts within each newsgroup</caption>
-      <program language="r">
+      <image source="images/fig-newsgroupsentiments.png" width="90%">
+        <description>Average AFINN sentiment value per Usenet newsgroup.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 newsgroup_sentiments &lt;- words_by_newsgroup %&gt;%
   inner_join(get_sentiments("afinn"), by = "word") %&gt;%
@@ -474,10 +489,15 @@ contributions
         (<xref ref="fig-usenetcontributions"/>)?
       </p>
 
-      <listing xml:id="fig-usenetcontributions">
+      <figure xml:id="fig-usenetcontributions">
         <caption>Words with the greatest contributions to positive/negative sentiment values in
         the Usenet text</caption>
-        <program language="r">
+        <image source="images/fig-usenetcontributions.png" width="90%">
+          <description>Words with greatest contribution to sentiment in Usenet posts.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 contributions %&gt;%
   slice_max(abs(contribution), n = 25) %&gt;%
@@ -522,10 +542,15 @@ top_sentiment_words
         </input>
       </program>
 
-      <listing xml:id="fig-newsgroupsentiment">
+      <figure xml:id="fig-newsgroupsentiment">
         <caption>Words that contributed the most to sentiment scores within each of six
         newsgroups</caption>
-        <program language="r">
+        <image source="images/fig-newsgroupsentiment.png" width="90%">
+          <description>Words contributing most to sentiment within selected newsgroups.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 top_sentiment_words %&gt;%
   filter(str_detect(newsgroup, "^(talk|alt|misc)")) %&gt;%
@@ -672,10 +697,15 @@ usenet_bigram_counts &lt;- usenet_bigrams %&gt;%
         most often contributed in the <q>wrong</q> direction.
       </p>
 
-      <listing xml:id="fig-negatewords">
+      <figure xml:id="fig-negatewords">
         <caption>Words that contributed the most to sentiment when they followed a 'negating'
         word</caption>
-        <program language="r">
+        <image source="images/fig-negatewords.png" width="90%">
+          <description>Words contributing most to sentiment after negation words in Usenet.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 negate_words &lt;- c("not", "without", "no", "can't", "don't", "won't")
 

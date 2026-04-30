@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Rbuildignore
+Rplots.pdf
 _publish.R
 *_files
 _book

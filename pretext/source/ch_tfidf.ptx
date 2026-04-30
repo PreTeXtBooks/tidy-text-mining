@@ -100,9 +100,14 @@ book_words
       frequency is.
     </p>
 
-    <listing xml:id="fig-plottf">
+    <figure xml:id="fig-plottf">
       <caption>Term frequency distribution in Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-plottf.png" width="90%">
+        <description>Term frequency distribution in Jane Austen's novels.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(ggplot2)
 
@@ -182,9 +187,14 @@ freq_by_rank
       negative slope.
     </p>
 
-    <listing xml:id="fig-zipf">
+    <figure xml:id="fig-zipf">
       <caption>Zipf's law for Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-zipf.png" width="90%">
+        <description>Zipf's law for Jane Austen's novels on log-log axes.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 freq_by_rank %&gt;%
   ggplot(aes(rank, term_frequency, color = book)) +
@@ -235,9 +245,14 @@ lm(log10(term_frequency) ~ log10(rank), data = rank_subset)
       the data in <xref ref="fig-zipffit"/> to see how it looks.
     </p>
 
-    <listing xml:id="fig-zipffit">
+    <figure xml:id="fig-zipffit">
       <caption>Fitting an exponent for Zipf's law with Jane Austen's novels</caption>
-      <program language="r">
+      <image source="images/fig-zipffit.png" width="90%">
+        <description>Fitted power law for Zipf's law with Jane Austen's novels.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 freq_by_rank %&gt;%
   ggplot(aes(rank, term_frequency, color = book)) +
@@ -363,9 +378,14 @@ book_tf_idf %&gt;%
       <xref ref="fig-plotseparate"/>.
     </p>
 
-    <listing xml:id="fig-plotseparate">
+    <figure xml:id="fig-plotseparate">
       <caption>Highest tf-idf words in each Jane Austen novel</caption>
-      <program language="r">
+      <image source="images/fig-plotseparate.png" width="90%">
+        <description>Highest tf-idf words in each Jane Austen novel.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(forcats)
 
@@ -462,9 +482,14 @@ physics_words
       <xref ref="fig-physicsseparate"/>.
     </p>
 
-    <listing xml:id="fig-physicsseparate">
+    <figure xml:id="fig-physicsseparate">
       <caption>Highest tf-idf words in each physics texts</caption>
-      <program language="r">
+      <image source="images/fig-physicsseparate.png" width="90%">
+        <description>Highest tf-idf words in each physics text.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 plot_physics &lt;- physics_words %&gt;%
   bind_tf_idf(word, author, n) %&gt;%
@@ -555,9 +580,14 @@ physics %&gt;%
       steps since we are removing words from the tidy data frame.
     </p>
 
-    <listing xml:id="fig-mystopwords">
+    <figure xml:id="fig-mystopwords">
       <caption>Highest tf-idf words in classic physics texts</caption>
-      <program language="r">
+      <image source="images/fig-mystopwords.png" width="90%">
+        <description>Highest tf-idf words in classic physics texts after removing stopwords.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 mystopwords &lt;- tibble(word = c("eq", "co", "rc", "ac", "ak", "bn",
                                    "fig", "file", "cg", "cb", "cm",

@@ -24,9 +24,14 @@
       our tweeting patterns overall (<xref ref="fig-tweets"/>).
     </p>
 
-    <listing xml:id="fig-tweets">
+    <figure xml:id="fig-tweets">
       <caption>All tweets from our accounts</caption>
-      <program language="r">
+      <image source="images/fig-tweets.png" width="90%">
+        <description>Histogram of tweets from Julia Silge and David Robinson over time.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(lubridate)
 library(ggplot2)
@@ -180,9 +185,14 @@ frequency
       text labels don't all print out on top of each other (only some will print).
     </p>
 
-    <listing xml:id="fig-wideplot">
+    <figure xml:id="fig-wideplot">
       <caption>Comparing the frequency of words used by Julia and David</caption>
-      <program language="r">
+      <image source="images/fig-wideplot.png" width="90%">
+        <description>Comparison of word frequencies between Julia and David on Twitter.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 library(scales)
 
@@ -302,9 +312,14 @@ word_ratios %&gt;%
       <xref ref="fig-plotratios"/>.
     </p>
 
-    <listing xml:id="fig-plotratios">
+    <figure xml:id="fig-plotratios">
       <caption>Comparing the odds ratios of words from our accounts</caption>
-      <program language="r">
+      <image source="images/fig-plotratios.png" width="90%">
+        <description>Log odds ratios of words from Julia and David's Twitter accounts.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 word_ratios %&gt;%
   group_by(logratio &lt; 0) %&gt;%
@@ -515,9 +530,14 @@ top_slopes
       year of tweets.
     </p>
 
-    <listing xml:id="fig-topdave">
+    <figure xml:id="fig-topdave">
       <caption>Trending words in David's tweets</caption>
-      <program language="r">
+      <image source="images/fig-topdave.png" width="90%">
+        <description>Trending words in David Robinson's tweets.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 words_by_time %&gt;%
   inner_join(top_slopes, by = c("word", "person")) %&gt;%
@@ -551,9 +571,14 @@ words_by_time %&gt;%
       <xref ref="fig-topjulia"/>.
     </p>
 
-    <listing xml:id="fig-topjulia">
+    <figure xml:id="fig-topjulia">
       <caption>Trending words in Julia's tweets</caption>
-      <program language="r">
+      <image source="images/fig-topjulia.png" width="90%">
+        <description>Trending words in Julia Silge's tweets.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 words_by_time %&gt;%
   inner_join(top_slopes, by = c("word", "person")) %&gt;%
@@ -714,9 +739,14 @@ word_by_rts %&gt;%
       (<xref ref="fig-plotrts"/>).
     </p>
 
-    <listing xml:id="fig-plotrts">
+    <figure xml:id="fig-plotrts">
       <caption>Words with highest median retweets</caption>
-      <program language="r">
+      <image source="images/fig-plotrts.png" width="90%">
+        <description>Words associated with the highest median retweets.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 word_by_rts %&gt;%
   filter(uses &gt;= 5) %&gt;%
@@ -771,9 +801,14 @@ word_by_favs &lt;- tidy_tweets %&gt;%
       <xref ref="fig-plotfavs"/>.
     </p>
 
-    <listing xml:id="fig-plotfavs">
+    <figure xml:id="fig-plotfavs">
       <caption>Words with highest median favorites</caption>
-      <program language="r">
+      <image source="images/fig-plotfavs.png" width="90%">
+        <description>Words associated with the highest median favorites.</description>
+      </image>
+    </figure>
+    <listing>
+    <program language="r">
         <input>
 word_by_favs %&gt;%
   filter(uses &gt;= 5) %&gt;%

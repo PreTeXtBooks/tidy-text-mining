@@ -759,10 +759,15 @@ stock_tf_idf &lt;- stock_tokens %&gt;%
         with Netflix).
       </p>
 
-      <listing xml:id="fig-stocktfidf">
+      <figure xml:id="fig-stocktfidf">
         <caption>The 8 words with the highest tf-idf in recent articles specific to each
         company</caption>
-        <program language="r">
+        <image source="images/fig-stocktfidf.png" width="90%">
+          <description>Highest tf-idf words in financial articles for each company.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 stock_tf_idf %&gt;%
   group_by(company) %&gt;%
@@ -788,11 +793,16 @@ stock_tf_idf %&gt;%
         within the AFINN lexicon (<xref ref="fig-stockafinn"/>).
       </p>
 
-      <listing xml:id="fig-stockafinn">
+      <figure xml:id="fig-stockafinn">
         <caption>The words with the largest contribution to sentiment values in recent financial
         articles, according to the AFINN dictionary. The <q>contribution</q> is the product of
         the word and the sentiment score.</caption>
-        <program language="r">
+        <image source="images/fig-stockafinn.png" width="90%">
+          <description>Words with largest contribution to sentiment in financial articles.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 stock_tokens %&gt;%
   anti_join(stop_words, by = "word") %&gt;%
@@ -835,10 +845,15 @@ stock_tokens %&gt;%
         dataset.
       </p>
 
-      <listing xml:id="fig-stockloughransentiments">
+      <figure xml:id="fig-stockloughransentiments">
         <caption>The most common words in the financial news articles associated with each of the
         six sentiments in the Loughran and McDonald lexicon</caption>
-        <program language="r">
+        <image source="images/fig-stockloughransentiments.png" width="90%">
+          <description>Most common words by Loughran-McDonald sentiment category.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 stock_tokens %&gt;%
   count(word) %&gt;%
@@ -903,11 +918,16 @@ stock_sentiment_count
         (<xref ref="fig-stockpositivity"/>).
       </p>
 
-      <listing xml:id="fig-stockpositivity">
+      <figure xml:id="fig-stockpositivity">
         <caption><q>Positivity</q> of the news coverage around each stock in January 2017,
         calculated as (positive - negative) / (positive + negative), based on uses of positive
         and negative words in 20 recent news articles about each company</caption>
-        <program language="r">
+        <image source="images/fig-stockpositivity.png" width="90%">
+          <description>Positivity score for each company based on news sentiment.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 stock_sentiment_count %&gt;%
   mutate(score = (positive - negative) / (positive + negative)) %&gt;%

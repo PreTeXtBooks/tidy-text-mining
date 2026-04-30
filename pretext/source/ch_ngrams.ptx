@@ -298,9 +298,14 @@ bigram_tf_idf
         </output>
       </program>
 
-      <listing xml:id="fig-bigramtfidf">
+      <figure xml:id="fig-bigramtfidf">
         <caption>Bigrams with the highest tf-idf from each Jane Austen novel</caption>
-        <program language="r">
+        <image source="images/fig-bigramtfidf.png" width="90%">
+          <description>Bigrams with the highest tf-idf from each Jane Austen novel.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(ggplot2)
 
@@ -457,10 +462,15 @@ not_words
         (<xref ref="fig-notwordsplot"/>).
       </p>
 
-      <listing xml:id="fig-notwordsplot">
+      <figure xml:id="fig-notwordsplot">
         <caption>Words preceded by 'not' that had the greatest contribution to sentiment values,
         in either a positive or negative direction</caption>
-        <program language="r">
+        <image source="images/fig-notwordsplot.png" width="90%">
+          <description>Words preceded by 'not' with greatest contribution to sentiment.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(ggplot2)
 
@@ -510,10 +520,15 @@ negated_words &lt;- bigrams_separated %&gt;%
         examples of how finding consecutive words can give context to text mining methods.
       </p>
 
-      <listing xml:id="fig-negatedwords">
+      <figure xml:id="fig-negatedwords">
         <caption>Most common positive or negative words to follow negations such as 'never', 'no',
         'not', and 'without'</caption>
-        <program language="r">
+        <image source="images/fig-negatedwords.png" width="90%">
+          <description>Most common positive or negative words to follow negations.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 negated_words %&gt;%
   mutate(contribution = n * value,
@@ -615,10 +630,15 @@ bigram_graph
         we need to add three layers: nodes, edges, and text.
       </p>
 
-      <listing xml:id="fig-bigramgraph">
+      <figure xml:id="fig-bigramgraph">
         <caption>Common bigrams in Jane Austen's novels, showing those that occurred more than 20
         times and where neither word was a stop word</caption>
-        <program language="r">
+        <image source="images/fig-bigramgraph.png" width="90%">
+          <description>Common bigrams in Jane Austen's novels as a network graph.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(ggraph)
 set.seed(2017)
@@ -663,9 +683,14 @@ ggraph(bigram_graph, layout = "fr") +
         </li>
       </ul>
 
-      <listing xml:id="fig-bigramggraphausten2">
+      <figure xml:id="fig-bigramggraphausten2">
         <caption>Common bigrams in Jane Austen's novels, with some polishing</caption>
-        <program language="r">
+        <image source="images/fig-bigramggraphausten2.png" width="90%">
+          <description>Polished network graph of common bigrams in Jane Austen's novels.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 set.seed(2020)
 
@@ -761,10 +786,15 @@ kjv &lt;- gutenberg_download(10)
         </input>
       </program>
 
-      <listing xml:id="fig-kjvbigrams">
+      <figure xml:id="fig-kjvbigrams">
         <caption>Directed graph of common bigrams in the King James Bible, showing those that
         occurred more than 40 times</caption>
-        <program language="r">
+        <image source="images/fig-kjvbigrams.png" width="90%">
+          <description>Directed graph of common bigrams in the King James Bible.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(stringr)
 
