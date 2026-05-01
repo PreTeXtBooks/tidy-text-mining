@@ -241,11 +241,8 @@ ap_sentiments
         algorithm's part, since it likely usually refers to <q>vice president</q>).
       </p>
 
-      <listing xml:id="fig-apsentimentplot">
-        <caption>Words from AP articles with the greatest contribution to positive or negative
-        sentiments, using the Bing sentiment lexicon</caption>
-        <program language="r">
-          <input>
+      <program language="r">
+        <input>
 library(ggplot2)
 
 ap_sentiments %&gt;%
@@ -256,9 +253,17 @@ ap_sentiments %&gt;%
   ggplot(aes(n, term, fill = sentiment)) +
   geom_col() +
   labs(x = "Contribution to sentiment", y = NULL)
-          </input>
-        </program>
-      </listing>
+        </input>
+      </program>
+
+      <figure xml:id="fig-apsentimentplot">
+        <caption>Words from AP articles with the greatest contribution to positive or negative
+        sentiments, using the Bing sentiment lexicon</caption>
+        <image source="images/fig-apsentimentplot.png" width="90%">
+          <description>Words from AP articles with the greatest contribution to positive or
+          negative sentiments, using the Bing sentiment lexicon.</description>
+        </image>
+      </figure>
     </subsection>
 
     <subsection xml:id="subsec-tidying-dfm">
@@ -331,6 +336,24 @@ inaug_tf_idf &lt;- inaug_td %&gt;%
 inaug_tf_idf
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 45,452 × 6
+#>    document        term        count      tf   idf tf_idf
+#>    &lt;chr&gt;           &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 1793-Washington arrive          1 0.00680  4.08 0.0277
+#>  2 1793-Washington upbraidings     1 0.00680  4.08 0.0277
+#>  3 1793-Washington violated        1 0.00680  3.38 0.0230
+#>  4 1793-Washington willingly       1 0.00680  3.38 0.0230
+#>  5 1793-Washington incurring       1 0.00680  3.38 0.0230
+#>  6 1793-Washington previous        1 0.00680  2.98 0.0203
+#>  7 1793-Washington knowingly       1 0.00680  2.98 0.0203
+#>  8 1793-Washington injunctions     1 0.00680  2.98 0.0203
+#>  9 1793-Washington witnesses       1 0.00680  2.98 0.0203
+#> 10 1793-Washington besides         1 0.00680  2.69 0.0183
+#> # ℹ 45,442 more rows
+        </output>
+      </console>
 
       <p>
         We could use this data to pick four notable inaugural addresses (from Presidents Lincoln,
@@ -338,10 +361,16 @@ inaug_tf_idf
         shown in <xref ref="fig-presidentspeeches"/>.
       </p>
 
-      <listing xml:id="fig-presidentspeeches">
+      <figure xml:id="fig-presidentspeeches">
         <caption>The terms with the highest tf-idf from each of four selected inaugural addresses.
         Note that quanteda's tokenizer includes the '?' punctuation mark as a term, though the
         texts we've tokenized ourselves with <c>unnest_tokens()</c> do not.</caption>
+        <image source="images/fig-presidentspeeches.png" width="90%">
+          <description>The terms with the highest tf-idf from each of four selected inaugural
+          addresses.</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 speeches &lt;- c("1933-Roosevelt", "1861-Lincoln",
@@ -396,9 +425,15 @@ year_term_counts &lt;- inaug_td %&gt;%
         <q>foreign</q> countries, and more likely to mention <q>freedom</q> and <q>God</q>.
       </p>
 
-      <listing xml:id="fig-yearterm">
+      <figure xml:id="fig-yearterm">
         <caption>Changes in word frequency over time within Presidential inaugural addresses, for
         six selected terms</caption>
+        <image source="images/fig-yearterm.png" width="90%">
+          <description>Changes in word frequency over time within Presidential inaugural
+          addresses, for six selected terms.</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 year_term_counts %&gt;%
