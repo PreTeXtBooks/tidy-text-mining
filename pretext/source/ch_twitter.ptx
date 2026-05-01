@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-twitter" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Case study: comparing Twitter archives</title>
-
+  <introduction>
   <p>
     One type of text that gets plenty of attention is text shared online via Twitter. In fact,
     several of the sentiment lexicons used in this book (and commonly used in general) were
@@ -11,6 +11,7 @@
     <url href="https://twitter.com/juliasilge" visual="twitter.com/juliasilge">Julia</url> and
     <url href="https://twitter.com/drob" visual="twitter.com/drob">David</url>.
   </p>
+  </introduction>
 
   <section xml:id="sec-twitter-data">
     <title>Getting the data and distribution of tweets</title>
