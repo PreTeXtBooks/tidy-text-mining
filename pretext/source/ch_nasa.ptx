@@ -766,6 +766,24 @@ desc_tf_idf %&gt;%
   arrange(-tf_idf)
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 1,914,170 × 6
+#>    id                       word                            n    tf   idf tf_idf
+#>    &lt;chr&gt;                    &lt;chr&gt;                       &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#>  1 55942a7cc63a7fe59b49774a rdr                             1     1 10.4   10.4 
+#>  2 55942ac9c63a7fe59b49b688 palsar_radiometric_terrain…     1     1 10.4   10.4 
+#>  3 55942ac9c63a7fe59b49b689 palsar_radiometric_terrain…     1     1 10.4   10.4 
+#>  4 55942a7bc63a7fe59b4976ca lgrs                            1     1  8.77   8.77
+#>  5 55942a7bc63a7fe59b4976d2 lgrs                            1     1  8.77   8.77
+#>  6 55942a7bc63a7fe59b4976e3 lgrs                            1     1  8.77   8.77
+#>  7 55942a7dc63a7fe59b497820 mri                             1     1  8.58   8.58
+#>  8 55942ad8c63a7fe59b49cf6c template_proddescription        1     1  8.30   8.30
+#>  9 55942ad8c63a7fe59b49cf6d template_proddescription        1     1  8.30   8.30
+#> 10 55942ad8c63a7fe59b49cf6e template_proddescription        1     1  8.30   8.30
+#> # ℹ 1,914,160 more rows
+        </output>
+      </console>
 
       <p>
         These are the most important words in the description fields as measured by tf-idf,
@@ -906,6 +924,24 @@ word_counts &lt;- nasa_desc %&gt;%
 word_counts
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 1,896,211 × 3
+#>    id                       word         n
+#>    &lt;chr&gt;                    &lt;chr&gt;    &lt;int&gt;
+#>  1 55942a8ec63a7fe59b4986ef suit        82
+#>  2 55942a8ec63a7fe59b4986ef space       69
+#>  3 56cf5b00a759fdadc44e564a data        41
+#>  4 56cf5b00a759fdadc44e564a leak        40
+#>  5 56cf5b00a759fdadc44e564a tree        39
+#>  6 55942a8ec63a7fe59b4986ef pressure    34
+#>  7 55942a8ec63a7fe59b4986ef system      34
+#>  8 55942a89c63a7fe59b4982d9 em          32
+#>  9 55942a8ec63a7fe59b4986ef al          32
+#> 10 55942a8ec63a7fe59b4986ef human       31
+#> # ℹ 1,896,201 more rows
+        </output>
+      </console>
 
       <p>
         This is the information we need, the number of times each word is used in each document,
@@ -921,6 +957,15 @@ desc_dtm &lt;- word_counts %&gt;%
 desc_dtm
         </input>
       </program>
+      <console>
+        <output>
+#> &lt;&lt;DocumentTermMatrix (documents: 32003, terms: 35336)&gt;&gt;
+#> Non-/sparse entries: 1896211/1128961797
+#> Sparsity           : 100%
+#> Maximal term length: 166
+#> Weighting          : term frequency (tf)
+        </output>
+      </console>
 
       <p>
         We see that this dataset contains documents (each of them a NASA description field) and
@@ -954,6 +999,11 @@ desc_lda &lt;- LDA(desc_dtm, k = 24, control = list(seed = 1234))
 desc_lda
         </input>
       </program>
+      <console>
+        <output>
+#> A LDA_VEM topic model with 24 topics.
+        </output>
+      </console>
 
       <p>
         This is a stochastic algorithm that could have different results depending on where the
@@ -977,6 +1027,24 @@ tidy_lda &lt;- tidy(desc_lda)
 tidy_lda
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 861,624 × 3
+#>    topic term       beta
+#>    &lt;int&gt; &lt;chr&gt;     &lt;dbl&gt;
+#>  1     1 suit  1.00e-121
+#>  2     2 suit  2.63e-145
+#>  3     3 suit  1.92e- 79
+#>  4     4 suit  6.72e- 45
+#>  5     5 suit  1.74e- 85
+#>  6     6 suit  7.69e- 84
+#>  7     7 suit  3.28e-  4
+#>  8     8 suit  3.74e- 20
+#>  9     9 suit  4.85e- 15
+#> 10    10 suit  4.77e- 10
+#> # ℹ 861,614 more rows
+        </output>
+      </console>
 
       <p>
         The column <m>\beta</m> tells us the probability of that term being generated from that
@@ -1000,6 +1068,24 @@ top_terms &lt;- tidy_lda %&gt;%
 top_terms
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 240 × 3
+#>    topic term          beta
+#>    &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
+#>  1     1 data        0.0449
+#>  2     1 soil        0.0368
+#>  3     1 moisture    0.0295
+#>  4     1 amsr        0.0244
+#>  5     1 sst         0.0168
+#>  6     1 validation  0.0132
+#>  7     1 temperature 0.0132
+#>  8     1 surface     0.0129
+#>  9     1 accuracy    0.0123
+#> 10     1 set         0.0116
+#> # ℹ 230 more rows
+        </output>
+      </console>
 
       <p>
         It is not very easy to interpret what the topics are about from a data frame like this so
@@ -1051,6 +1137,24 @@ lda_gamma &lt;- tidy(desc_lda, matrix = "gamma")
 lda_gamma
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 768,072 × 3
+#>    document                 topic      gamma
+#>    &lt;chr&gt;                    &lt;int&gt;      &lt;dbl&gt;
+#>  1 55942a8ec63a7fe59b4986ef     1 0.00000645
+#>  2 56cf5b00a759fdadc44e564a     1 0.0000116 
+#>  3 55942a89c63a7fe59b4982d9     1 0.0492    
+#>  4 56cf5b00a759fdadc44e55cd     1 0.0000225 
+#>  5 55942a89c63a7fe59b4982c6     1 0.0000661 
+#>  6 55942a86c63a7fe59b498077     1 0.0000567 
+#>  7 56cf5b00a759fdadc44e56f8     1 0.0000475 
+#>  8 55942a8bc63a7fe59b4984b5     1 0.0000431 
+#>  9 55942a6ec63a7fe59b496bf7     1 0.0000441 
+#> 10 55942a8ec63a7fe59b4986f6     1 0.0000288 
+#> # ℹ 768,062 more rows
+        </output>
+      </console>
 
       <p>
         Notice that some of the probabilities visible at the top of the data frame are low and some
@@ -1142,6 +1246,24 @@ lda_gamma &lt;- full_join(lda_gamma, nasa_keyword, by = c("document" = "id"))
 lda_gamma
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 3,037,671 × 4
+#>    document                 topic      gamma keyword                    
+#>    &lt;chr&gt;                    &lt;int&gt;      &lt;dbl&gt; &lt;chr&gt;                      
+#>  1 55942a8ec63a7fe59b4986ef     1 0.00000645 JOHNSON SPACE CENTER       
+#>  2 55942a8ec63a7fe59b4986ef     1 0.00000645 PROJECT                    
+#>  3 55942a8ec63a7fe59b4986ef     1 0.00000645 COMPLETED                  
+#>  4 56cf5b00a759fdadc44e564a     1 0.0000116  DASHLINK                   
+#>  5 56cf5b00a759fdadc44e564a     1 0.0000116  AMES                       
+#>  6 56cf5b00a759fdadc44e564a     1 0.0000116  NASA                       
+#>  7 55942a89c63a7fe59b4982d9     1 0.0492     GODDARD SPACE FLIGHT CENTER
+#>  8 55942a89c63a7fe59b4982d9     1 0.0492     PROJECT                    
+#>  9 55942a89c63a7fe59b4982d9     1 0.0492     COMPLETED                  
+#> 10 56cf5b00a759fdadc44e55cd     1 0.0000225  DASHLINK                   
+#> # ℹ 3,037,661 more rows
+        </output>
+      </console>
 
       <p>
         Now we can use <c>filter()</c> to keep only the document-topic entries that have
@@ -1157,6 +1279,24 @@ top_keywords &lt;- lda_gamma %&gt;%
 top_keywords
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 1,022 × 3
+#>    topic keyword           n
+#>    &lt;int&gt; &lt;chr&gt;         &lt;int&gt;
+#>  1    13 OCEAN COLOR    4480
+#>  2    13 OCEAN OPTICS   4480
+#>  3    13 OCEANS         4480
+#>  4    11 OCEAN COLOR    1216
+#>  5    11 OCEAN OPTICS   1216
+#>  6    11 OCEANS         1216
+#>  7     9 PROJECT         926
+#>  8    12 EARTH SCIENCE   909
+#>  9     9 COMPLETED       834
+#> 10    16 OCEAN COLOR     768
+#> # ℹ 1,012 more rows
+        </output>
+      </console>
 
       <p>
         What are the top keywords for each topic?
