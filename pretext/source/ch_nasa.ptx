@@ -484,9 +484,14 @@ desc_word_pairs
         networks.
       </p>
 
-      <listing xml:id="fig-plottitle">
+      <figure xml:id="fig-plottitle">
         <caption>Word network in NASA dataset titles</caption>
-        <program language="r">
+        <image source="images/fig-plottitle.png" width="90%">
+          <description>Word network in NASA dataset titles.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(ggplot2)
 library(igraph)
@@ -515,9 +520,14 @@ title_word_pairs %&gt;%
         What about the words from the description fields?
       </p>
 
-      <listing xml:id="fig-plotdesc">
+      <figure xml:id="fig-plotdesc">
         <caption>Word network in NASA dataset descriptions</caption>
-        <program language="r">
+        <image source="images/fig-plotdesc.png" width="90%">
+          <description>Word network in NASA dataset descriptions.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 set.seed(1234)
 desc_word_pairs %&gt;%
@@ -550,9 +560,14 @@ desc_word_pairs %&gt;%
         keywords commonly occur together in the same datasets.
       </p>
 
-      <listing xml:id="fig-plotcounts">
+      <figure xml:id="fig-plotcounts">
         <caption>Co-occurrence network in NASA dataset keywords</caption>
-        <program language="r">
+        <image source="images/fig-plotcounts.png" width="90%">
+          <description>Co-occurrence network in NASA dataset keywords.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 keyword_pairs &lt;- nasa_keyword %&gt;%
   pairwise_count(keyword, id, sort = TRUE, upper = FALSE)
@@ -615,9 +630,14 @@ keyword_cors
         co-occurences.
       </p>
 
-      <listing xml:id="fig-plotcors">
+      <figure xml:id="fig-plotcors">
         <caption>Correlation network in NASA dataset keywords</caption>
-        <program language="r">
+        <image source="images/fig-plotcors.png" width="90%">
+          <description>Correlation network in NASA dataset keywords.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 set.seed(1234)
 keyword_cors %&gt;%
@@ -926,9 +946,14 @@ top_terms
         let's look at this information visually in <xref ref="fig-plotbeta"/>.
       </p>
 
-      <listing xml:id="fig-plotbeta">
+      <figure xml:id="fig-plotbeta">
         <caption>Top terms in topic modeling of NASA metadata description field texts</caption>
-        <program language="r">
+        <image source="images/fig-plotbeta.png" width="90%">
+          <description>Top terms in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 top_terms %&gt;%
   mutate(term = reorder_within(term, beta, topic)) %&gt;%
@@ -975,10 +1000,15 @@ lda_gamma
         Let's visualize them (<xref ref="fig-plotgammaall"/>).
       </p>
 
-      <listing xml:id="fig-plotgammaall">
+      <figure xml:id="fig-plotgammaall">
         <caption>Probability distribution in topic modeling of NASA metadata description field
         texts</caption>
-        <program language="r">
+        <image source="images/fig-plotgammaall.png" width="90%">
+          <description>Probability distribution in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 ggplot(lda_gamma, aes(gamma)) +
   geom_histogram(alpha = 0.8) +
@@ -1000,10 +1030,15 @@ ggplot(lda_gamma, aes(gamma)) +
         within each topic, as shown in <xref ref="fig-plotgamma"/>.
       </p>
 
-      <listing xml:id="fig-plotgamma">
+      <figure xml:id="fig-plotgamma">
         <caption>Probability distribution for each topic in topic modeling of NASA metadata
         description field texts</caption>
-        <program language="r">
+        <image source="images/fig-plotgamma.png" width="90%">
+          <description>Probability distribution for each topic in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 ggplot(lda_gamma, aes(gamma, fill = as.factor(topic))) +
   geom_histogram(alpha = 0.8, show.legend = FALSE) +
@@ -1069,9 +1104,14 @@ top_keywords
         What are the top keywords for each topic?
       </p>
 
-      <listing xml:id="fig-plottopkeywords">
+      <figure xml:id="fig-plottopkeywords">
         <caption>Top keywords in topic modeling of NASA metadata description field texts</caption>
-        <program language="r">
+        <image source="images/fig-plottopkeywords.png" width="90%">
+          <description>Top keywords in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 top_keywords %&gt;%
   group_by(topic) %&gt;%
