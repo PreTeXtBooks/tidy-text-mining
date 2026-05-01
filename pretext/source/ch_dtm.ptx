@@ -218,16 +218,16 @@ ap_sentiments
 #> # A tibble: 30,094 × 4
 #>    document term       count sentiment
 #>       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt; &lt;chr&gt;    
-#>  1        1 assault     1 negative 
-#>  2        1 complex     1 negative 
-#>  3        1 death       1 negative 
-#>  4        1 died        1 negative 
-#>  5        1 good        2 positive 
-#>  6        1 illness     1 negative 
-#>  7        1 killed      2 negative 
-#>  8        1 like        2 positive 
-#>  9        1 liked       1 positive 
-#> 10        1 miracle     1 positive 
+#>  1        1 assault        1 negative 
+#>  2        1 complex        1 negative 
+#>  3        1 death          1 negative 
+#>  4        1 died           1 negative 
+#>  5        1 good           2 positive 
+#>  6        1 illness        1 negative 
+#>  7        1 killed         2 negative 
+#>  8        1 like           2 positive 
+#>  9        1 liked          1 positive 
+#> 10        1 miracle        1 positive 
 #> # ℹ 30,084 more rows
         </output>
       </console>
