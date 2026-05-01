@@ -157,11 +157,11 @@ nasa_desc %&gt;%
 #> # A tibble: 5 × 1
 #>   desc
 #>   &lt;chr&gt;
-#> 1 "MODIS (or Moderate Resolution Imaging Spectroradiometer) is a key instrum…
-#> 2 "MODIS (or Moderate Resolution Imaging Spectroradiometer) is a key instrum…
-#> 3 "ML2HNO3 is the EOS Aura Microwave Limb Sounder (MLS) standard product for…
-#> 4 "This dataset is part of the collection of Special Sensor Microwave/Imager…
-#> 5 "The goal of this STTR program is to employ nanostructured materials in an…
+#> 1 "Preliminary design of aircraft structures is multidisciplinary, involving kn…
+#> 2 "Applied Technology Associates (ATA) proposes to develop a new inertial senso…
+#> 3 "ML2IWC is the EOS Aura Microwave Limb Sounder (MLS) standard product for clo…
+#> 4 "The Cessna Citation II Research aircraft owned and operated by the Universit…
+#> 5 "ABSTRACT: Contains in situ diurnal gas exchange and water potential data for…
         </output>
       </console>
 
@@ -441,18 +441,18 @@ title_word_pairs
       <console>
         <output>
 #> # A tibble: 156,515 × 3
-#>    item1   item2      n
-#>    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
-#>  1 project system   796
-#>  2 eco     lba      683
-#>  3 airs    aqua     641
-#>  4 aqua    level    623
-#>  5 airs    level    612
-#>  6 aura    omi      607
-#>  7 global  grid     597
-#>  8 daily   global   574
-#>  9 boreas  data     551
-#> 10 gpm     ground   550
+#>    item1   item2       n
+#>    &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;
+#>  1 system  project   796
+#>  2 lba     eco       683
+#>  3 airs    aqua      641
+#>  4 level   aqua      623
+#>  5 level   airs      612
+#>  6 aura    omi       607
+#>  7 global  grid      597
+#>  8 global  daily     574
+#>  9 data    boreas    551
+#> 10 ground  gpm       550
 #> # ℹ 156,505 more rows
         </output>
       </console>
@@ -471,6 +471,24 @@ desc_word_pairs &lt;- nasa_desc %&gt;%
 desc_word_pairs
         </input>
       </program>
+      <console>
+        <output>
+#> # A tibble: 10,837,046 × 3
+#>    item1      item2          n
+#>    &lt;chr&gt;      &lt;chr&gt;      &lt;dbl&gt;
+#>  1 data       global      9864
+#>  2 data       resolution  9308
+#>  3 instrument resolution  8189
+#>  4 data       surface     8186
+#>  5 global     resolution  8142
+#>  6 data       instrument  7995
+#>  7 data       system      7870
+#>  8 resolution bands       7584
+#>  9 data       earth       7577
+#> 10 orbit      resolution  7462
+#> # ℹ 10,837,036 more rows
+        </output>
+      </console>
 
       <p>
         These are the pairs of words that occur together most often in description fields.
@@ -568,7 +586,30 @@ keyword_pairs &lt;- nasa_keyword %&gt;%
   pairwise_count(keyword, id, sort = TRUE, upper = FALSE)
 
 keyword_pairs
+          </input>
+        </program>
 
+      <console>
+        <output>
+#> # A tibble: 13,390 × 3
+#>    item1         item2                       n
+#>    &lt;chr&gt;         &lt;chr&gt;                   &lt;dbl&gt;
+#>  1 OCEANS        OCEAN OPTICS             7324
+#>  2 EARTH SCIENCE ATMOSPHERE               7318
+#>  3 OCEANS        OCEAN COLOR              7270
+#>  4 OCEAN OPTICS  OCEAN COLOR              7270
+#>  5 PROJECT       COMPLETED                6450
+#>  6 EARTH SCIENCE ATMOSPHERIC WATER VAPOR  3142
+#>  7 ATMOSPHERE    ATMOSPHERIC WATER VAPOR  3142
+#>  8 EARTH SCIENCE OCEANS                   2762
+#>  9 EARTH SCIENCE LAND SURFACE             2718
+#> 10 EARTH SCIENCE BIOSPHERE                2448
+#> # ℹ 13,380 more rows
+        </output>
+      </console>
+
+      <program language="r">
+          <input>
 set.seed(1234)
 keyword_pairs %&gt;%
   filter(n &gt;= 700) %&gt;%
@@ -617,6 +658,25 @@ keyword_cors &lt;- nasa_keyword %&gt;%
 keyword_cors
         </input>
       </program>
+
+      <console>
+        <output>
+#> # A tibble: 7,875 × 3
+#>    item1               item2             n
+#>    &lt;chr&gt;               &lt;chr&gt;         &lt;dbl&gt;
+#>  1 KNOWLEDGE           SHARING           1    
+#>  2 DASHLINK            AMES              1    
+#>  3 SCHEDULE            EXPEDITION        1    
+#>  4 TURBULENCE          MODELS            0.997
+#>  5 APPEL               KNOWLEDGE         0.997
+#>  6 APPEL               SHARING           0.997
+#>  7 OCEAN OPTICS        OCEAN COLOR       0.995
+#>  8 ATMOSPHERIC SCIENCE CLOUD             0.994
+#>  9 LAUNCH              SCHEDULE          0.984
+#> 10 LAUNCH              EXPEDITION        0.984
+#> # ℹ 7,865 more rows
+        </output>
+      </console>
 
       <p>
         Notice that these keywords at the top of this sorted data frame have correlation
