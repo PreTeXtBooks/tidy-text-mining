@@ -1119,11 +1119,8 @@ word_cors %&gt;%
         with them (<xref ref="fig-wordcors"/>).
       </p>
 
-      <listing xml:id="fig-wordcors">
-        <caption>Words from Pride and Prejudice that were most correlated with 'elizabeth',
-        'pounds', 'married', and 'pride'</caption>
-        <program language="r">
-          <input>
+      <program language="r">
+        <input>
 word_cors %&gt;%
   filter(item1 %in% c("elizabeth", "pounds", "married", "pride")) %&gt;%
   group_by(item1) %&gt;%
@@ -1134,9 +1131,16 @@ word_cors %&gt;%
   geom_bar(stat = "identity") +
   facet_wrap(~ item1, scales = "free") +
   coord_flip()
-          </input>
-        </program>
-      </listing>
+        </input>
+      </program>
+      <figure xml:id="fig-wordcors">
+        <caption>Words from Pride and Prejudice that were most correlated with 'elizabeth',
+        'pounds', 'married', and 'pride'</caption>
+        <image source="images/fig-wordcors.png" width="90%">
+          <description>Bar charts showing the words most correlated with elizabeth, married,
+          pounds, and pride in Pride and Prejudice.</description>
+        </image>
+      </figure>
 
       <p>
         Just as we used ggraph to visualize bigrams, we can use it to visualize the correlations
@@ -1144,11 +1148,8 @@ word_cors %&gt;%
         (<xref ref="fig-wordcorsnetwork"/>).
       </p>
 
-      <listing xml:id="fig-wordcorsnetwork">
-        <caption>Pairs of words in Pride and Prejudice that show at least a .15 correlation of
-        appearing within the same 10-line section</caption>
-        <program language="r">
-          <input>
+      <program language="r">
+        <input>
 set.seed(2016)
 
 word_cors %&gt;%
@@ -1159,9 +1160,16 @@ word_cors %&gt;%
   geom_node_point(color = "lightblue", size = 5) +
   geom_node_text(aes(label = name), repel = TRUE) +
   theme_void()
-          </input>
-        </program>
-      </listing>
+        </input>
+      </program>
+      <figure xml:id="fig-wordcorsnetwork">
+        <caption>Pairs of words in Pride and Prejudice that show at least a .15 correlation of
+        appearing within the same 10-line section</caption>
+        <image source="images/fig-wordcorsnetwork.png" width="90%">
+          <description>Network graph of pairs of words in Pride and Prejudice that show at
+          least a .15 correlation of appearing within the same 10-line section.</description>
+        </image>
+      </figure>
 
       <p>
         Note that unlike the bigram analysis, the relationships here are symmetrical, rather than
