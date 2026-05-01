@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-usenet" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Case study: analyzing usenet text</title>
-
+  <introduction>
   <p>
     In our final chapter, we'll use what we've learned in this book to perform a start-to-finish
     analysis of a set of 20,000 messages sent to 20 Usenet bulletin boards in 1993. The Usenet
@@ -13,6 +13,7 @@
     <c>20news-bydate.tar.gz</c> file) and has become popular for exercises in text analysis and
     machine learning.
   </p>
+  </introduction>
 
   <section xml:id="sec-usenet-preprocessing">
     <title>Pre-processing</title>
@@ -89,12 +90,6 @@ raw_text
       (<xref ref="fig-messagecounts"/>)?
     </p>
 
-    <figure xml:id="fig-messagecounts">
-      <caption>Number of messages from each newsgroup</caption>
-      <image source="images/fig-messagecounts.png" width="90%">
-        <description>Number of messages from each Usenet newsgroup.</description>
-      </image>
-    </figure>
     <listing>
     <program language="r">
         <input>
@@ -109,6 +104,12 @@ raw_text %&gt;%
         </input>
       </program>
     </listing>
+    <figure xml:id="fig-messagecounts">
+      <caption>Number of messages from each newsgroup</caption>
+      <image source="images/fig-messagecounts.png" width="90%">
+        <description>Number of messages from each Usenet newsgroup.</description>
+      </image>
+    </figure>
 
     <p>
       We can see that Usenet newsgroup names are named hierarchically, starting with a main topic
@@ -290,12 +291,6 @@ tf_idf
         <xref ref="fig-scitfidf"/>.
       </p>
 
-      <figure xml:id="fig-scitfidf">
-        <caption>Terms with the highest tf-idf within each of the science-related newsgroups</caption>
-        <image source="images/fig-scitfidf.png" width="90%">
-          <description>Terms with highest tf-idf within science-related Usenet newsgroups.</description>
-        </image>
-      </figure>
       <listing>
       <program language="r">
           <input>
@@ -312,6 +307,12 @@ tf_idf %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-scitfidf">
+        <caption>Terms with the highest tf-idf within each of the science-related newsgroups</caption>
+        <image source="images/fig-scitfidf.png" width="90%">
+          <description>Terms with highest tf-idf within science-related Usenet newsgroups.</description>
+        </image>
+      </figure>
 
       <p>
         We see lots of characteristic words specific to a particular newsgroup, such as
@@ -512,12 +513,6 @@ sci_lda %&gt;%
       (<xref ref="fig-newsgroupsentiments"/>).
     </p>
 
-    <figure xml:id="fig-newsgroupsentiments">
-      <caption>Average AFINN value for posts within each newsgroup</caption>
-      <image source="images/fig-newsgroupsentiments.png" width="90%">
-        <description>Average AFINN sentiment value per Usenet newsgroup.</description>
-      </image>
-    </figure>
     <listing>
     <program language="r">
         <input>
@@ -534,6 +529,12 @@ newsgroup_sentiments %&gt;%
         </input>
       </program>
     </listing>
+    <figure xml:id="fig-newsgroupsentiments">
+      <caption>Average AFINN value for posts within each newsgroup</caption>
+      <image source="images/fig-newsgroupsentiments.png" width="90%">
+        <description>Average AFINN sentiment value per Usenet newsgroup.</description>
+      </image>
+    </figure>
 
     <p>
       According to this analysis, the <q>misc.forsale</q> newsgroup was the most positive. This
@@ -593,13 +594,6 @@ contributions
         (<xref ref="fig-usenetcontributions"/>)?
       </p>
 
-      <figure xml:id="fig-usenetcontributions">
-        <caption>Words with the greatest contributions to positive/negative sentiment values in
-        the Usenet text</caption>
-        <image source="images/fig-usenetcontributions.png" width="90%">
-          <description>Words with greatest contribution to sentiment in Usenet posts.</description>
-        </image>
-      </figure>
       <listing>
       <program language="r">
           <input>
@@ -612,6 +606,13 @@ contributions %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-usenetcontributions">
+        <caption>Words with the greatest contributions to positive/negative sentiment values in
+        the Usenet text</caption>
+        <image source="images/fig-usenetcontributions.png" width="90%">
+          <description>Words with greatest contribution to sentiment in Usenet posts.</description>
+        </image>
+      </figure>
 
       <p>
         These words look generally reasonable as indicators of each message's sentiment, but we
@@ -664,13 +665,6 @@ top_sentiment_words
         </output>
       </console>
 
-      <figure xml:id="fig-newsgroupsentiment">
-        <caption>Words that contributed the most to sentiment scores within each of six
-        newsgroups</caption>
-        <image source="images/fig-newsgroupsentiment.png" width="90%">
-          <description>Words contributing most to sentiment within selected newsgroups.</description>
-        </image>
-      </figure>
       <listing>
       <program language="r">
           <input>
@@ -689,6 +683,13 @@ top_sentiment_words %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-newsgroupsentiment">
+        <caption>Words that contributed the most to sentiment scores within each of six
+        newsgroups</caption>
+        <image source="images/fig-newsgroupsentiment.png" width="90%">
+          <description>Words contributing most to sentiment within selected newsgroups.</description>
+        </image>
+      </figure>
 
       <p>
         This confirms our hypothesis about the <q>misc.forsale</q> newsgroup: most of the
@@ -891,13 +892,6 @@ usenet_bigram_counts &lt;- usenet_bigrams %&gt;%
         most often contributed in the <q>wrong</q> direction.
       </p>
 
-      <figure xml:id="fig-negatewords">
-        <caption>Words that contributed the most to sentiment when they followed a 'negating'
-        word</caption>
-        <image source="images/fig-negatewords.png" width="90%">
-          <description>Words contributing most to sentiment after negation words in Usenet.</description>
-        </image>
-      </figure>
       <listing>
       <program language="r">
           <input>
@@ -921,6 +915,13 @@ usenet_bigram_counts %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-negatewords">
+        <caption>Words that contributed the most to sentiment when they followed a 'negating'
+        word</caption>
+        <image source="images/fig-negatewords.png" width="90%">
+          <description>Words contributing most to sentiment after negation words in Usenet.</description>
+        </image>
+      </figure>
 
       <p>
         It looks like the largest sources of misidentifying a word as positive come from
