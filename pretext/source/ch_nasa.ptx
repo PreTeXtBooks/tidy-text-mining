@@ -503,7 +503,7 @@ title_word_pairs %&gt;%
   theme_void()
           </input>
         </program>
-      </listing>
+      
       <figure xml:id="fig-plottitle">
         <caption>Word network in NASA dataset titles</caption>
         <image source="images/fig-plottitle.png" width="90%">
@@ -535,7 +535,7 @@ desc_word_pairs %&gt;%
   theme_void()
           </input>
         </program>
-      </listing>
+      
       <figure xml:id="fig-plotdesc">
         <caption>Word network in NASA dataset descriptions</caption>
         <image source="images/fig-plotdesc.png" width="90%">
@@ -1039,7 +1039,7 @@ ggplot(lda_gamma, aes(gamma, fill = as.factor(topic))) +
        y = "Number of documents", x = expression(gamma))
           </input>
         </program>
-      </listing>
+      
       <figure xml:id="fig-plotgamma">
         <caption>Probability distribution for each topic in topic modeling of NASA metadata
         description field texts</caption>
