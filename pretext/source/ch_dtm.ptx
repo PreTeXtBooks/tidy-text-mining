@@ -318,7 +318,7 @@ inaug_td
 #>  8 1841-Harrison   fellow-citizens    11
 #>  9 1845-Polk       fellow-citizens     1
 #> 10 1849-Taylor     fellow-citizens     1
-#> # ℹ 30,084 more rows
+#> # ℹ 45,442 more rows
         </output>
       </console>
       <p>
@@ -361,16 +361,6 @@ inaug_tf_idf
         shown in <xref ref="fig-presidentspeeches"/>.
       </p>
 
-      <figure xml:id="fig-presidentspeeches">
-        <caption>The terms with the highest tf-idf from each of four selected inaugural addresses.
-        Note that quanteda's tokenizer includes the '?' punctuation mark as a term, though the
-        texts we've tokenized ourselves with <c>unnest_tokens()</c> do not.</caption>
-        <image source="images/fig-presidentspeeches.png" width="90%">
-          <description>The terms with the highest tf-idf from each of four selected inaugural
-          addresses.</description>
-        </image>
-      </figure>
-      <listing>
         <program language="r">
           <input>
 speeches &lt;- c("1933-Roosevelt", "1861-Lincoln",
@@ -391,7 +381,16 @@ inaug_tf_idf %&gt;%
        y = "tf-idf")
           </input>
         </program>
-      </listing>
+
+      <figure xml:id="fig-presidentspeeches">
+        <caption>The terms with the highest tf-idf from each of four selected inaugural addresses.
+        Note that quanteda's tokenizer includes the '?' punctuation mark as a term, though the
+        texts we've tokenized ourselves with <c>unnest_tokens()</c> do not.</caption>
+        <image source="images/fig-presidentspeeches.png" width="90%">
+          <description>The terms with the highest tf-idf from each of four selected inaugural
+          addresses.</description>
+        </image>
+      </figure>
 
       <p>
         As another example of a visualization possible with tidy data, we could extract the year
@@ -425,15 +424,6 @@ year_term_counts &lt;- inaug_td %&gt;%
         <q>foreign</q> countries, and more likely to mention <q>freedom</q> and <q>God</q>.
       </p>
 
-      <figure xml:id="fig-yearterm">
-        <caption>Changes in word frequency over time within Presidential inaugural addresses, for
-        six selected terms</caption>
-        <image source="images/fig-yearterm.png" width="90%">
-          <description>Changes in word frequency over time within Presidential inaugural
-          addresses, for six selected terms.</description>
-        </image>
-      </figure>
-      <listing>
         <program language="r">
           <input>
 year_term_counts %&gt;%
@@ -446,7 +436,14 @@ year_term_counts %&gt;%
   labs(y = "% frequency of word in inaugural address")
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-yearterm">
+        <caption>Changes in word frequency over time within Presidential inaugural addresses, for
+        six selected terms</caption>
+        <image source="images/fig-yearterm.png" width="90%">
+          <description>Changes in word frequency over time within Presidential inaugural
+          addresses, for six selected terms.</description>
+        </image>
+      </figure>
 
       <p>
         These examples show how you can use tidytext, and the related suite of tidy tools, to
@@ -498,18 +495,7 @@ ap_td %&gt;%
     </program>
     <console>
       <output>
-#> Document-feature matrix of: 2,246 documents, 10,473 features (98.72% sparse)
-#>  and 0 docvars.
-#>     features
-#> docs adding adult ago agreement aid air all american and anti
-#>    1      1     2   1         1   1   1   1        1   1    1
-#>    2      0     0   0         0   0   0   1        1   1    0
-#>    3      0     0   0         0   0   0   0        1   0    0
-#>    4      0     0   0         0   0   0   0        1   0    0
-#>    5      0     0   0         0   0   0   0        1   0    0
-#>    6      0     0   0         0   0   0   1        1   1    0
-#> [ reached max_ndoc ... 2,240 more documents, reached max_nfeat ...
-#>  10,463 more features ]
+#> Document-feature matrix of: 2,246 documents, 10,473 features (98.72% sparse) and 0 docvars.
       </output>
     </console>
 
@@ -843,14 +829,6 @@ stock_tf_idf &lt;- stock_tokens %&gt;%
         with Netflix).
       </p>
 
-      <figure xml:id="fig-stocktfidf">
-        <caption>The 8 words with the highest tf-idf in recent articles specific to each
-        company</caption>
-        <image source="images/fig-stocktfidf.png" width="90%">
-          <description>Highest tf-idf words in financial articles for each company.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 stock_tf_idf %&gt;%
@@ -866,7 +844,13 @@ stock_tf_idf %&gt;%
        y = "tf-idf")
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-stocktfidf">
+        <caption>The 8 words with the highest tf-idf in recent articles specific to each
+        company</caption>
+        <image source="images/fig-stocktfidf.png" width="90%">
+          <description>Highest tf-idf words in financial articles for each company.</description>
+        </image>
+      </figure>
 
       <p>
         If we were interested in using recent news to analyze the market and make investment
@@ -877,15 +861,6 @@ stock_tf_idf %&gt;%
         within the AFINN lexicon (<xref ref="fig-stockafinn"/>).
       </p>
 
-      <figure xml:id="fig-stockafinn">
-        <caption>The words with the largest contribution to sentiment values in recent financial
-        articles, according to the AFINN dictionary. The <q>contribution</q> is the product of
-        the word and the sentiment score.</caption>
-        <image source="images/fig-stockafinn.png" width="90%">
-          <description>Words with largest contribution to sentiment in financial articles.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 stock_tokens %&gt;%
@@ -901,7 +876,14 @@ stock_tokens %&gt;%
   labs(x = "Frequency of word * AFINN value", y = NULL)
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-stockafinn">
+        <caption>The words with the largest contribution to sentiment values in recent financial
+        articles, according to the AFINN dictionary. The <q>contribution</q> is the product of
+        the word and the sentiment score.</caption>
+        <image source="images/fig-stockafinn.png" width="90%">
+          <description>Words with largest contribution to sentiment in financial articles.</description>
+        </image>
+      </figure>
 
       <p>
         In the context of these financial articles, there are a few big red flags here. The words
@@ -929,14 +911,6 @@ stock_tokens %&gt;%
         dataset.
       </p>
 
-      <figure xml:id="fig-stockloughransentiments">
-        <caption>The most common words in the financial news articles associated with each of the
-        six sentiments in the Loughran and McDonald lexicon</caption>
-        <image source="images/fig-stockloughransentiments.png" width="90%">
-          <description>Most common words by Loughran-McDonald sentiment category.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 stock_tokens %&gt;%
@@ -952,7 +926,13 @@ stock_tokens %&gt;%
   labs(x = "Frequency of this word in the recent financial articles", y = NULL)
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-stockloughransentiments">
+        <caption>The most common words in the financial news articles associated with each of the
+        six sentiments in the Loughran and McDonald lexicon</caption>
+        <image source="images/fig-stockloughransentiments.png" width="90%">
+          <description>Most common words by Loughran-McDonald sentiment category.</description>
+        </image>
+      </figure>
 
       <p>
         These assignments (<xref ref="fig-stockloughransentiments"/>) of words to sentiments look
@@ -1004,15 +984,6 @@ stock_sentiment_count
         (<xref ref="fig-stockpositivity"/>).
       </p>
 
-      <figure xml:id="fig-stockpositivity">
-        <caption><q>Positivity</q> of the news coverage around each stock in January 2017,
-        calculated as (positive - negative) / (positive + negative), based on uses of positive
-        and negative words in 20 recent news articles about each company</caption>
-        <image source="images/fig-stockpositivity.png" width="90%">
-          <description>Positivity score for each company based on news sentiment.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 stock_sentiment_count %&gt;%
@@ -1023,7 +994,14 @@ stock_sentiment_count %&gt;%
   labs(x = "Positivity score among 20 recent news articles", y = NULL)
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-stockpositivity">
+        <caption><q>Positivity</q> of the news coverage around each stock in January 2017,
+        calculated as (positive - negative) / (positive + negative), based on uses of positive
+        and negative words in 20 recent news articles about each company</caption>
+        <image source="images/fig-stockpositivity.png" width="90%">
+          <description>Positivity score for each company based on news sentiment.</description>
+        </image>
+      </figure>
 
       <p>
         Based on this analysis, we'd say that in January 2017 most of the coverage of Yahoo and
