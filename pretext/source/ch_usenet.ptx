@@ -231,9 +231,10 @@ words_by_newsgroup
 #>  9 information  1094
 #> 10 government   1084
 #> # ℹ 65,902 more rows
+
 #> # A tibble: 173,913 × 3
 #>    newsgroup               word          n
-#>    &lt;chr&gt;                        &lt;chr&gt;     &lt;int&gt;
+#>    &lt;chr&gt;                   &lt;chr&gt;     &lt;int&gt;
 #>  1 soc.religion.christian  god         917
 #>  2 sci.space               space       902
 #>  3 talk.politics.mideast   people      729
@@ -840,9 +841,9 @@ print_message("rec.sport.hockey", 53907)
       </program>
       <console>
         <output>
-#> # A tibble: 3,873 × 4
+#> # A tibble: 3,564 × 4
 #>    newsgroup             id    sentiment words
-#>    &lt;chr&gt;              &lt;chr&gt;     &lt;dbl&gt; &lt;int&gt;
+#>    &lt;chr&gt;                 &lt;chr&gt;    &lt;dbl&gt;    &lt;int&gt;
 #>  1 rec.sport.hockey      53907     -3        6
 #>  2 sci.electronics       53899     -3        5
 #>  3 talk.politics.mideast 75918     -3        7
