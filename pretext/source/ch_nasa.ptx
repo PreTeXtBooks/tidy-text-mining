@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-nasa" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Case study: mining NASA metadata</title>
-
+  <introduction>
   <p>
     There are over 32,000 datasets hosted and/or maintained by
     <url href="https://www.nasa.gov/" visual="nasa.gov">NASA</url>; these datasets cover topics
@@ -39,6 +39,7 @@
     understand the complex world of data at NASA. This type of approach can be extended to any
     domain that deals with text, so let's take a look at this metadata and get started.
   </p>
+ </introduction>
 
   <section xml:id="sec-nasa-organization">
     <title>How data is organized at NASA</title>
