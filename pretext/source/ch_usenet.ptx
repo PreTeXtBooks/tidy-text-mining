@@ -361,10 +361,15 @@ newsgroup_cors
         network (<xref ref="fig-newsgroupcorsnetwork"/>).
       </p>
 
-      <listing xml:id="fig-newsgroupcorsnetwork">
+      <figure xml:id="fig-newsgroupcorsnetwork">
         <caption>A network of Usenet groups based on the correlation of word counts between them,
         including only connections with a correlation greater than .4</caption>
-        <program language="r">
+        <image source="images/fig-newsgroupcorsnetwork.png" width="90%">
+          <description>A network of Usenet groups based on the correlation of word counts between them, including only connections with a correlation greater than .4.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 library(ggraph)
 library(igraph)
@@ -436,9 +441,14 @@ sci_lda &lt;- LDA(sci_dtm, k = 4, control = list(seed = 2016))
         based on the most frequent terms within it (<xref ref="fig-usenettopicterms"/>).
       </p>
 
-      <listing xml:id="fig-usenettopicterms">
+      <figure xml:id="fig-usenettopicterms">
         <caption>Top words from each topic fit by LDA on the science-related newsgroups</caption>
-        <program language="r">
+        <image source="images/fig-usenettopicterms.png" width="90%">
+          <description>Top words from each topic fit by LDA on the science-related newsgroups.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 sci_lda %&gt;%
   tidy() %&gt;%
@@ -463,9 +473,14 @@ sci_lda %&gt;%
         for each topic (<xref ref="fig-usenetassignments"/>).
       </p>
 
-      <listing xml:id="fig-usenetassignments">
+      <figure xml:id="fig-usenetassignments">
         <caption>Distribution of gamma for each topic within each Usenet newsgroup</caption>
-        <program language="r">
+        <image source="images/fig-usenetassignments.png" width="90%">
+          <description>Distribution of gamma for each topic within each Usenet newsgroup.</description>
+        </image>
+      </figure>
+      <listing>
+      <program language="r">
           <input>
 sci_lda %&gt;%
   tidy(matrix = "gamma") %&gt;%
