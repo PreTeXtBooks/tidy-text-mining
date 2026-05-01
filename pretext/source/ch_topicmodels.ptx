@@ -187,7 +187,6 @@ ap_topics
           <description>The terms that are most common within each topic</description>
         </image>
       </figure>
-      <listing>
         <program language="r">
           <input>
 library(ggplot2)
@@ -207,7 +206,6 @@ ap_top_terms %&gt;%
   scale_y_reordered()
           </input>
         </program>
-      </listing>
 
       <p>
         This visualization lets us understand the two topics that were extracted from the articles.
@@ -274,7 +272,6 @@ beta_wide
           <description>Words with the greatest difference in beta between topic 2 and topic 1</description>
         </image>
       </figure>
-      <listing>
         <program language="r">
           <input>
 beta_wide %&gt;%
@@ -287,7 +284,6 @@ beta_wide %&gt;%
   labs(x = "Log2 ratio of beta in topic 2 / topic 1", y = NULL)
           </input>
         </program>
-      </listing>
 
       <p>
         We can see that the words more common in topic 2 include political parties such as
@@ -626,7 +622,6 @@ top_terms
           <description>The terms that are most common within each topic</description>
         </image>
       </figure>
-      <listing>
         <program language="r">
           <input>
 library(ggplot2)
@@ -639,7 +634,6 @@ top_terms %&gt;%
   scale_y_reordered()
           </input>
         </program>
-      </listing>
 
       <p>
         These topics are pretty clearly associated with the four books! There's no question that
@@ -739,7 +733,6 @@ chapters_gamma
           <description>The gamma probabilities for each chapter within each book</description>
         </image>
       </figure>
-      <listing>
         <program language="r">
           <input>
 # reorder titles in order of topic 1, topic 2, etc before plotting
@@ -751,7 +744,6 @@ chapters_gamma %&gt;%
   labs(x = "topic", y = expression(gamma))
           </input>
         </program>
-      </listing>
 
       <p>
         We notice that almost all of the chapters from <em>Pride and Prejudice</em>, <em>War of
@@ -926,7 +918,6 @@ assignments
           <description>Confusion matrix showing where LDA assigned the words from each book.</description>
         </image>
       </figure>
-      <listing>
         <program language="r">
           <input>
 library(scales)
@@ -947,7 +938,6 @@ assignments %&gt;%
        fill = "% of assignments")
           </input>
         </program>
-      </listing>
 
       <p>
         We notice that almost all the words for <em>Pride and Prejudice</em>, <em>Twenty Thousand
