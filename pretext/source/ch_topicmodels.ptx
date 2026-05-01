@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <chapter xml:id="ch-topicmodeling" xmlns:xi="http://www.w3.org/2001/XInclude">
   <title>Topic modeling</title>
-
+  <introduction>
   <p>
     In text mining, we often have collections of documents, such as blog posts or news articles,
     that we'd like to divide into natural groups so that we can understand them separately. Topic
@@ -36,6 +36,7 @@
     an example of clustering chapters from several books, where we can see that a topic model
     <q>learns</q> to tell the difference between the four books based on the text content.
   </p>
+  </introduction>
 
   <section xml:id="sec-lda">
     <title>Latent Dirichlet allocation</title>
