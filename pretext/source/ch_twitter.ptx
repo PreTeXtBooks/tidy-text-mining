@@ -25,13 +25,7 @@
       our tweeting patterns overall (<xref ref="fig-tweets"/>).
     </p>
 
-    <figure xml:id="fig-tweets">
-      <caption>All tweets from our accounts</caption>
-      <image source="images/fig-tweets.png" width="90%">
-        <description>Histogram of tweets from Julia Silge and David Robinson over time.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 library(lubridate)
@@ -52,7 +46,13 @@ ggplot(tweets, aes(x = timestamp, fill = person)) +
   facet_wrap(~person, ncol = 1)
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-tweets">
+      <caption>All tweets from our accounts</caption>
+      <image source="images/fig-tweets.png" width="90%">
+        <description>Histogram of tweets from Julia Silge and David Robinson over time.</description>
+      </image>
+    </figure>
 
     <p>
       David and Julia tweet at about the same rate currently and joined Twitter about a year apart
@@ -190,13 +190,7 @@ frequency
       text labels don't all print out on top of each other (only some will print).
     </p>
 
-    <figure xml:id="fig-wideplot">
-      <caption>Comparing the frequency of words used by Julia and David</caption>
-      <image source="images/fig-wideplot.png" width="90%">
-        <description>Comparison of word frequencies between Julia and David on Twitter.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 library(scales)
@@ -209,7 +203,14 @@ ggplot(frequency, aes(Julia, David)) +
   geom_abline(color = "red")
         </input>
       </program>
-    </listing>
+    
+
+    <figure xml:id="fig-wideplot">
+      <caption>Comparing the frequency of words used by Julia and David</caption>
+      <image source="images/fig-wideplot.png" width="90%">
+        <description>Comparison of word frequencies between Julia and David on Twitter.</description>
+      </image>
+    </figure>
 
     <p>
       Words near the line in <xref ref="fig-wideplot"/> are used with about equal frequencies by
@@ -319,13 +320,7 @@ word_ratios %&gt;%
       <xref ref="fig-plotratios"/>.
     </p>
 
-    <figure xml:id="fig-plotratios">
-      <caption>Comparing the odds ratios of words from our accounts</caption>
-      <image source="images/fig-plotratios.png" width="90%">
-        <description>Log odds ratios of words from Julia and David's Twitter accounts.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 word_ratios %&gt;%
@@ -340,7 +335,13 @@ word_ratios %&gt;%
   scale_fill_discrete(name = "", labels = c("David", "Julia"))
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-plotratios">
+      <caption>Comparing the odds ratios of words from our accounts</caption>
+      <image source="images/fig-plotratios.png" width="90%">
+        <description>Log odds ratios of words from Julia and David's Twitter accounts.</description>
+      </image>
+    </figure>
 
     <p>
       So David has tweeted about specific conferences he has gone to and Stack Overflow, while
@@ -545,13 +546,7 @@ top_slopes
       year of tweets.
     </p>
 
-    <figure xml:id="fig-topdave">
-      <caption>Trending words in David's tweets</caption>
-      <image source="images/fig-topdave.png" width="90%">
-        <description>Trending words in David Robinson's tweets.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 words_by_time %&gt;%
@@ -562,7 +557,13 @@ words_by_time %&gt;%
   labs(x = NULL, y = "Word frequency")
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-topdave">
+      <caption>Trending words in David's tweets</caption>
+      <image source="images/fig-topdave.png" width="90%">
+        <description>Trending words in David Robinson's tweets.</description>
+      </image>
+    </figure>
 
     <p>
       We see in <xref ref="fig-topdave"/> that David tweeted a lot about the UseR conference while
@@ -586,13 +587,7 @@ words_by_time %&gt;%
       <xref ref="fig-topjulia"/>.
     </p>
 
-    <figure xml:id="fig-topjulia">
-      <caption>Trending words in Julia's tweets</caption>
-      <image source="images/fig-topjulia.png" width="90%">
-        <description>Trending words in Julia Silge's tweets.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 words_by_time %&gt;%
@@ -603,7 +598,13 @@ words_by_time %&gt;%
   labs(x = NULL, y = "Word frequency")
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-topjulia">
+      <caption>Trending words in Julia's tweets</caption>
+      <image source="images/fig-topjulia.png" width="90%">
+        <description>Trending words in Julia Silge's tweets.</description>
+      </image>
+    </figure>
 
     <p>
       Both the significant slopes for Julia are negative. This means she has not tweeted at a
@@ -760,13 +761,7 @@ word_by_rts %&gt;%
       (<xref ref="fig-plotrts"/>).
     </p>
 
-    <figure xml:id="fig-plotrts">
-      <caption>Words with highest median retweets</caption>
-      <image source="images/fig-plotrts.png" width="90%">
-        <description>Words associated with the highest median retweets.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 word_by_rts %&gt;%
@@ -785,7 +780,13 @@ word_by_rts %&gt;%
        y = "Median # of retweets for tweets containing each word")
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-plotrts">
+      <caption>Words with highest median retweets</caption>
+      <image source="images/fig-plotrts.png" width="90%">
+        <description>Words associated with the highest median retweets.</description>
+      </image>
+    </figure>
 
     <p>
       We see lots of word about R packages, including tidytext, a package about which you are
@@ -822,13 +823,7 @@ word_by_favs &lt;- tidy_tweets %&gt;%
       <xref ref="fig-plotfavs"/>.
     </p>
 
-    <figure xml:id="fig-plotfavs">
-      <caption>Words with highest median favorites</caption>
-      <image source="images/fig-plotfavs.png" width="90%">
-        <description>Words associated with the highest median favorites.</description>
-      </image>
-    </figure>
-    <listing>
+    
     <program language="r">
         <input>
 word_by_favs %&gt;%
@@ -847,7 +842,13 @@ word_by_favs %&gt;%
        y = "Median # of favorites for tweets containing each word")
         </input>
       </program>
-    </listing>
+    
+    <figure xml:id="fig-plotfavs">
+      <caption>Words with highest median favorites</caption>
+      <image source="images/fig-plotfavs.png" width="90%">
+        <description>Words associated with the highest median favorites.</description>
+      </image>
+    </figure>
 
     <p>
       We see some minor differences between <xref ref="fig-plotrts"/> and
