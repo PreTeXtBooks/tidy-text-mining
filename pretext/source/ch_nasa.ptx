@@ -484,13 +484,7 @@ desc_word_pairs
         networks.
       </p>
 
-      <figure xml:id="fig-plottitle">
-        <caption>Word network in NASA dataset titles</caption>
-        <image source="images/fig-plottitle.png" width="90%">
-          <description>Word network in NASA dataset titles.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 library(ggplot2)
@@ -510,6 +504,12 @@ title_word_pairs %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-plottitle">
+        <caption>Word network in NASA dataset titles</caption>
+        <image source="images/fig-plottitle.png" width="90%">
+          <description>Word network in NASA dataset titles.</description>
+        </image>
+      </figure>
 
       <p>
         We see some clear clustering in this network of title words; words in NASA dataset titles
@@ -520,13 +520,7 @@ title_word_pairs %&gt;%
         What about the words from the description fields?
       </p>
 
-      <figure xml:id="fig-plotdesc">
-        <caption>Word network in NASA dataset descriptions</caption>
-        <image source="images/fig-plotdesc.png" width="90%">
-          <description>Word network in NASA dataset descriptions.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 set.seed(1234)
@@ -542,6 +536,12 @@ desc_word_pairs %&gt;%
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-plotdesc">
+        <caption>Word network in NASA dataset descriptions</caption>
+        <image source="images/fig-plotdesc.png" width="90%">
+          <description>Word network in NASA dataset descriptions.</description>
+        </image>
+      </figure>
 
       <p>
         <xref ref="fig-plotdesc"/> shows such <em>strong</em> connections between the top dozen or
@@ -560,13 +560,8 @@ desc_word_pairs %&gt;%
         keywords commonly occur together in the same datasets.
       </p>
 
-      <figure xml:id="fig-plotcounts">
-        <caption>Co-occurrence network in NASA dataset keywords</caption>
-        <image source="images/fig-plotcounts.png" width="90%">
-          <description>Co-occurrence network in NASA dataset keywords.</description>
-        </image>
-      </figure>
-      <listing>
+
+      
       <program language="r">
           <input>
 keyword_pairs &lt;- nasa_keyword %&gt;%
@@ -586,7 +581,12 @@ keyword_pairs %&gt;%
   theme_void()
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-plotcounts">
+        <caption>Co-occurrence network in NASA dataset keywords</caption>
+        <image source="images/fig-plotcounts.png" width="90%">
+          <description>Co-occurrence network in NASA dataset keywords.</description>
+        </image>
+      </figure>
 
       <p>
         We definitely see clustering here, and strong connections between keywords like
@@ -630,13 +630,7 @@ keyword_cors
         co-occurences.
       </p>
 
-      <figure xml:id="fig-plotcors">
-        <caption>Correlation network in NASA dataset keywords</caption>
-        <image source="images/fig-plotcors.png" width="90%">
-          <description>Correlation network in NASA dataset keywords.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 set.seed(1234)
@@ -651,7 +645,13 @@ keyword_cors %&gt;%
   theme_void()
           </input>
         </program>
-      </listing>
+
+      <figure xml:id="fig-plotcors">
+        <caption>Correlation network in NASA dataset keywords</caption>
+        <image source="images/fig-plotcors.png" width="90%">
+          <description>Correlation network in NASA dataset keywords.</description>
+        </image>
+      </figure>
 
       <p>
         This network in <xref ref="fig-plotcors"/> appears much different than the co-occurence
@@ -750,13 +750,7 @@ desc_tf_idf &lt;- full_join(desc_tf_idf, nasa_keyword, by = "id")
         plot those words in <xref ref="fig-plottfidf"/>.
       </p>
 
-      <figure xml:id="fig-plottfidf">
-        <caption>Distribution of tf-idf for words from datasets labeled with selected keywords</caption>
-        <image source="images/fig-plottfidf.png" width="90%">
-          <description>Distribution of tf-idf for words from datasets labeled with selected keywords.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 desc_tf_idf %&gt;%
@@ -778,7 +772,13 @@ desc_tf_idf %&gt;%
        x = "tf-idf", y = NULL)
           </input>
         </program>
-      </listing>
+
+      <figure xml:id="fig-plottfidf">
+        <caption>Distribution of tf-idf for words from datasets labeled with selected keywords</caption>
+        <image source="images/fig-plottfidf.png" width="90%">
+          <description>Distribution of tf-idf for words from datasets labeled with selected keywords.</description>
+        </image>
+      </figure>
 
       <p>
         Using tf-idf has allowed us to identify important description words for each of these
@@ -946,13 +946,7 @@ top_terms
         let's look at this information visually in <xref ref="fig-plotbeta"/>.
       </p>
 
-      <figure xml:id="fig-plotbeta">
-        <caption>Top terms in topic modeling of NASA metadata description field texts</caption>
-        <image source="images/fig-plotbeta.png" width="90%">
-          <description>Top terms in topic modeling of NASA metadata description field texts.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 top_terms %&gt;%
@@ -968,7 +962,12 @@ top_terms %&gt;%
   facet_wrap(~ topic, ncol = 4, scales = "free")
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-plotbeta">
+        <caption>Top terms in topic modeling of NASA metadata description field texts</caption>
+        <image source="images/fig-plotbeta.png" width="90%">
+          <description>Top terms in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
 
       <p>
         We can see what a dominant word <q>data</q> is in these description texts. In addition,
@@ -1000,14 +999,7 @@ lda_gamma
         Let's visualize them (<xref ref="fig-plotgammaall"/>).
       </p>
 
-      <figure xml:id="fig-plotgammaall">
-        <caption>Probability distribution in topic modeling of NASA metadata description field
-        texts</caption>
-        <image source="images/fig-plotgammaall.png" width="90%">
-          <description>Probability distribution in topic modeling of NASA metadata description field texts.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 ggplot(lda_gamma, aes(gamma)) +
@@ -1017,7 +1009,13 @@ ggplot(lda_gamma, aes(gamma)) +
        y = "Number of documents", x = expression(gamma))
           </input>
         </program>
-      </listing>
+      <figure xml:id="fig-plotgammaall">
+        <caption>Probability distribution in topic modeling of NASA metadata description field
+        texts</caption>
+        <image source="images/fig-plotgammaall.png" width="90%">
+          <description>Probability distribution in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
 
       <p>
         First notice that the y-axis is plotted on a log scale; otherwise it is difficult to make
@@ -1030,14 +1028,7 @@ ggplot(lda_gamma, aes(gamma)) +
         within each topic, as shown in <xref ref="fig-plotgamma"/>.
       </p>
 
-      <figure xml:id="fig-plotgamma">
-        <caption>Probability distribution for each topic in topic modeling of NASA metadata
-        description field texts</caption>
-        <image source="images/fig-plotgamma.png" width="90%">
-          <description>Probability distribution for each topic in topic modeling of NASA metadata description field texts.</description>
-        </image>
-      </figure>
-      <listing>
+      
       <program language="r">
           <input>
 ggplot(lda_gamma, aes(gamma, fill = as.factor(topic))) +
@@ -1049,6 +1040,13 @@ ggplot(lda_gamma, aes(gamma, fill = as.factor(topic))) +
           </input>
         </program>
       </listing>
+      <figure xml:id="fig-plotgamma">
+        <caption>Probability distribution for each topic in topic modeling of NASA metadata
+        description field texts</caption>
+        <image source="images/fig-plotgamma.png" width="90%">
+          <description>Probability distribution for each topic in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
 
       <p>
         Let's look specifically at topic 18 in <xref ref="fig-plotgamma"/>, a topic that had
@@ -1104,13 +1102,6 @@ top_keywords
         What are the top keywords for each topic?
       </p>
 
-      <figure xml:id="fig-plottopkeywords">
-        <caption>Top keywords in topic modeling of NASA metadata description field texts</caption>
-        <image source="images/fig-plottopkeywords.png" width="90%">
-          <description>Top keywords in topic modeling of NASA metadata description field texts.</description>
-        </image>
-      </figure>
-      <listing>
       <program language="r">
           <input>
 top_keywords %&gt;%
@@ -1126,7 +1117,12 @@ top_keywords %&gt;%
   facet_wrap(~ topic, ncol = 4, scales = "free")
           </input>
         </program>
-      </listing>
+     <figure xml:id="fig-plottopkeywords">
+        <caption>Top keywords in topic modeling of NASA metadata description field texts</caption>
+        <image source="images/fig-plottopkeywords.png" width="90%">
+          <description>Top keywords in topic modeling of NASA metadata description field texts.</description>
+        </image>
+      </figure>
 
       <p>
         Let's take a step back and remind ourselves what <xref ref="fig-plottopkeywords"/> is
