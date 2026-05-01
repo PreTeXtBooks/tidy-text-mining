@@ -154,16 +154,16 @@ ap_topics
 #> # A tibble: 20,946 × 3
 #>    topic term            beta
 #>    &lt;int&gt; &lt;chr&gt;          &lt;dbl&gt;
-#>  1     1 aaron      1.69e-12
-#>  2     2 aaron      3.90e- 5
-#>  3     1 abandon    2.65e- 5
-#>  4     2 abandon    3.99e- 5
-#>  5     1 abandoned  1.39e- 4
-#>  6     2 abandoned  5.88e- 5
-#>  7     1 abandoning 2.45e-33
-#>  8     2 abandoning 2.34e- 5
-#>  9     1 abbott     2.13e- 6
-#> 10     2 abbott     2.97e- 5
+#>  1     1 aaron       1.69e-12
+#>  2     2 aaron       3.90e- 5
+#>  3     1 abandon     2.65e- 5
+#>  4     2 abandon     3.99e- 5
+#>  5     1 abandoned   1.39e- 4
+#>  6     2 abandoned   5.88e- 5
+#>  7     1 abandoning  2.45e-33
+#>  8     2 abandoning  2.34e- 5
+#>  9     1 abbott      2.13e- 6
+#> 10     2 abbott      2.97e- 5
 #> # ℹ 20,936 more rows
         </output>
       </console>
@@ -171,8 +171,8 @@ ap_topics
       <p>
         Notice that this has turned the model into a one-topic-per-term-per-row format. For each
         combination, the model computes the probability of that term being generated from that
-        topic. For example, the term <q>aaron</q> has a <c>1.686917 \times 10^{-12}</c> probability
-        of being generated from topic 1, and a <c>3.8959408 \times 10^{-5}</c> probability from topic 2.
+        topic. For example, the term <q>aaron</q> has a <m>1.686917 \times 10^{-12}</m> probability
+        of being generated from topic 1, and a <m>3.8959408 \times 10^{-5}</m> probability from topic 2.
       </p>
 
       <p>
@@ -245,8 +245,8 @@ beta_wide
       <console>
         <output>
 #> # A tibble: 198 × 4
-#>    term         topic1  topic2 log_ratio
-#>    &lt;chr&gt;         &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;
+#>    term           topic1    topic2         log_ratio
+#>    &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;             &lt;dbl&gt;
 #>  1 administration 0.000431  0.00138         1.68 
 #>  2 ago            0.00107   0.000842       -0.339
 #>  3 agreement      0.000671  0.00104         0.630
@@ -316,16 +316,16 @@ ap_documents
 #> # A tibble: 4,492 × 3
 #>    document topic   gamma
 #>    &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt;
-#>  1        1     1 0.248   
-#>  2        2     1 0.362   
-#>  3        3     1 0.527   
-#>  4        4     1 0.357   
-#>  5        5     1 0.181   
-#>  6        6     1 0.000588
-#>  7        7     1 0.773   
-#>  8        8     1 0.00445 
-#>  9        9     1 0.967   
-#> 10       10     1 0.147   
+#>  1        1     1   0.248   
+#>  2        2     1   0.362   
+#>  3        3     1   0.527   
+#>  4        4     1   0.357   
+#>  5        5     1   0.181   
+#>  6        6     1   0.000588
+#>  7        7     1   0.773   
+#>  8        8     1   0.00445 
+#>  9        9     1   0.967   
+#> 10       10     1   0.147   
 #> # ℹ 4,482 more rows
         </output>
       </console>
@@ -356,16 +356,16 @@ tidy(AssociatedPress) %&gt;%
 #> # A tibble: 287 × 3
 #>    document term         count
 #>       &lt;int&gt; &lt;chr&gt;        &lt;dbl&gt;
-#>  1        6 noriega           16
-#>  2        6 panama            12
-#>  3        6 jackson            6
-#>  4        6 powell             6
-#>  5        6 administration     5
-#>  6        6 economic           5
-#>  7        6 general            5
-#>  8        6 i                  5
-#>  9        6 panamanian         5
-#> 10        6 american           4
+#>  1        6 noriega         16
+#>  2        6 panama          12
+#>  3        6 jackson          6
+#>  4        6 powell           6
+#>  5        6 administration   5
+#>  6        6 economic         5
+#>  7        6 general          5
+#>  8        6 i                5
+#>  9        6 panamanian       5
+#> 10        6 american         4
 #> # ℹ 277 more rows
         </output>
       </console>
@@ -469,8 +469,8 @@ word_counts
     <console>
       <output>
 #> # A tibble: 104,721 × 3
-#>    document                                  word      n
-#>    &lt;chr&gt;                                     &lt;chr&gt; &lt;int&gt;
+#>    document                 word        n
+#>    &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;
 #>  1 Great Expectations_57    joe        88
 #>  2 Great Expectations_7     joe        70
 #>  3 Great Expectations_17    biddy      63
@@ -666,8 +666,8 @@ chapters_gamma
       <console>
         <output>
 #> # A tibble: 728 × 3
-#>    document              topic    gamma
-#>    &lt;chr&gt;                 &lt;int&gt;    &lt;dbl&gt;
+#>    document                 topic    gamma
+#>    &lt;chr&gt;                    &lt;int&gt;    &lt;dbl&gt;
 #>  1 Great Expectations_57        1 0.0000134
 #>  2 Great Expectations_7         1 0.0000146
 #>  3 Great Expectations_17        1 0.0000210
@@ -713,16 +713,16 @@ chapters_gamma
 #> # A tibble: 728 × 4
 #>    title             chapter topic    gamma
 #>    &lt;chr&gt;               &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;
-#>  1 Great Expectations         57     1 0.0000134
-#>  2 Great Expectations          7     1 0.0000146
-#>  3 Great Expectations         17     1 0.0000210
-#>  4 Great Expectations         27     1 0.0000190
-#>  5 Great Expectations         38     1 0.0000127
-#>  6 Great Expectations          2     1 0.0000171
-#>  7 Great Expectations         23     1 0.290    
-#>  8 Great Expectations         15     1 0.0000143
-#>  9 Great Expectations         18     1 0.0000126
-#> 10 The War of the Worlds      16     1 1.00     
+#>  1 Great Expectations     57     1 0.0000134
+#>  2 Great Expectations      7     1 0.0000146
+#>  3 Great Expectations     17     1 0.0000210
+#>  4 Great Expectations     27     1 0.0000190
+#>  5 Great Expectations     38     1 0.0000127
+#>  6 Great Expectations      2     1 0.0000171
+#>  7 Great Expectations     23     1 0.290    
+#>  8 Great Expectations     15     1 0.0000143
+#>  9 Great Expectations     18     1 0.0000126
+#> 10 The War of the Worlds  16     1 1.00     
 #> # ℹ 762 more rows
         </output>
       </console>
