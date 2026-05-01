@@ -181,7 +181,13 @@ ap_topics
         (<xref ref="fig-aptoptermsplot"/>).
       </p>
 
+      <figure xml:id="fig-aptoptermsplot">
         <caption>The terms that are most common within each topic</caption>
+        <image source="images/fig-aptoptermsplot.png" width="90%">
+          <description>The terms that are most common within each topic</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 library(ggplot2)
@@ -201,6 +207,7 @@ ap_top_terms %&gt;%
   scale_y_reordered()
           </input>
         </program>
+      </listing>
 
       <p>
         This visualization lets us understand the two topics that were extracted from the articles.
@@ -261,7 +268,13 @@ beta_wide
         <xref ref="fig-topiccompare"/>.
       </p>
 
+      <figure xml:id="fig-topiccompare">
         <caption>Words with the greatest difference in <m>\beta</m> between topic 2 and topic 1</caption>
+        <image source="images/fig-topiccompare.png" width="90%">
+          <description>Words with the greatest difference in beta between topic 2 and topic 1</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 beta_wide %&gt;%
@@ -274,6 +287,7 @@ beta_wide %&gt;%
   labs(x = "Log2 ratio of beta in topic 2 / topic 1", y = NULL)
           </input>
         </program>
+      </listing>
 
       <p>
         We can see that the words more common in topic 2 include political parties such as
@@ -606,7 +620,13 @@ top_terms
         (<xref ref="fig-toptermsplot"/>).
       </p>
 
+      <figure xml:id="fig-toptermsplot">
         <caption>The terms that are most common within each topic</caption>
+        <image source="images/fig-toptermsplot.png" width="90%">
+          <description>The terms that are most common within each topic</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 library(ggplot2)
@@ -619,6 +639,7 @@ top_terms %&gt;%
   scale_y_reordered()
           </input>
         </program>
+      </listing>
 
       <p>
         These topics are pretty clearly associated with the four books! There's no question that
@@ -712,7 +733,13 @@ chapters_gamma
         </output>
       </console>
 
+      <figure xml:id="fig-chaptersldagamma">
         <caption>The gamma probabilities for each chapter within each book</caption>
+        <image source="images/fig-chaptersldagamma.png" width="90%">
+          <description>The gamma probabilities for each chapter within each book</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 # reorder titles in order of topic 1, topic 2, etc before plotting
@@ -724,6 +751,7 @@ chapters_gamma %&gt;%
   labs(x = "topic", y = expression(gamma))
           </input>
         </program>
+      </listing>
 
       <p>
         We notice that almost all of the chapters from <em>Pride and Prejudice</em>, <em>War of
@@ -890,9 +918,15 @@ assignments
         (<xref ref="fig-confusionmatrix"/>).
       </p>
 
+      <figure xml:id="fig-confusionmatrix">
         <caption>Confusion matrix showing where LDA assigned the words from each book. Each row
         of this table represents the true book each word came from, and each column represents
         what book it was assigned to.</caption>
+        <image source="images/fig-confusionmatrix.png" width="90%">
+          <description>Confusion matrix showing where LDA assigned the words from each book.</description>
+        </image>
+      </figure>
+      <listing>
         <program language="r">
           <input>
 library(scales)
@@ -913,6 +947,7 @@ assignments %&gt;%
        fill = "% of assignments")
           </input>
         </program>
+      </listing>
 
       <p>
         We notice that almost all the words for <em>Pride and Prejudice</em>, <em>Twenty Thousand
