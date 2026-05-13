@@ -66,8 +66,11 @@
       <url href="https://github.com/PreTeXtBooks/tidy-text-mining"
            visual="github.com/PreTeXtBooks/tidy-text-mining">the PreTeXtBooks project</url>
       to make the content available in the PreTeXt format, enabling accessible and structured
-      output in HTML, PDF, and other formats. All prose, code examples, figures, and mathematical
-      content are faithful reproductions of the original work.
+      output in HTML, PDF, and other formats.   All prose, code examples, figures, and mathematical content are intended to be 
+  faithful reproductions of the original work, though occasional typographical errors 
+  may have been introduced in the conversion process. Report any issues to our
+  <url href = "https://github.com/PreTeXtBooks/tidy-text-mining/issues">GitHub Issues Page.</url>
+
     </p>
 
     <p>
